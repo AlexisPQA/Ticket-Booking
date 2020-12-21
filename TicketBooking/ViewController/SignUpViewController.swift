@@ -9,10 +9,16 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var fullNameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        signUpBtn.setTitle("Sign up   \u{2794}", for: .normal)
 
-        // Do any additional setup after loading the view.
     }
     
 
