@@ -26,15 +26,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="F75-Bm-InD">
-                                <rect key="frame" x="20" y="500" width="388" height="88"/>
+                                <rect key="frame" x="40" y="500" width="348" height="88"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="   Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DCr-ly-M8x" userLabel="username">
-                                        <rect key="frame" x="0.0" y="0.0" width="388" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="348" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="   Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YQz-2h-vyX" userLabel="password">
-                                        <rect key="frame" x="0.0" y="54" width="388" height="34"/>
+                                        <rect key="frame" x="0.0" y="54" width="348" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -63,21 +63,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Forgot password?"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLg-CJ-PSY">
-                                <rect key="frame" x="20" y="613" width="52" height="30"/>
-                                <state key="normal" title="Sign up"/>
-                                <connections>
-                                    <action selector="signUpTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SDX-AV-9zb"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ci6-pp-UPG">
-                                <rect key="frame" x="279" y="613" width="129" height="53"/>
+                                <rect key="frame" x="259" y="613" width="129" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ci6-pp-UPG" secondAttribute="height" multiplier="129:53" id="TGn-mo-dp9"/>
                                 </constraints>
                                 <state key="normal" title="Sign in"/>
                                 <connections>
                                     <action selector="signInTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="trw-BC-mAc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLg-CJ-PSY">
+                                <rect key="frame" x="40" y="624" width="52" height="30"/>
+                                <state key="normal" title="Sign up"/>
+                                <connections>
+                                    <action selector="signUpTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SDX-AV-9zb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -88,17 +88,17 @@
                             <constraint firstItem="ac3-xo-vtp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5HV-El-MJ9"/>
                             <constraint firstItem="DCr-ly-M8x" firstAttribute="top" secondItem="Zsb-ku-4b3" secondAttribute="bottom" constant="181" id="5TF-mJ-b3X"/>
                             <constraint firstItem="fLg-CJ-PSY" firstAttribute="leading" secondItem="F75-Bm-InD" secondAttribute="leading" id="5rb-VE-5dk"/>
-                            <constraint firstItem="fLg-CJ-PSY" firstAttribute="top" secondItem="F75-Bm-InD" secondAttribute="bottom" constant="25" id="6Ns-aY-hTe"/>
+                            <constraint firstItem="fLg-CJ-PSY" firstAttribute="top" secondItem="F75-Bm-InD" secondAttribute="bottom" constant="36" id="6Ns-aY-hTe"/>
                             <constraint firstItem="ac3-xo-vtp" firstAttribute="width" secondItem="qvs-1e-jio" secondAttribute="width" multiplier="0.17757" id="8D0-2P-Itv"/>
                             <constraint firstItem="Ci6-pp-UPG" firstAttribute="trailing" secondItem="F75-Bm-InD" secondAttribute="trailing" id="9Wp-yU-Tz1"/>
                             <constraint firstItem="HlZ-de-gXE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ghw-dY-FSf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F75-Bm-InD" secondAttribute="trailing" constant="20" id="IIu-tM-GVk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F75-Bm-InD" secondAttribute="trailing" constant="40" id="IIu-tM-GVk"/>
                             <constraint firstItem="HlZ-de-gXE" firstAttribute="top" secondItem="ac3-xo-vtp" secondAttribute="bottom" constant="34" id="MQC-gt-sPc"/>
                             <constraint firstItem="F75-Bm-InD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Tf0-aY-pbi"/>
                             <constraint firstItem="qvs-1e-jio" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ZY9-75-FZ9"/>
                             <constraint firstItem="Zsb-ku-4b3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="28" id="dJa-5C-I0f"/>
                             <constraint firstItem="ac3-xo-vtp" firstAttribute="top" secondItem="F75-Bm-InD" secondAttribute="bottom" constant="222" id="dKr-g1-zHS"/>
-                            <constraint firstItem="F75-Bm-InD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="e3S-cO-dlH"/>
+                            <constraint firstItem="F75-Bm-InD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="e3S-cO-dlH"/>
                             <constraint firstItem="qvs-1e-jio" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="p0C-W1-jRj"/>
                             <constraint firstItem="Ci6-pp-UPG" firstAttribute="width" secondItem="qvs-1e-jio" secondAttribute="width" multiplier="0.301402" id="q28-tM-agA"/>
                             <constraint firstItem="Ci6-pp-UPG" firstAttribute="top" secondItem="F75-Bm-InD" secondAttribute="bottom" constant="25" id="y5D-mf-j6s"/>
