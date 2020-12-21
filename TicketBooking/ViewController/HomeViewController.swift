@@ -9,21 +9,15 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var rectangle: UIView!
+    @IBOutlet weak var fromTextField: UITextField!
+    @IBOutlet weak var toTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        Utilities.styleView(rectangle)
+        Utilities.styleTextField1(fromTextField)
+        Utilities.styleTextField1(toTextField)
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
