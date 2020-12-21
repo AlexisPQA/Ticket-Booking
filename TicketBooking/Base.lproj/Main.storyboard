@@ -119,6 +119,36 @@
             </objects>
             <point key="canvasLocation" x="1031.7757009345794" y="88.120950323974085"/>
         </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="Nhr-vb-23R">
+            <objects>
+                <viewController storyboardIdentifier="SignUpVC" id="87U-tc-4fp" customClass="SignUpViewController" customModule="TicketBooking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j83-St-q08">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="0Bj-yR-KpN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zds-4f-Dzz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1032" y="734"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="eKw-Rd-Tif">
+            <objects>
+                <viewController storyboardIdentifier="HomeVC" id="u01-Tf-UFY" customClass="HomeViewController" customModule="TicketBooking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hsc-LM-tIX">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="e9a-G6-KuN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vue-75-ATr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1880" y="88"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="dpM-DO-TM6">
             <objects>
@@ -142,6 +172,9 @@
         <image name="Background" width="375" height="811"/>
         <image name="facebook" width="24" height="24"/>
         <image name="google" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

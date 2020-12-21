@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1D07A3D0259094A8005CB9D5 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D07A3CF259094A8005CB9D5 /* Utilities.swift */; };
 		1D07A3E925909FF5005CB9D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D07A3E825909FF5005CB9D5 /* GoogleService-Info.plist */; };
+		1D07A3EC2590A316005CB9D5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D07A3EB2590A316005CB9D5 /* HomeViewController.swift */; };
+		1D07A3EF2590A333005CB9D5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D07A3EE2590A333005CB9D5 /* SignUpViewController.swift */; };
 		1DA7B01D258E67F5001DB8F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA7B01C258E67F5001DB8F0 /* AppDelegate.swift */; };
 		1DA7B01F258E67F5001DB8F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA7B01E258E67F5001DB8F0 /* SceneDelegate.swift */; };
 		1DA7B021258E67F5001DB8F0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA7B020258E67F5001DB8F0 /* LoginViewController.swift */; };
@@ -21,6 +23,8 @@
 /* Begin PBXFileReference section */
 		1D07A3CF259094A8005CB9D5 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		1D07A3E825909FF5005CB9D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1D07A3EB2590A316005CB9D5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1D07A3EE2590A333005CB9D5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		1DA7B019258E67F5001DB8F0 /* TicketBooking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicketBooking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DA7B01C258E67F5001DB8F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DA7B01E258E67F5001DB8F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +54,8 @@
 			isa = PBXGroup;
 			children = (
 				1DA7B020258E67F5001DB8F0 /* LoginViewController.swift */,
+				1D07A3EB2590A316005CB9D5 /* HomeViewController.swift */,
+				1D07A3EE2590A333005CB9D5 /* SignUpViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -228,6 +234,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D07A3EF2590A333005CB9D5 /* SignUpViewController.swift in Sources */,
+				1D07A3EC2590A316005CB9D5 /* HomeViewController.swift in Sources */,
 				1DA7B021258E67F5001DB8F0 /* LoginViewController.swift in Sources */,
 				1DA7B01D258E67F5001DB8F0 /* AppDelegate.swift in Sources */,
 				1D07A3D0259094A8005CB9D5 /* Utilities.swift in Sources */,
