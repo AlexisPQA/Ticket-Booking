@@ -15,6 +15,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         signInBtn.setTitle("Sign in   \u{2794}", for: .normal)
+        Utilities.styleTextField(usernameTextField)
+        Utilities.styleTextField(passwordTextField)
+        Utilities.styleFilledButton(signInBtn)
     }
 
     @IBAction func signInTapped(_ sender: Any) {
