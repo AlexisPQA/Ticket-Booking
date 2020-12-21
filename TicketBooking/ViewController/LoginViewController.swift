@@ -14,10 +14,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signInBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController!.navigationBar.isTranslucent = true
         signInBtn.setTitle("Sign in   \u{2794}", for: .normal)
         Utilities.styleTextField(usernameTextField)
         Utilities.styleTextField(passwordTextField)
         Utilities.styleFilledButton(signInBtn)
+        
     }
 
     @IBAction func signInTapped(_ sender: Any) {
