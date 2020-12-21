@@ -8,9 +8,19 @@
 
 import Foundation
 import UIKit
-
+let viewColor = UIColor.init(red: 219/255, green: 229/255, blue: 243/255, alpha: 1)
+let btnColor = UIColor.init(red: 254/255, green: 135/255, blue: 129/255, alpha: 1)
 class Utilities {
     
+    
+    static func styleView(_ view:UIView){
+        view.layer.cornerRadius = 10
+        view.backgroundColor = viewColor
+    }
+    static func styleTextField1(_ textfield:UITextField){
+        textfield.layer.cornerRadius = textfield.frame.height/2.0
+        textfield.clipsToBounds = true
+    }
     static func styleTextField(_ textfield:UITextField) {
         
         // Create the bottom line
@@ -30,7 +40,7 @@ class Utilities {
     static func styleFilledButton(_ button:UIButton) {
         
         // Filled rounded corner style
-        button.backgroundColor = UIColor.init(red: 254/255, green: 135/255, blue: 129/255, alpha: 1)
+        button.backgroundColor = btnColor
         button.layer.cornerRadius = button.frame.size.height/2.0
         button.tintColor = UIColor.white
     }
