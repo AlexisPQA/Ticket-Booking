@@ -31,7 +31,7 @@ class Utilities {
         
         // Filled rounded corner style
         button.backgroundColor = UIColor.init(red: 254/255, green: 135/255, blue: 129/255, alpha: 1)
-        button.layer.cornerRadius = button.frame.size.width/4.5
+        button.layer.cornerRadius = button.frame.size.height/2.0
         button.tintColor = UIColor.white
     }
     
