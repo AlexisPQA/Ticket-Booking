@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Firebase
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var usernameTextField: UITextField!
@@ -25,6 +25,21 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func signInTapped(_ sender: Any) {
+        let email = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+                    if error != nil{
+                       let alert = UIAlertController(title: "", message: error!.localizedDescription, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        
+                    }
+                    else{
+                        let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeViewController
+                        self.view.window?.rootViewController = HomeVC
+                        self.view.window?.makeKeyAndVisible()
+                    }
+                }
     }
     
     @IBAction func signUpTapped(_ sender: Any) {
