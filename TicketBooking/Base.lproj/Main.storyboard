@@ -70,8 +70,11 @@
                                     <action selector="signUpTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SDX-AV-9zb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ci6-pp-UPG">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ci6-pp-UPG">
                                 <rect key="frame" x="279" y="613" width="129" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ci6-pp-UPG" secondAttribute="height" multiplier="129:53" id="TGn-mo-dp9"/>
+                                </constraints>
                                 <state key="normal" title="Sign in"/>
                                 <connections>
                                     <action selector="signInTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="trw-BC-mAc"/>
@@ -97,6 +100,7 @@
                             <constraint firstItem="ac3-xo-vtp" firstAttribute="top" secondItem="F75-Bm-InD" secondAttribute="bottom" constant="222" id="dKr-g1-zHS"/>
                             <constraint firstItem="F75-Bm-InD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="e3S-cO-dlH"/>
                             <constraint firstItem="qvs-1e-jio" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="p0C-W1-jRj"/>
+                            <constraint firstItem="Ci6-pp-UPG" firstAttribute="width" secondItem="qvs-1e-jio" secondAttribute="width" multiplier="0.301402" id="q28-tM-agA"/>
                             <constraint firstItem="Ci6-pp-UPG" firstAttribute="top" secondItem="F75-Bm-InD" secondAttribute="bottom" constant="25" id="y5D-mf-j6s"/>
                             <constraint firstAttribute="bottom" secondItem="qvs-1e-jio" secondAttribute="bottom" id="yTV-Ii-h6L"/>
                             <constraint firstAttribute="trailing" secondItem="qvs-1e-jio" secondAttribute="trailing" id="ztY-9T-ATO"/>
