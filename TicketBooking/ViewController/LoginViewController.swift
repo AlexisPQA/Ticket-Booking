@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
         signInBtn.setTitle("Sign in   \u{2794}", for: .normal)
         Utilities.styleTextField(usernameTextField)
         Utilities.styleTextField(passwordTextField)
-        Utilities.styleFilledButton(signInBtn)
+        Utilities.styleFilledButton(signInBtn,1)
         
     }
 

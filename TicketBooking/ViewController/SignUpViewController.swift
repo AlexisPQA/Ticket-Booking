@@ -23,7 +23,7 @@ class SignUpViewController: UIViewController {
         Utilities.styleTextField(phoneNumberTextField)
         Utilities.styleTextField(passwordTextField)
         Utilities.styleTextField(addressTextField)
-        Utilities.styleFilledButton(signUpBtn)
+        Utilities.styleFilledButton(signUpBtn,1)
     }
     func checkValidateField()->Int?{
             if fullNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||

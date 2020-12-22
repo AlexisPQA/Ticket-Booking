@@ -37,12 +37,18 @@ class Utilities {
         
     }
     
-    static func styleFilledButton(_ button:UIButton) {
-        
+    static func styleFilledButton(_ button:UIButton,_ type:Int) {
+        if type == 1{
         // Filled rounded corner style
         button.backgroundColor = btnColor
         button.layer.cornerRadius = button.frame.size.height/2.0
         button.tintColor = UIColor.white
+        }
+        else{
+            button.backgroundColor = viewColor
+            button.layer.cornerRadius = button.frame.size.height/2.0
+            button.tintColor = UIColor.white
+        }
     }
     
     static func styleHollowButton(_ button:UIButton) {
