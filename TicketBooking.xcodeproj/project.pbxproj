@@ -22,6 +22,7 @@
 		8492100E2590EF0D0059A491 /* StationInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492100D2590EF0D0059A491 /* StationInfoViewController.swift */; };
 		849210112590EF4F0059A491 /* GarageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849210102590EF4F0059A491 /* GarageInfoViewController.swift */; };
 		849210142590FD270059A491 /* TicketBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849210132590FD270059A491 /* TicketBookingViewController.swift */; };
+		84931405259389C100B8F7EA /* TicketInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84931404259389C100B8F7EA /* TicketInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		8492100D2590EF0D0059A491 /* StationInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationInfoViewController.swift; sourceTree = "<group>"; };
 		849210102590EF4F0059A491 /* GarageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageInfoViewController.swift; sourceTree = "<group>"; };
 		849210132590FD270059A491 /* TicketBookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketBookingViewController.swift; sourceTree = "<group>"; };
+		84931404259389C100B8F7EA /* TicketInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				8492100D2590EF0D0059A491 /* StationInfoViewController.swift */,
 				849210102590EF4F0059A491 /* GarageInfoViewController.swift */,
 				849210132590FD270059A491 /* TicketBookingViewController.swift */,
+				84931404259389C100B8F7EA /* TicketInfoViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				849210112590EF4F0059A491 /* GarageInfoViewController.swift in Sources */,
 				1DA7B01D258E67F5001DB8F0 /* AppDelegate.swift in Sources */,
 				849210142590FD270059A491 /* TicketBookingViewController.swift in Sources */,
+				84931405259389C100B8F7EA /* TicketInfoViewController.swift in Sources */,
 				1D07A3D0259094A8005CB9D5 /* Utilities.swift in Sources */,
 				1DA7B01F258E67F5001DB8F0 /* SceneDelegate.swift in Sources */,
 				8492100E2590EF0D0059A491 /* StationInfoViewController.swift in Sources */,

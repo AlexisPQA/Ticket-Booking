@@ -12,7 +12,7 @@ import UIKit
 class Utilities {
     
     static let mainColor = UIColor.init(red: 254/255, green: 135/255, blue: 129/255, alpha: 1)
-    static let subColor = UIColor.init(hue: 219/255, saturation: 229/255, brightness: 243/255, alpha: 1)
+    static let subColor = UIColor.init(red: 219/255, green: 229/255, blue: 243/255, alpha: 1)
     
     static func styleTextField(_ textfield:UITextField) {
         
@@ -53,16 +53,15 @@ class Utilities {
         return passwordTest.evaluate(with: password)
     }
     
-    static func stylePickerButton(_ button:UIButton) {
-        button.backgroundColor = subColor
+    static func styleFloatButton(_ button:UIButton) {
         button.layer.cornerRadius = button.frame.size.height/2
-        button.layer.shadowColor = CGColor.init(red: 0, green: 0, blue: 0, alpha: 0.16)
-        button.layer.shadowOffset = CGSize.init(width: 0, height: 3)
+        button.layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
+        button.layer.shadowOffset = .init(width: 0, height: 3)
         button.layer.shadowRadius = 6
+        button.layer.shadowOpacity = 0.16
     }
     
     static func styleImageFrame(_ imageView : UIImageView) {
         imageView.layer.cornerRadius = 15
-    }
-    
+    }    
 }

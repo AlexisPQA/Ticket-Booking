@@ -24,7 +24,7 @@ class GarageInfoViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 20)!]
         
         Utilities.styleImageFrame(image)
-        Utilities.stylePickerButton(dateButton)
+        Utilities.styleFloatButton(dateButton)
         
     }
 

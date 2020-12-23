@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func nguyenTestButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
-        let vc  = storyboard.instantiateViewController(withIdentifier: "StationInfoViewController")
+        let vc  = storyboard.instantiateViewController(withIdentifier: "stationInfoViewController")
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
