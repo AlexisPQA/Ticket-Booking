@@ -73,7 +73,7 @@ class SignUpViewController: UIViewController {
                                 self.present(alert, animated: true, completion: nil)
                                 
                             })
-                            let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeViewController
+                            let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
                             self.view.window?.rootViewController = HomeVC
                             self.view.window?.makeKeyAndVisible()
                         }
