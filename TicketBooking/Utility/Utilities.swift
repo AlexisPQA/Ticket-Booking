@@ -16,6 +16,12 @@ class Utilities {
     static func styleView(_ view:UIView){
         view.layer.cornerRadius = 10
         view.backgroundColor = viewColor
+        view.layer.shadowColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.16).cgColor
+        view.layer.shadowRadius = 5.0
+        view.layer.shadowOpacity = 1.0
+        view.layer.masksToBounds = false
+        view.layer.shadowOffset = CGSize(width: 0, height: 5)
+        view.layer.shadowPath = UIBezierPath(rect: view.bounds).cgPath
     }
     static func styleTextField1(_ textfield:UITextField){
         textfield.layer.cornerRadius = textfield.frame.height/2.0
@@ -48,6 +54,12 @@ class Utilities {
             button.backgroundColor = viewColor
             button.layer.cornerRadius = button.frame.size.height/2.0
             button.tintColor = UIColor.white
+            button.layer.shadowColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.16).cgColor
+            button.layer.shadowRadius = 5.0
+            button.layer.shadowOpacity = 1.0
+            button.layer.masksToBounds = false
+            button.layer.shadowOffset = CGSize(width: 0, height: 5)
+            button.layer.shadowPath = UIBezierPath(rect: button.bounds).cgPath
         }
     }
     
