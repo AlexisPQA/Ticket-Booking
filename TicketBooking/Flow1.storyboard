@@ -125,21 +125,72 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="165" id="5GZ-zQ-Oxj"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ak9-Ti-psO">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ak9-Ti-psO">
                                     <size key="itemSize" width="134" height="147"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="O9O-os-oWP">
-                                        <rect key="frame" x="0.0" y="0.0" width="134" height="147"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="garageCollectionViewCell" id="O9O-os-oWP" customClass="GarageCollectionViewCell" customModule="TicketBooking" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="9" width="134" height="147"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HdW-LF-Cwk">
                                             <rect key="frame" x="0.0" y="0.0" width="134" height="147"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ciI-fm-eFC">
+                                                    <rect key="frame" x="10" y="10" width="46" height="46"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="46" id="Bnn-CU-iau"/>
+                                                        <constraint firstAttribute="width" constant="46" id="QA0-hu-UXA"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xe khách Hoa Hồng" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJb-nJ-byh">
+                                                    <rect key="frame" x="64" y="8" width="60" height="48"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="48" id="7fH-zm-X5K"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Location Icon-2" translatesAutoresizingMaskIntoConstraints="NO" id="CRE-EE-1l5">
+                                                    <rect key="frame" x="10" y="66" width="16" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="15" id="6Br-PG-wSn"/>
+                                                        <constraint firstAttribute="width" constant="16" id="yQw-8G-6Ge"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 Nguyễn Văn Cừ, phường 4, Quận 1, tp. Hồ Chí Minh" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToZ-Sk-xZl">
+                                                    <rect key="frame" x="34" y="66" width="92" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="RUE-lU-5DO"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="8"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ToZ-Sk-xZl" firstAttribute="leading" secondItem="CRE-EE-1l5" secondAttribute="trailing" constant="8" id="AGB-Bs-iUj"/>
+                                                <constraint firstItem="CRE-EE-1l5" firstAttribute="top" secondItem="ciI-fm-eFC" secondAttribute="bottom" constant="10" id="DVY-by-XaF"/>
+                                                <constraint firstItem="CRE-EE-1l5" firstAttribute="leading" secondItem="ciI-fm-eFC" secondAttribute="leading" id="H2j-DW-R5c"/>
+                                                <constraint firstAttribute="trailing" secondItem="uJb-nJ-byh" secondAttribute="trailing" constant="10" id="QCq-4q-W5X"/>
+                                                <constraint firstItem="ciI-fm-eFC" firstAttribute="top" secondItem="HdW-LF-Cwk" secondAttribute="top" constant="10" id="Zn1-iC-Q8c"/>
+                                                <constraint firstItem="uJb-nJ-byh" firstAttribute="leading" secondItem="ciI-fm-eFC" secondAttribute="trailing" constant="8" id="dt4-sM-Wve"/>
+                                                <constraint firstAttribute="trailing" secondItem="ToZ-Sk-xZl" secondAttribute="trailing" constant="8" id="fbe-hG-JfG"/>
+                                                <constraint firstItem="ciI-fm-eFC" firstAttribute="leading" secondItem="HdW-LF-Cwk" secondAttribute="leading" constant="10" id="kfr-YX-xz2"/>
+                                                <constraint firstItem="ToZ-Sk-xZl" firstAttribute="top" secondItem="CRE-EE-1l5" secondAttribute="top" id="rgm-9B-bTP"/>
+                                                <constraint firstItem="uJb-nJ-byh" firstAttribute="top" secondItem="HdW-LF-Cwk" secondAttribute="top" constant="8" id="yMK-GH-gVS"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="134" height="147"/>
+                                        <connections>
+                                            <outlet property="addressLabel" destination="ToZ-Sk-xZl" id="W0H-aF-RSA"/>
+                                            <outlet property="nameLabel" destination="uJb-nJ-byh" id="Mdj-1v-0cC"/>
+                                            <outlet property="thumbnail" destination="ciI-fm-eFC" id="nrs-2o-S2z"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -191,6 +242,7 @@
                     </view>
                     <connections>
                         <outlet property="addressLabel" destination="VdE-1l-r3f" id="9Qi-Xf-hKd"/>
+                        <outlet property="garagesCollectionView" destination="wpV-WE-mKa" id="lHH-gQ-wqv"/>
                         <outlet property="image" destination="vMf-2I-74m" id="v9b-Gd-YdQ"/>
                         <outlet property="openTimeLabel" destination="rzX-fs-j8S" id="Ytw-bd-Cul"/>
                         <outlet property="stationNameLabel" destination="8wt-Nb-gI7" id="qb3-y6-B8R"/>
@@ -345,21 +397,21 @@
                                     <imageReference key="image" image="calendar" catalog="system" symbolScale="medium"/>
                                 </state>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IEB-MB-xGf">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IEB-MB-xGf" userLabel="Routes Collection View">
                                 <rect key="frame" x="0.0" y="570.5" width="414" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="Jxt-fq-fDe"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zax-ub-7l8">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zax-ub-7l8">
                                     <size key="itemSize" width="82" height="88"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="xjO-Pt-1K4">
-                                        <rect key="frame" x="0.0" y="0.0" width="82" height="88"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="routeCollectionViewCell" id="xjO-Pt-1K4" customClass="RouteCollectionViewCell" customModule="TicketBooking" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="6" width="82" height="88"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="s2U-C2-WAG">
                                             <rect key="frame" x="0.0" y="0.0" width="82" height="88"/>
@@ -447,6 +499,12 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="82" height="88"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="vqN-Yc-h8K" id="HPo-5Y-9sz"/>
+                                            <outlet property="fromLabel" destination="mVh-hN-WWO" id="koY-N0-AVf"/>
+                                            <outlet property="timeLabel" destination="DaN-Pt-YwJ" id="6RV-QM-w4G"/>
+                                            <outlet property="toLabel" destination="uQA-Uk-ABT" id="lFe-jc-wCs"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -479,6 +537,7 @@
                         <outlet property="garageNameLabel" destination="NzF-HU-vac" id="JrO-Bo-RmE"/>
                         <outlet property="image" destination="Qcn-PZ-8we" id="n2n-30-sko"/>
                         <outlet property="openTimeLabel" destination="h64-Fa-PEE" id="iSA-6U-cOg"/>
+                        <outlet property="routesCollectionView" destination="IEB-MB-xGf" id="Z2l-DS-n0f"/>
                         <outlet property="stationNameLabel" destination="KS0-pz-gQN" id="PES-N5-SgQ"/>
                         <outlet property="ticketPriceLabel" destination="PVn-wG-Fv3" id="YGC-fs-D0U"/>
                     </connections>
