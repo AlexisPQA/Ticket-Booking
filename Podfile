@@ -10,4 +10,6 @@ target 'TicketBooking' do
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
+  pod 'Cosmos'
+  pod 'FloatingTabBarController'
 end

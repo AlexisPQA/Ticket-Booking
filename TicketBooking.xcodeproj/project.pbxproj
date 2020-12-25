@@ -10,7 +10,9 @@
 		1D07A3D0259094A8005CB9D5 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D07A3CF259094A8005CB9D5 /* Utilities.swift */; };
 		1D07A3E925909FF5005CB9D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D07A3E825909FF5005CB9D5 /* GoogleService-Info.plist */; };
 		1D07A3EF2590A333005CB9D5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D07A3EE2590A333005CB9D5 /* SignUpViewController.swift */; };
-		1D75C9732591D83F00875021 /* OtherUserFeedVC (1).xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D75C9722591D83F00875021 /* OtherUserFeedVC (1).xib */; };
+		1D7D680F2594FF1700D04DD5 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D680E2594FF1700D04DD5 /* TabbarViewController.swift */; };
+		1D7D68122595059C00D04DD5 /* Tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D68112595059C00D04DD5 /* Tabbar.swift */; };
+		1D8D87BC2593256B0004E858 /* BusStationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8D87BB2593256B0004E858 /* BusStationCollectionViewCell.swift */; };
 		1DA7B01D258E67F5001DB8F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA7B01C258E67F5001DB8F0 /* AppDelegate.swift */; };
 		1DA7B01F258E67F5001DB8F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA7B01E258E67F5001DB8F0 /* SceneDelegate.swift */; };
 		1DA7B021258E67F5001DB8F0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA7B020258E67F5001DB8F0 /* LoginViewController.swift */; };
@@ -27,7 +29,9 @@
 		1D07A3CF259094A8005CB9D5 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		1D07A3E825909FF5005CB9D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D07A3EE2590A333005CB9D5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		1D75C9722591D83F00875021 /* OtherUserFeedVC (1).xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "OtherUserFeedVC (1).xib"; sourceTree = "<group>"; };
+		1D7D680E2594FF1700D04DD5 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		1D7D68112595059C00D04DD5 /* Tabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbar.swift; sourceTree = "<group>"; };
+		1D8D87BB2593256B0004E858 /* BusStationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStationCollectionViewCell.swift; sourceTree = "<group>"; };
 		1DA7B019258E67F5001DB8F0 /* TicketBooking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicketBooking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DA7B01C258E67F5001DB8F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DA7B01E258E67F5001DB8F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +68,7 @@
 				1DF35FDA2590E15F00321EF8 /* SearchViewController.swift */,
 				1D07A3EE2590A333005CB9D5 /* SignUpViewController.swift */,
 				1DF35FDD2590E17C00321EF8 /* AccountViewController.swift */,
+				1D7D680E2594FF1700D04DD5 /* TabbarViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -72,8 +77,17 @@
 			isa = PBXGroup;
 			children = (
 				1D07A3CF259094A8005CB9D5 /* Utilities.swift */,
+				1D7D68112595059C00D04DD5 /* Tabbar.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		1D8D87B5259324F30004E858 /* BusStation&Garages */ = {
+			isa = PBXGroup;
+			children = (
+				1D8D87BB2593256B0004E858 /* BusStationCollectionViewCell.swift */,
+			);
+			path = "BusStation&Garages";
 			sourceTree = "<group>";
 		};
 		1DA7B010258E67F5001DB8F0 = {
@@ -97,11 +111,11 @@
 		1DA7B01B258E67F5001DB8F0 /* TicketBooking */ = {
 			isa = PBXGroup;
 			children = (
+				1D8D87B5259324F30004E858 /* BusStation&Garages */,
 				1D07A3CE25909490005CB9D5 /* Utility */,
 				1D07A3C825909273005CB9D5 /* ViewController */,
 				1DA7B01C258E67F5001DB8F0 /* AppDelegate.swift */,
 				1DA7B01E258E67F5001DB8F0 /* SceneDelegate.swift */,
-				1D75C9722591D83F00875021 /* OtherUserFeedVC (1).xib */,
 				1DA7B022258E67F5001DB8F0 /* Main.storyboard */,
 				1DA7B025258E67F8001DB8F0 /* Assets.xcassets */,
 				1DA7B027258E67F8001DB8F0 /* LaunchScreen.storyboard */,
@@ -161,6 +175,7 @@
 				TargetAttributes = {
 					1DA7B018258E67F5001DB8F0 = {
 						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1230;
 					};
 				};
 			};
@@ -190,7 +205,6 @@
 				1DA7B029258E67F8001DB8F0 /* LaunchScreen.storyboard in Resources */,
 				1D07A3E925909FF5005CB9D5 /* GoogleService-Info.plist in Resources */,
 				1DA7B026258E67F8001DB8F0 /* Assets.xcassets in Resources */,
-				1D75C9732591D83F00875021 /* OtherUserFeedVC (1).xib in Resources */,
 				1DA7B024258E67F5001DB8F0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,10 +261,13 @@
 				1D07A3EF2590A333005CB9D5 /* SignUpViewController.swift in Sources */,
 				1DF35FDB2590E15F00321EF8 /* SearchViewController.swift in Sources */,
 				1DF35FDE2590E17C00321EF8 /* AccountViewController.swift in Sources */,
+				1D7D68122595059C00D04DD5 /* Tabbar.swift in Sources */,
+				1D8D87BC2593256B0004E858 /* BusStationCollectionViewCell.swift in Sources */,
 				1DA7B021258E67F5001DB8F0 /* LoginViewController.swift in Sources */,
 				1DA7B01D258E67F5001DB8F0 /* AppDelegate.swift in Sources */,
 				1D07A3D0259094A8005CB9D5 /* Utilities.swift in Sources */,
 				1DA7B01F258E67F5001DB8F0 /* SceneDelegate.swift in Sources */,
+				1D7D680F2594FF1700D04DD5 /* TabbarViewController.swift in Sources */,
 				1DF35FD82590D87F00321EF8 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,6 +416,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TicketBooking/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -407,6 +425,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = AlexisPQA.TicketBooking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -418,6 +437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TicketBooking/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
