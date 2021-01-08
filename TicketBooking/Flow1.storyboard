@@ -119,13 +119,45 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wpV-WE-mKa">
-                                <rect key="frame" x="0.0" y="542.5" width="414" height="165"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Zt-dV-0g1">
+                                <rect key="frame" x="147" y="746" width="115" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Test GarageView"/>
+                                <connections>
+                                    <action selector="showGarageView:" destination="rA5-Zb-v1F" eventType="touchUpInside" id="WP4-Bn-E0z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h92-Xg-Pif">
+                                <rect key="frame" x="143" y="715" width="122" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Test BookingView"/>
+                                <connections>
+                                    <action selector="showBookingView:" destination="rA5-Zb-v1F" eventType="touchUpInside" id="8XW-Mf-DDT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chw-Tk-gxN">
+                                <rect key="frame" x="150" y="774" width="108" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Test TicketView"/>
+                                <connections>
+                                    <action selector="showTicketView:" destination="rA5-Zb-v1F" eventType="touchUpInside" id="rNn-HA-3K3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDS-qK-8YO">
+                                <rect key="frame" x="11" y="746" width="65" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Database"/>
+                                <connections>
+                                    <action selector="dataButton:" destination="rA5-Zb-v1F" eventType="touchUpInside" id="UlL-NO-3hx"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wpV-WE-mKa">
+                                <rect key="frame" x="0.0" y="537" width="414" height="170"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="165" id="5GZ-zQ-Oxj"/>
+                                    <constraint firstAttribute="height" constant="170" id="5GZ-zQ-Oxj"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ak9-Ti-psO">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ak9-Ti-psO">
                                     <size key="itemSize" width="134" height="147"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -133,13 +165,13 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="garageCollectionViewCell" id="O9O-os-oWP" customClass="GarageCollectionViewCell" customModule="TicketBooking" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="9" width="134" height="147"/>
+                                        <rect key="frame" x="0.0" y="11.5" width="134" height="147"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HdW-LF-Cwk">
                                             <rect key="frame" x="0.0" y="0.0" width="134" height="147"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ciI-fm-eFC">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ciI-fm-eFC">
                                                     <rect key="frame" x="10" y="10" width="46" height="46"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="46" id="Bnn-CU-iau"/>
@@ -185,6 +217,7 @@
                                                 <constraint firstItem="uJb-nJ-byh" firstAttribute="top" secondItem="HdW-LF-Cwk" secondAttribute="top" constant="8" id="yMK-GH-gVS"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <size key="customSize" width="134" height="147"/>
                                         <connections>
                                             <outlet property="addressLabel" destination="ToZ-Sk-xZl" id="W0H-aF-RSA"/>
@@ -194,33 +227,9 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Zt-dV-0g1">
-                                <rect key="frame" x="147" y="746" width="115" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Test GarageView"/>
-                                <connections>
-                                    <action selector="showGarageView:" destination="rA5-Zb-v1F" eventType="touchUpInside" id="WP4-Bn-E0z"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h92-Xg-Pif">
-                                <rect key="frame" x="143" y="715" width="122" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Test BookingView"/>
-                                <connections>
-                                    <action selector="showBookingView:" destination="rA5-Zb-v1F" eventType="touchUpInside" id="8XW-Mf-DDT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chw-Tk-gxN">
-                                <rect key="frame" x="150" y="774" width="108" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Test TicketView"/>
-                                <connections>
-                                    <action selector="showTicketView:" destination="rA5-Zb-v1F" eventType="touchUpInside" id="rNn-HA-3K3"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="X3Q-yW-0Gi"/>
-                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="wpV-WE-mKa" firstAttribute="leading" secondItem="X3Q-yW-0Gi" secondAttribute="leading" id="07F-Ll-ByG"/>
                             <constraint firstItem="wpV-WE-mKa" firstAttribute="trailing" secondItem="X3Q-yW-0Gi" secondAttribute="trailing" id="Aog-ZF-a0X"/>
@@ -233,7 +242,7 @@
                             <constraint firstItem="X3Q-yW-0Gi" firstAttribute="trailing" secondItem="vMf-2I-74m" secondAttribute="trailing" constant="16" id="Y8h-zu-jjH"/>
                             <constraint firstItem="X3Q-yW-0Gi" firstAttribute="trailing" secondItem="dp0-Qh-h0S" secondAttribute="trailing" id="aNR-Fm-d87"/>
                             <constraint firstItem="dp0-Qh-h0S" firstAttribute="top" secondItem="UNx-it-8sO" secondAttribute="top" constant="-1" id="cbm-Pr-Qwv"/>
-                            <constraint firstItem="wpV-WE-mKa" firstAttribute="top" secondItem="i3p-zS-Gma" secondAttribute="bottom" constant="20" id="diX-6L-tLo"/>
+                            <constraint firstItem="wpV-WE-mKa" firstAttribute="top" secondItem="i3p-zS-Gma" secondAttribute="bottom" constant="10" id="diX-6L-tLo"/>
                             <constraint firstItem="i3p-zS-Gma" firstAttribute="top" secondItem="PYA-6x-E1S" secondAttribute="bottom" constant="30" id="ghr-QJ-vDx"/>
                             <constraint firstItem="vMf-2I-74m" firstAttribute="top" secondItem="X3Q-yW-0Gi" secondAttribute="top" constant="16" id="kDP-Cg-O1u"/>
                             <constraint firstItem="i3p-zS-Gma" firstAttribute="leading" secondItem="X3Q-yW-0Gi" secondAttribute="leading" constant="16" id="mq9-hK-MGI"/>
@@ -267,7 +276,7 @@
                                     <constraint firstAttribute="width" secondItem="DHf-Ug-uBc" secondAttribute="height" multiplier="125:96" id="F6e-5X-Gyr"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qcn-PZ-8we">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qcn-PZ-8we">
                                 <rect key="frame" x="16" y="60" width="382" height="221.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -383,7 +392,7 @@
                                     <constraint firstItem="o55-vr-atI" firstAttribute="leading" secondItem="VaD-Fx-VgL" secondAttribute="leading" constant="16" id="ynZ-E2-vtw"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paa-QE-xCl">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paa-QE-xCl">
                                 <rect key="frame" x="142.5" y="686.5" width="129" height="27"/>
                                 <color key="backgroundColor" red="0.85882352941176465" green="0.89803921568627454" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -396,14 +405,17 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <imageReference key="image" image="calendar" catalog="system" symbolScale="medium"/>
                                 </state>
+                                <connections>
+                                    <action selector="showDatePicker:" destination="712-Bg-4ah" eventType="touchUpInside" id="5A7-KF-sim"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IEB-MB-xGf" userLabel="Routes Collection View">
-                                <rect key="frame" x="0.0" y="570.5" width="414" height="100"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="560.5" width="414" height="110"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Jxt-fq-fDe"/>
+                                    <constraint firstAttribute="height" constant="110" id="Jxt-fq-fDe"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zax-ub-7l8">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zax-ub-7l8">
                                     <size key="itemSize" width="82" height="88"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -411,7 +423,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="routeCollectionViewCell" id="xjO-Pt-1K4" customClass="RouteCollectionViewCell" customModule="TicketBooking" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="6" width="82" height="88"/>
+                                        <rect key="frame" x="0.0" y="11" width="82" height="88"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="s2U-C2-WAG">
                                             <rect key="frame" x="0.0" y="0.0" width="82" height="88"/>
@@ -508,13 +520,22 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEE-wB-bEk">
+                                <rect key="frame" x="20" y="747" width="65" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Database"/>
+                                <connections>
+                                    <action selector="dataButton:" destination="712-Bg-4ah" eventType="touchUpInside" id="Dze-6K-XYc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BKM-Tq-GUk"/>
-                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Qcn-PZ-8we" firstAttribute="top" secondItem="BKM-Tq-GUk" secondAttribute="top" constant="16" id="0u1-Y1-0ac"/>
                             <constraint firstItem="BKM-Tq-GUk" firstAttribute="trailing" secondItem="Qcn-PZ-8we" secondAttribute="trailing" constant="16" id="7BI-Ex-7SX"/>
-                            <constraint firstItem="IEB-MB-xGf" firstAttribute="top" secondItem="eoY-Jc-SQi" secondAttribute="bottom" constant="20" id="DfE-vj-gBr"/>
+                            <constraint firstItem="IEB-MB-xGf" firstAttribute="top" secondItem="eoY-Jc-SQi" secondAttribute="bottom" constant="10" id="DfE-vj-gBr"/>
+                            <constraint firstItem="paa-QE-xCl" firstAttribute="top" secondItem="IEB-MB-xGf" secondAttribute="bottom" constant="16" id="Hgk-XL-rwa"/>
                             <constraint firstItem="NzF-HU-vac" firstAttribute="leading" secondItem="BKM-Tq-GUk" secondAttribute="leading" constant="16" id="J0U-rW-PZe"/>
                             <constraint firstItem="eoY-Jc-SQi" firstAttribute="top" secondItem="VaD-Fx-VgL" secondAttribute="bottom" constant="30" id="N2R-TT-7Lz"/>
                             <constraint firstItem="eoY-Jc-SQi" firstAttribute="leading" secondItem="BKM-Tq-GUk" secondAttribute="leading" constant="16" id="Ol4-Av-wai"/>
@@ -640,7 +661,7 @@
                                                         </constraints>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -871,6 +892,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="AjP-4X-Nuf"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TA3-K3-GXP">
                                                         <rect key="frame" x="77" y="41" width="29" height="28.5"/>
@@ -887,6 +911,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="alD-PH-Qur"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJ2-61-r6P">
                                                         <rect key="frame" x="10" y="41" width="28.5" height="28.5"/>
@@ -900,6 +927,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="eec-8Y-K4I"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nt5-U5-F6E">
                                                         <rect key="frame" x="10" y="74.5" width="28.5" height="28.5"/>
@@ -913,6 +943,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="7jU-tq-pOg"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mks-fV-GUQ">
                                                         <rect key="frame" x="77" y="74.5" width="29" height="28.5"/>
@@ -926,6 +959,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="DSw-OU-bED"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krU-vg-Wbi">
                                                         <rect key="frame" x="144.5" y="74.5" width="28.5" height="28.5"/>
@@ -939,6 +975,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="7nY-AV-jT7"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hz-dl-Hk0">
                                                         <rect key="frame" x="10" y="108" width="28.5" height="29"/>
@@ -952,6 +991,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="ysG-eM-GsF"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q66-09-ZPn">
                                                         <rect key="frame" x="77" y="108" width="29" height="29"/>
@@ -965,6 +1007,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="pth-cn-KYf"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gH1-Qn-Cow">
                                                         <rect key="frame" x="144.5" y="108" width="28.5" height="29"/>
@@ -978,6 +1023,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="9ow-tP-SiF"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXS-ms-6XN">
                                                         <rect key="frame" x="10" y="142" width="28.5" height="28.5"/>
@@ -991,6 +1039,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="C6c-N5-2Ma"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sa7-3D-El6">
                                                         <rect key="frame" x="77" y="142" width="29" height="28.5"/>
@@ -1004,6 +1055,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="WrR-PM-h0U"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAu-2H-Xvp">
                                                         <rect key="frame" x="144.5" y="142" width="28.5" height="28.5"/>
@@ -1017,6 +1071,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="UwY-i2-gbP"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8e-hU-Tuq">
                                                         <rect key="frame" x="10" y="175.5" width="28.5" height="28.5"/>
@@ -1030,6 +1087,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="8cG-RM-2ik"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3nM-d7-jd0">
                                                         <rect key="frame" x="77" y="175.5" width="29" height="28.5"/>
@@ -1043,6 +1103,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="2il-be-Qg6"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xS-8l-jKl">
                                                         <rect key="frame" x="144.5" y="175.5" width="28.5" height="28.5"/>
@@ -1056,6 +1119,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="QSc-EB-guV"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJO-7H-i1Y">
                                                         <rect key="frame" x="10" y="209" width="28.5" height="28.5"/>
@@ -1069,6 +1135,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="Tm1-he-UAn"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukF-pu-bcb">
                                                         <rect key="frame" x="77" y="209" width="29" height="28.5"/>
@@ -1082,6 +1151,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="NcZ-cr-wF4"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Gr-bv-PSr">
                                                         <rect key="frame" x="144.5" y="209" width="28.5" height="28.5"/>
@@ -1095,6 +1167,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="Az9-hS-jB9"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bU7-Mu-Xra">
                                                         <rect key="frame" x="43.5" y="242.5" width="28.5" height="28.5"/>
@@ -1108,6 +1183,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="26b-lb-dsu"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmk-Y4-OfN">
                                                         <rect key="frame" x="77" y="242.5" width="29" height="28.5"/>
@@ -1121,6 +1199,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="vhg-Lc-YeI"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZo-ZF-lV5">
                                                         <rect key="frame" x="111" y="242.5" width="28.5" height="28.5"/>
@@ -1134,6 +1215,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="w0O-qc-o2x"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QhN-5W-70W">
                                                         <rect key="frame" x="10" y="242.5" width="28.5" height="28.5"/>
@@ -1147,6 +1231,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="hUm-kN-aR7"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twr-6e-8Ks">
                                                         <rect key="frame" x="144.5" y="242.5" width="28.5" height="28.5"/>
@@ -1160,6 +1247,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="M9h-33-Mqu"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1304,6 +1394,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="NoI-me-P86"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDd-6Z-dej">
                                                         <rect key="frame" x="77" y="41" width="29" height="28.5"/>
@@ -1320,6 +1413,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="jAI-Di-KUu"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTU-M7-VDL">
                                                         <rect key="frame" x="10" y="41" width="28.5" height="28.5"/>
@@ -1333,6 +1429,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="S1f-7y-jqP"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcd-Rk-83c">
                                                         <rect key="frame" x="10" y="74.5" width="28.5" height="28.5"/>
@@ -1346,6 +1445,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="0Lf-qz-bZ8"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bk5-li-EFe">
                                                         <rect key="frame" x="77" y="74.5" width="29" height="28.5"/>
@@ -1359,6 +1461,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="aQA-T3-owo"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfl-N0-lJJ">
                                                         <rect key="frame" x="144.5" y="74.5" width="28.5" height="28.5"/>
@@ -1372,6 +1477,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="cyW-iw-PS3"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RPR-Cy-Jcx">
                                                         <rect key="frame" x="10" y="108" width="28.5" height="29"/>
@@ -1385,6 +1493,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="Bq6-Wl-OW8"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6o-Cm-iZ1">
                                                         <rect key="frame" x="77" y="108" width="29" height="29"/>
@@ -1398,6 +1509,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="psq-w1-e9P"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxV-Ha-h5Z">
                                                         <rect key="frame" x="144.5" y="108" width="28.5" height="29"/>
@@ -1411,6 +1525,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="uIv-Lr-pSW"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTE-dO-Z3x">
                                                         <rect key="frame" x="10" y="142" width="28.5" height="28.5"/>
@@ -1424,6 +1541,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="fCU-No-XvL"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXN-lZ-HUb">
                                                         <rect key="frame" x="77" y="142" width="29" height="28.5"/>
@@ -1437,6 +1557,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="mT3-SE-6AF"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RfU-n2-xzk">
                                                         <rect key="frame" x="144.5" y="142" width="28.5" height="28.5"/>
@@ -1450,6 +1573,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="UKt-v5-ENd"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LjI-Ne-tyf">
                                                         <rect key="frame" x="10" y="175.5" width="28.5" height="28.5"/>
@@ -1463,6 +1589,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="Ryq-Wb-Irz"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipr-8l-RDa">
                                                         <rect key="frame" x="77" y="175.5" width="29" height="28.5"/>
@@ -1476,6 +1605,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="ev8-47-bcq"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5h-1o-fAB">
                                                         <rect key="frame" x="144.5" y="175.5" width="28.5" height="28.5"/>
@@ -1489,6 +1621,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="zuI-VS-Cjj"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="876-E2-Clr">
                                                         <rect key="frame" x="10" y="209" width="28.5" height="28.5"/>
@@ -1502,6 +1637,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="sWB-cI-jNk"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GqR-AX-9l2">
                                                         <rect key="frame" x="77" y="209" width="29" height="28.5"/>
@@ -1515,6 +1653,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="7if-4k-MNL"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZs-vf-p3k">
                                                         <rect key="frame" x="144.5" y="209" width="28.5" height="28.5"/>
@@ -1528,6 +1669,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="rwB-nJ-Z2R"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hl-Oe-Zln">
                                                         <rect key="frame" x="43.5" y="242.5" width="28.5" height="28.5"/>
@@ -1541,6 +1685,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="sV8-VO-LfM"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kW0-1x-OgX">
                                                         <rect key="frame" x="77" y="242.5" width="29" height="28.5"/>
@@ -1554,6 +1701,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="ErL-3t-7vv"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcC-qW-fM1">
                                                         <rect key="frame" x="111" y="242.5" width="28.5" height="28.5"/>
@@ -1567,6 +1717,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="oE6-GS-Wmc"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2I-yp-K1m">
                                                         <rect key="frame" x="10" y="242.5" width="28.5" height="28.5"/>
@@ -1580,6 +1733,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="P03-u3-Pce"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMh-9K-rSB">
                                                         <rect key="frame" x="144.5" y="242.5" width="28.5" height="28.5"/>
@@ -1593,6 +1749,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="seatTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="4Rr-GF-qJl"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1796,13 +1955,16 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7u-N5-NgD">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7u-N5-NgD">
                                                         <rect key="frame" x="322" y="88.5" width="10" height="10"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="10" id="Xqh-lk-uKN"/>
                                                             <constraint firstAttribute="height" constant="10" id="j9C-dg-yra"/>
                                                         </constraints>
                                                         <state key="normal" image="Radio_Unchecked"/>
+                                                        <connections>
+                                                            <action selector="paymentMethodTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="91q-14-K5X"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KwM-Wg-NoI">
                                                         <rect key="frame" x="289" y="88.5" width="18" height="10"/>
@@ -1816,7 +1978,10 @@
                                                             <constraint firstAttribute="height" constant="10" id="81W-Y3-ihJ"/>
                                                             <constraint firstAttribute="width" constant="10" id="IYM-dT-jRo"/>
                                                         </constraints>
-                                                        <state key="normal" image="Radius_Checked"/>
+                                                        <state key="normal" image="Radio_Checked"/>
+                                                        <connections>
+                                                            <action selector="paymentMethodTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="4RH-kC-GLD"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1860,9 +2025,12 @@
                                                 <state key="normal" title="Book">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="bookTouched:" destination="2QL-65-tmJ" eventType="touchUpInside" id="ROf-Ot-bdZ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstItem="kwl-d6-HVD" firstAttribute="leading" secondItem="Fpu-6k-DrV" secondAttribute="trailing" constant="20" id="2HF-cr-kW3"/>
                                             <constraint firstItem="YoZ-bs-QfP" firstAttribute="centerX" secondItem="PAk-Ib-0do" secondAttribute="centerX" id="2dS-hU-nPL"/>
@@ -1929,6 +2097,67 @@
                     </view>
                     <connections>
                         <outlet property="bookButton" destination="YoZ-bs-QfP" id="NRU-eg-ujb"/>
+                        <outlet property="castButton" destination="BBO-oJ-p4e" id="9p8-7U-AhI"/>
+                        <outlet property="couponButton" destination="ebx-tA-4yD" id="Ba0-dq-B31"/>
+                        <outlet property="couponTextField" destination="lkz-VL-Lq7" id="M5s-9A-83U"/>
+                        <outlet property="departureDateLabel" destination="oxT-jD-bBU" id="gYo-eg-XLx"/>
+                        <outlet property="departureLocationLabel" destination="hgm-JF-imT" id="VwY-fx-3mC"/>
+                        <outlet property="departureTimeLabel" destination="jeD-na-8dA" id="NQy-EN-hiK"/>
+                        <outlet property="destinationLabel" destination="TNb-o9-FBH" id="ARz-c7-Ex5"/>
+                        <outlet property="discountLabel" destination="y14-Zo-JJA" id="GfQ-vy-xJi"/>
+                        <outlet property="iBankingButton" destination="R7u-N5-NgD" id="GbS-oT-2m9"/>
+                        <outlet property="idCardTextField" destination="Zg2-US-NG5" id="BEx-CR-gXz"/>
+                        <outlet property="passengerNameTextField" destination="taR-J5-4Cp" id="RZL-8f-Pxl"/>
+                        <outlet property="phoneTextField" destination="40v-eg-0OS" id="bzE-OD-SPb"/>
+                        <outlet property="pickupAddressTextField" destination="lL3-WL-sro" id="xSw-TX-JAg"/>
+                        <outlet property="priceLabel" destination="hfb-v0-inf" id="b1g-cu-ezO"/>
+                        <outlet property="totalPriceLabel" destination="xRr-Zm-SLC" id="vcp-Iw-ZeA"/>
+                        <outletCollection property="listOfSeat" destination="mJ2-61-r6P" collectionClass="NSMutableArray" id="cE4-TR-6mT"/>
+                        <outletCollection property="listOfSeat" destination="TA3-K3-GXP" collectionClass="NSMutableArray" id="vIa-lY-aMb"/>
+                        <outletCollection property="listOfSeat" destination="SgA-FL-lhG" collectionClass="NSMutableArray" id="q7Y-nd-6eY"/>
+                        <outletCollection property="listOfSeat" destination="krU-vg-Wbi" collectionClass="NSMutableArray" id="p9H-mV-jyv"/>
+                        <outletCollection property="listOfSeat" destination="Mks-fV-GUQ" collectionClass="NSMutableArray" id="cHI-Tp-zXI"/>
+                        <outletCollection property="listOfSeat" destination="Nt5-U5-F6E" collectionClass="NSMutableArray" id="8jj-ar-o6a"/>
+                        <outletCollection property="listOfSeat" destination="gH1-Qn-Cow" collectionClass="NSMutableArray" id="rH3-c9-xaK"/>
+                        <outletCollection property="listOfSeat" destination="q66-09-ZPn" collectionClass="NSMutableArray" id="VGa-b1-NHg"/>
+                        <outletCollection property="listOfSeat" destination="4hz-dl-Hk0" collectionClass="NSMutableArray" id="jUZ-U2-PVJ"/>
+                        <outletCollection property="listOfSeat" destination="BAu-2H-Xvp" collectionClass="NSMutableArray" id="uyY-Ej-d4V"/>
+                        <outletCollection property="listOfSeat" destination="Sa7-3D-El6" collectionClass="NSMutableArray" id="mGf-K7-wXg"/>
+                        <outletCollection property="listOfSeat" destination="yXS-ms-6XN" collectionClass="NSMutableArray" id="XN3-bF-L40"/>
+                        <outletCollection property="listOfSeat" destination="9xS-8l-jKl" collectionClass="NSMutableArray" id="2RG-7A-eB9"/>
+                        <outletCollection property="listOfSeat" destination="3nM-d7-jd0" collectionClass="NSMutableArray" id="CXm-gB-Q3d"/>
+                        <outletCollection property="listOfSeat" destination="V8e-hU-Tuq" collectionClass="NSMutableArray" id="9h5-tx-PwM"/>
+                        <outletCollection property="listOfSeat" destination="8Gr-bv-PSr" collectionClass="NSMutableArray" id="SUf-3C-r3h"/>
+                        <outletCollection property="listOfSeat" destination="ukF-pu-bcb" collectionClass="NSMutableArray" id="MSd-1t-lWU"/>
+                        <outletCollection property="listOfSeat" destination="bJO-7H-i1Y" collectionClass="NSMutableArray" id="3ub-Sd-sBZ"/>
+                        <outletCollection property="listOfSeat" destination="twr-6e-8Ks" collectionClass="NSMutableArray" id="xCY-bA-nUF"/>
+                        <outletCollection property="listOfSeat" destination="nZo-ZF-lV5" collectionClass="NSMutableArray" id="iPy-Al-NU4"/>
+                        <outletCollection property="listOfSeat" destination="bU7-Mu-Xra" collectionClass="NSMutableArray" id="YRt-D1-0hY"/>
+                        <outletCollection property="listOfSeat" destination="jmk-Y4-OfN" collectionClass="NSMutableArray" id="8Ej-mB-zxb"/>
+                        <outletCollection property="listOfSeat" destination="QhN-5W-70W" collectionClass="NSMutableArray" id="4bI-nJ-nLB"/>
+                        <outletCollection property="listOfSeat" destination="l5Y-zV-ijt" collectionClass="NSMutableArray" id="Ks8-BQ-DPK"/>
+                        <outletCollection property="listOfSeat" destination="KDd-6Z-dej" collectionClass="NSMutableArray" id="c7J-8Q-OLb"/>
+                        <outletCollection property="listOfSeat" destination="hTU-M7-VDL" collectionClass="NSMutableArray" id="v8x-uB-mDw"/>
+                        <outletCollection property="listOfSeat" destination="cfl-N0-lJJ" collectionClass="NSMutableArray" id="xVN-16-ekH"/>
+                        <outletCollection property="listOfSeat" destination="Bk5-li-EFe" collectionClass="NSMutableArray" id="Gbe-0s-vZz"/>
+                        <outletCollection property="listOfSeat" destination="fcd-Rk-83c" collectionClass="NSMutableArray" id="JAW-Rw-d3w"/>
+                        <outletCollection property="listOfSeat" destination="gxV-Ha-h5Z" collectionClass="NSMutableArray" id="WoP-QQ-akc"/>
+                        <outletCollection property="listOfSeat" destination="a6o-Cm-iZ1" collectionClass="NSMutableArray" id="rRY-Fx-yTL"/>
+                        <outletCollection property="listOfSeat" destination="RPR-Cy-Jcx" collectionClass="NSMutableArray" id="QGE-AI-tcp"/>
+                        <outletCollection property="listOfSeat" destination="RfU-n2-xzk" collectionClass="NSMutableArray" id="mBn-i3-yXf"/>
+                        <outletCollection property="listOfSeat" destination="JXN-lZ-HUb" collectionClass="NSMutableArray" id="hmv-JW-p12"/>
+                        <outletCollection property="listOfSeat" destination="sTE-dO-Z3x" collectionClass="NSMutableArray" id="7h3-hA-Mv0"/>
+                        <outletCollection property="listOfSeat" destination="G5h-1o-fAB" collectionClass="NSMutableArray" id="Y2r-Bs-ArB"/>
+                        <outletCollection property="listOfSeat" destination="Ipr-8l-RDa" collectionClass="NSMutableArray" id="q6l-xQ-3nm"/>
+                        <outletCollection property="listOfSeat" destination="LjI-Ne-tyf" collectionClass="NSMutableArray" id="QHG-Wh-IeB"/>
+                        <outletCollection property="listOfSeat" destination="HZs-vf-p3k" collectionClass="NSMutableArray" id="5Xb-jV-Jaj"/>
+                        <outletCollection property="listOfSeat" destination="GqR-AX-9l2" collectionClass="NSMutableArray" id="MtE-8n-R0r"/>
+                        <outletCollection property="listOfSeat" destination="876-E2-Clr" collectionClass="NSMutableArray" id="q7s-yl-clz"/>
+                        <outletCollection property="listOfSeat" destination="gMh-9K-rSB" collectionClass="NSMutableArray" id="sM4-cG-5jR"/>
+                        <outletCollection property="listOfSeat" destination="mcC-qW-fM1" collectionClass="NSMutableArray" id="YaC-4k-cau"/>
+                        <outletCollection property="listOfSeat" destination="kW0-1x-OgX" collectionClass="NSMutableArray" id="JkJ-eq-DBq"/>
+                        <outletCollection property="listOfSeat" destination="5hl-Oe-Zln" collectionClass="NSMutableArray" id="65r-QS-vOb"/>
+                        <outletCollection property="listOfSeat" destination="s2I-yp-K1m" collectionClass="NSMutableArray" id="apu-Yg-zcw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2So-6U-K4e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2178,6 +2407,9 @@
                                         <state key="normal" title="Cancel ticket">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="cancelTicketTouched:" destination="PBd-3r-RgW" eventType="touchUpInside" id="4X7-aG-Hxs"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4Q-O3-iID">
                                         <rect key="frame" x="344" y="223" width="22" height="12"/>
@@ -2300,6 +2532,24 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="fuK-4F-c30" id="rVR-MO-buK"/>
+                        <outlet property="couponCodeLabel" destination="yUf-44-XLE" id="6zc-ao-74O"/>
+                        <outlet property="departureDateLabel" destination="Zcg-RP-2jn" id="Vmr-TM-YrB"/>
+                        <outlet property="departureLabel" destination="gjE-98-ylg" id="cZp-Hk-rqt"/>
+                        <outlet property="departureLocateLabel" destination="HFN-Cs-gyl" id="Ung-T0-LxG"/>
+                        <outlet property="departureTimeLabel" destination="3Bu-N7-NCz" id="RBE-Ov-whV"/>
+                        <outlet property="destinationLabel" destination="KGl-Jb-Ebi" id="yNJ-fd-IUk"/>
+                        <outlet property="discountLabel" destination="b0R-KI-kYb" id="L2s-a1-kcP"/>
+                        <outlet property="garageLabel" destination="Sdt-k1-wVg" id="yPU-hm-tCm"/>
+                        <outlet property="garagePhoneLabel" destination="qWG-Eu-zzg" id="Bmi-Mv-Prq"/>
+                        <outlet property="idCardLabel" destination="inC-fA-Glk" id="eaj-PY-6qh"/>
+                        <outlet property="lisencePlateLabel" destination="7nN-Ye-9Bb" id="gYl-Bb-aPw"/>
+                        <outlet property="passengerNameLabel" destination="HXq-pv-93I" id="AQu-21-VmD"/>
+                        <outlet property="passengerPhoneLabel" destination="FAI-KG-WEp" id="sRk-1F-aoy"/>
+                        <outlet property="paymentMethodLabel" destination="V4Q-O3-iID" id="FOC-zA-qk9"/>
+                        <outlet property="priceLabel" destination="iaI-qD-abH" id="2t4-Va-K5l"/>
+                        <outlet property="seatsLabel" destination="dF3-Me-mad" id="yY3-4d-DFn"/>
+                        <outlet property="stationLabel" destination="PXQ-q5-0p4" id="W6p-0j-XVj"/>
+                        <outlet property="totalPriceLabel" destination="Jzi-MU-ax9" id="cdW-ZG-gNO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uZm-6B-z0r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2314,8 +2564,8 @@
         <image name="Location Icon-1" width="1067" height="1067"/>
         <image name="Location Icon-2" width="1067" height="1067"/>
         <image name="Location Icon-3" width="1068" height="1067"/>
+        <image name="Radio_Checked" width="10" height="10"/>
         <image name="Radio_Unchecked" width="10" height="10"/>
-        <image name="Radius_Checked" width="10" height="10"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

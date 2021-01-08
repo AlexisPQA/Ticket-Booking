@@ -7,7 +7,9 @@
 
 import Foundation
 
-class Ticket {
+class Ticket : Codable {
+    
+    var id: String = "" // ID của Ticket = route#account#Date().timeIntervalSinceReferenceDate
     
     var account: String = "" // Lưu e-mail của account đặt vé
     
@@ -22,20 +24,25 @@ class Ticket {
     var seats: [Int] = []
     
     // Thông tin thanh toán
-    var coupon: Coupon = Coupon()
+    var coupon: String = "" // Lưu Coupon().code
     var price: Int = 0
     var totalPrice: Int = 0
+    var paymentMethod: Int = 0 // 0: Cast / 1: Internet banking
     
-    init(_ _account: String, _ _passengerName: String, _ _idCard: String, _ _phone: String, _ _pickUpAddress: String, _ _route: String, _ _seats: [Int], _ _coupon: Coupon, _ _price: Int, _ _totalPrice:Int) {
-        self.account = _account
-        self.passengerName = _passengerName
-        self.idCard = _idCard
-        self.phone = _phone
-        self.pickUpAddress = _pickUpAddress
-        self.route = _route
-        self.seats = _seats
-        self.coupon = _coupon
-        self.price = _price
-        self.totalPrice = _totalPrice
+    init() { }
+    
+    init(id: String, account: String, passengerName: String, idCard: String, phone: String, pickUpAddress: String, route: String, seats: [Int], coupon: String, price: Int, totalPrice:Int, paymentMethod: Int) {
+        self.id = id
+        self.account = account
+        self.passengerName = passengerName
+        self.idCard = idCard
+        self.phone = phone
+        self.pickUpAddress = pickUpAddress
+        self.route = route
+        self.seats = seats
+        self.coupon = coupon
+        self.price = price
+        self.totalPrice = totalPrice
+        self.paymentMethod = paymentMethod
     }
 }

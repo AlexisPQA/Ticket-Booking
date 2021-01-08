@@ -6,10 +6,30 @@
 //
 
 import UIKit
+import Firebase
 
-class TicketBookingViewController: UIViewController {
+class TicketBookingViewController: UIViewController , UITextFieldDelegate{
 
     @IBOutlet weak var bookButton: UIButton!
+    @IBOutlet weak var passengerNameTextField: UITextField!
+    @IBOutlet weak var idCardTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var pickupAddressTextField: UITextField!
+    @IBOutlet weak var departureLocationLabel: UILabel!
+    @IBOutlet weak var destinationLabel: UILabel!
+    @IBOutlet weak var departureTimeLabel: UILabel!
+    @IBOutlet weak var departureDateLabel: UILabel!
+    @IBOutlet weak var couponTextField: UITextField!
+    @IBOutlet weak var couponButton: UIButton!
+    @IBOutlet weak var castButton: UIButton!
+    @IBOutlet weak var iBankingButton: UIButton!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var discountLabel: UILabel!
+    @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet var listOfSeat: [UIButton]!
+    
+    var garage = Garage()
+    var route = Route()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +43,150 @@ class TicketBookingViewController: UIViewController {
         UINavigationBar.appearance().isTranslucent = false
         
         Utilities.styleFloatButton(bookButton)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dissmissKeyboard))
+        view.addGestureRecognizer(tap)
+        
+        loadInfoOfRoute()
+    }
+    
+    @objc func dissmissKeyboard() {
+        self.view.endEditing(true)
     }
 
+    func loadInfoOfRoute() {
+        //Load the info of the Route
+        departureLocationLabel.text = garage.address
+        destinationLabel.text = route.destination
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        dateFormatter.dateFormat = "HH:mm"
+        departureTimeLabel.text = dateFormatter.string(from: route.departureTime)
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        departureDateLabel.text = dateFormatter.string(from: route.departureTime)
+        priceLabel.text = "0đ"
+        discountLabel.text = "0đ"
+        totalPriceLabel.text = "0đ"
+        
+        //Load the Map of seats
+        for i in 0...45 {
+            listOfSeat[i].tintColor = .clear
+            if route.seats[i] == false {
+                listOfSeat[i].isEnabled = false
+                listOfSeat[i].backgroundColor = .black
+                listOfSeat[i].setTitleColor(.white, for: .normal)
+            }
+        }
+    }
+    
+    @IBAction func seatTouched(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            sender.backgroundColor = .init(red: 254/255, green: 135/255, blue: 129/255, alpha: 1)
+            updatePrice(0)
+        } else {
+            sender.backgroundColor = .init(red: 219/255, green: 229/255, blue: 243/255, alpha: 1)
+            updatePrice(1)
+        }
+    }
+    
+    //state = 0 : add a ticket; state = 1 : remove a ticket
+    func updatePrice(_ state: Int) {
+        // Update priceLabel
+        var strPrice = priceLabel.text!
+        strPrice.remove(at: strPrice.index(before: strPrice.endIndex)) // remove 'đ' charecter
+        if state == 0 {
+            strPrice = "\((Int(strPrice) ?? 0) + route.aSeatPrice)"
+        } else {
+            strPrice = "\((Int(strPrice) ?? 0) - route.aSeatPrice)"
+        }
+        priceLabel.text = strPrice + "đ"
+            
+        // Update totalPriceLabel
+        var strDiscount = discountLabel.text!
+        strDiscount.remove(at: strDiscount.index(before: strDiscount.endIndex)) // remove 'đ' charecter
+        totalPriceLabel.text = "\((Int(strPrice) ?? 0) - (Int(strDiscount) ?? 0))đ"
+    }
+    
+    @IBAction func paymentMethodTouched(_ sender: UIButton) {
+        sender.isEnabled = false
+        sender.setImage(UIImage(named: "Radio_Checked"), for: .selected)
+        sender.setImage(UIImage(named: "Radio_Checked"), for: .normal)
+        //tag = 0 : Cast / tag = 1: iBanking
+        if sender.tag == 0 {
+            iBankingButton.isEnabled = true
+            iBankingButton.setImage(UIImage(named: "Radio_Unchecked"), for: .normal)
+        } else {
+            castButton.isEnabled = true
+            castButton.setImage(UIImage(named: "Radio_Unchecked"), for: .normal)
+        }
+    }
+    
+    @IBAction func bookTouched(_ sender: Any) {
+        var strPrice = priceLabel.text ?? "0"
+        strPrice.remove(at: strPrice.index(before: strPrice.endIndex)) // remove 'đ' charecter
+        var strTotalPrice = totalPriceLabel.text ?? "0"
+        strTotalPrice.remove(at: strTotalPrice.index(before: strTotalPrice.endIndex))// remove 'đ' charecter
+        
+        //Create a ticket
+        let ticket = Ticket(id: "\(route.id)#email of user#\(Date().timeIntervalSinceReferenceDate)",account: "email of user", passengerName: passengerNameTextField.text ?? "", idCard: idCardTextField.text ?? "", phone: phoneTextField.text ?? "", pickUpAddress: pickupAddressTextField.text ?? "", route: route.id, seats: [], coupon: couponTextField.text ?? "", price: Int(strPrice) ?? 0, totalPrice: Int(strTotalPrice) ?? 0, paymentMethod: 0)
+        for i in 0...45 {
+            if listOfSeat[i].isSelected {
+                ticket.seats.append(i)
+                route.seats[i] = false
+            }
+        }
+        if iBankingButton.isEnabled == false {
+            ticket.paymentMethod = 1
+        }
+        
+        //Check info of ticket
+        if (ticket.account == "" || ticket.passengerName == "" || ticket.idCard == "" || ticket.phone == "") {
+            //Passenger's information is incomplete
+            let alert = UIAlertController(title: "Unsuccessful ticket booking.", message: "Please fill in all required information.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else if (ticket.seats.count == 0) {
+            //Have no seat is selected
+            let alert = UIAlertController(title: "Unsuccessful ticket booking.", message: "Please select at least 1 seat to complete your booking.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            //Ticket booking successfully
+            
+            //Change the route (Update list of seats) on the Firestore
+            var db: Firestore!
+            db = Firestore.firestore()
+            let routeRef = db.collection("Route").document(self.route.id)
+            routeRef.updateData([
+                "seats": self.route.seats
+            ]) { err in
+                if let err = err {
+                    print("Error when updating data of Route: \(err)")
+                } else {
+                    print("Route update successfully.")
+                }
+            }
+            
+            //Upload the Ticket onto Firestore
+            do {
+                // Endcode
+                let jsonEncoder = JSONEncoder()
+                let jsonData = try jsonEncoder.encode(ticket)
+                let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]
+                db.collection("Ticket").document(ticket.id).setData(json)
+            } catch let error {
+                print("Error writing ticket to Firestore: \(error)")
+            }
+            
+            //Show TicketInfoViewController
+            let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
+            let vc  = storyboard.instantiateViewController(withIdentifier: "ticketInfoViewController") as! TicketInfoViewController
+            vc.modalPresentationStyle = .fullScreen
+            vc.ticket = ticket
+            vc.garage = garage
+            vc.route = route
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
 }

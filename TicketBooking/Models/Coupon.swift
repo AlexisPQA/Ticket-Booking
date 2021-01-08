@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Coupon {
+class Coupon : Codable {
     var code: String = ""
     var EFD: Date = .init() // Ngày có hiệu lực của coupon
     var EXP: Date = .init() // Ngày hết hiệu lực của coupon
@@ -15,14 +15,20 @@ class Coupon {
     
     init() { }
     
-    init(_ _code: String, _ _EFD: Date, _ _EXP: Date, _ _discount: Double) {
-        self.code = _code
-        self.EFD = _EFD
-        self.EXP = _EXP
-        self.discount = _discount
+    init(code: String, EFD: Date, EXP: Date, discount: Double) {
+        self.code = code
+        self.EFD = EFD
+        self.EXP = EXP
+        self.discount = discount
+    }
+    
+    // true: EFD <= bookingDate <= EXP
+    func isValid(bookingDate: Date) -> Bool {
+        return ((EFD.compare(bookingDate).rawValue >= 0) && (bookingDate.compare(EXP).rawValue >= 0))
     }
     
     func calTotalPrice(price: Int) -> Int {
+        //Check hiệu lực của coupon
         return Int((1.0 - self.discount/100) * Double(price))
     }
 }
