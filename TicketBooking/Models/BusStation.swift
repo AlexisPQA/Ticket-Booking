@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Firebase
 
-class BusStation {
+class BusStation : Codable {
     var id: String = ""
     var name: String = ""
     var address: String = ""
@@ -26,5 +27,20 @@ class BusStation {
         self.utilitiesIncluded = utilities
         self.rating = rating
         self.manager = manager
+    }
+    
+    init(document: DocumentSnapshot) {
+        self.id = document.get("id") as! String
+        self.name = document.get("name") as! String
+        self.address = document.get("address") as! String
+        self.openTime = document.get("openTime") as! String
+        self.openTime = document.get("utilitiesIncluded") as! String
+        self.rating = document.get("rating") as! Double
+        self.manager = document.get("manager") as! String
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        rating = try values.decode(Double.self, forKey: .rating)
     }
 }

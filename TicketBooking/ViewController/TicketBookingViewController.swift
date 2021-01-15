@@ -94,7 +94,7 @@ class TicketBookingViewController: UIViewController , UITextFieldDelegate{
     func updatePrice(_ state: Int) {
         // Update priceLabel
         var strPrice = priceLabel.text!
-        strPrice.remove(at: strPrice.index(before: strPrice.endIndex)) // remove 'đ' charecter
+        strPrice.remove(at: strPrice.index(before: strPrice.endIndex)) // remove 'đ' character
         if state == 0 {
             strPrice = "\((Int(strPrice) ?? 0) + route.aSeatPrice)"
         } else {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 class Coupon : Codable {
     var code: String = ""
@@ -20,6 +21,27 @@ class Coupon : Codable {
         self.EFD = EFD
         self.EXP = EXP
         self.discount = discount
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        EFD = try values.decode(Date.self, forKey: .EFD)
+        EXP = try values.decode(Date.self, forKey: .EXP)
+        discount = try values.decode(Double.self, forKey: .discount)
+    }
+    
+    init(document: DocumentSnapshot) {
+        self.code = document.get("code") as! String
+        
+        var date = document.get("EFD") as! NSNumber
+        var timeInterval = TimeInterval(date.intValue)
+        self.EFD = Date(timeIntervalSince1970: timeInterval)
+        
+        date = document.get("EXP") as! NSNumber
+        timeInterval = TimeInterval(date.intValue)
+        self.EXP = Date(timeIntervalSince1970: timeInterval)
+        
+        self.discount = document.get("discount") as! Double
     }
     
     // true: EFD <= bookingDate <= EXP

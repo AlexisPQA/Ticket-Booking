@@ -73,24 +73,6 @@ class StationInfoViewController: UIViewController, UICollectionViewDelegate, UIC
             }
         }
     }
-
-    @IBAction func showGarageView(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
-        let vc  = storyboard.instantiateViewController(withIdentifier: "garageInfoViewController")
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func showBookingView(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
-        let vc  = storyboard.instantiateViewController(withIdentifier: "ticketBookingViewController")
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func showTicketView(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
-        let vc  = storyboard.instantiateViewController(withIdentifier: "ticketInfoViewController")
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return listOfGarages.count
@@ -160,6 +142,7 @@ class StationInfoViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
 }
+
 class GarageCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var thumbnail: UIImageView!

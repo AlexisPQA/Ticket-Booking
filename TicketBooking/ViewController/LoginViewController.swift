@@ -52,5 +52,11 @@ class LoginViewController: UIViewController {
         let vc  = storyboard.instantiateViewController(withIdentifier: "stationInfoViewController")
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @IBAction func nguyenTestFlow2(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Flow2", bundle: nil)
+        let vc  = storyboard.instantiateViewController(withIdentifier: "stationManageViewController")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 

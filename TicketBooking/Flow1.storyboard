@@ -119,30 +119,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Zt-dV-0g1">
-                                <rect key="frame" x="147" y="746" width="115" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Test GarageView"/>
-                                <connections>
-                                    <action selector="showGarageView:" destination="rA5-Zb-v1F" eventType="touchUpInside" id="WP4-Bn-E0z"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h92-Xg-Pif">
-                                <rect key="frame" x="143" y="715" width="122" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Test BookingView"/>
-                                <connections>
-                                    <action selector="showBookingView:" destination="rA5-Zb-v1F" eventType="touchUpInside" id="8XW-Mf-DDT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chw-Tk-gxN">
-                                <rect key="frame" x="150" y="774" width="108" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Test TicketView"/>
-                                <connections>
-                                    <action selector="showTicketView:" destination="rA5-Zb-v1F" eventType="touchUpInside" id="rNn-HA-3K3"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDS-qK-8YO">
                                 <rect key="frame" x="11" y="746" width="65" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -711,14 +687,14 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cRn-WN-d05">
                                                 <rect key="frame" x="16" y="345.5" width="382" height="58"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Location Icon-3" translatesAutoresizingMaskIntoConstraints="NO" id="qm0-Sr-pkS">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Location Icon-2" translatesAutoresizingMaskIntoConstraints="NO" id="qm0-Sr-pkS">
                                                         <rect key="frame" x="10" y="10" width="12" height="12"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="12" id="MEd-Qc-OsQ"/>
                                                             <constraint firstAttribute="height" constant="12" id="RuQ-4Y-1b2"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Location Icon-2" translatesAutoresizingMaskIntoConstraints="NO" id="DQl-9i-dlE">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Location Icon-3" translatesAutoresizingMaskIntoConstraints="NO" id="DQl-9i-dlE">
                                                         <rect key="frame" x="9" y="35" width="14" height="14"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="14" id="Wlu-F4-Hrc"/>
@@ -2077,6 +2053,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" red="1" green="0.56696969269999997" blue="0.5294189453" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="PAk-Ib-0do" secondAttribute="trailing" id="5Rg-cQ-gif"/>
                                     <constraint firstAttribute="bottom" secondItem="PAk-Ib-0do" secondAttribute="bottom" id="AgU-lT-SYS"/>
