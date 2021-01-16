@@ -30,6 +30,10 @@ class StationInfoViewController: UIViewController, UICollectionViewDelegate, UIC
         
         title = "Bus station"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 20)!]
+        self.navigationController?.navigationBar.backgroundColor = Utilities.mainColor
+        self.navigationItem.setRightBarButton(UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(homeTapped)), animated: true)
+        self.navigationController?.navigationBar.tintColor = .black
+        
         
         Utilities.styleImageFrame(image)
         
@@ -44,6 +48,10 @@ class StationInfoViewController: UIViewController, UICollectionViewDelegate, UIC
         utilitiesIncluedLabel.text = station.utilitiesIncluded
         
         getListOfGarage()
+    }
+    
+    @objc func homeTapped(_ sender: Any) {
+        navigationController?.popToRootViewController(animated: true)
     }
     
     func getListOfGarage() {

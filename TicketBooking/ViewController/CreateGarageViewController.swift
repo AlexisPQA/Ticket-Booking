@@ -35,6 +35,7 @@ class CreateGarageViewController: UIViewController, UITableViewDelegate, UITable
         title = "Create garage"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.backgroundColor = .black
+        self.navigationController?.navigationBar.tintColor = .white
         
         Firestore.firestore().settings = FirestoreSettings()
         db = Firestore.firestore()

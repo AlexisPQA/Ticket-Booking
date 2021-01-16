@@ -23,11 +23,12 @@ class CreateCouponViewController: UIViewController {
         title = "Create coupon"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.backgroundColor = .black
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(createCouponSuccessfully))
+        self.navigationController?.navigationBar.tintColor = .white
         
         Firestore.firestore().settings = FirestoreSettings()
         db = Firestore.firestore()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(createCouponSuccessfully))
 
     }
     
