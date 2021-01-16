@@ -12,6 +12,7 @@ let viewColor = UIColor.init(red: 219/255, green: 229/255, blue: 243/255, alpha:
 let btnColor = UIColor.init(red: 254/255, green: 135/255, blue: 129/255, alpha: 1)
 class Utilities {
     
+<<<<<<< HEAD
     
     static func styleView(_ view:UIView){
         view.layer.cornerRadius = 10
@@ -27,6 +28,9 @@ class Utilities {
         textfield.layer.cornerRadius = textfield.frame.height/2.0
         textfield.clipsToBounds = true
     }
+=======
+
+>>>>>>> c19284e98ecc6932e3e8ad9e3338ed90e10f3f77
     static func styleTextField(_ textfield:UITextField) {
         
         // Create the bottom line
@@ -78,4 +82,15 @@ class Utilities {
         return passwordTest.evaluate(with: password)
     }
     
+    static func styleFloatButton(_ button:UIButton) {
+        button.layer.cornerRadius = button.frame.size.height/2
+        button.layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
+        button.layer.shadowOffset = .init(width: 0, height: 3)
+        button.layer.shadowRadius = 6
+        button.layer.shadowOpacity = 0.16
+    }
+    
+    static func styleImageFrame(_ imageView : UIImageView) {
+        imageView.layer.cornerRadius = 15
+    }    
 }

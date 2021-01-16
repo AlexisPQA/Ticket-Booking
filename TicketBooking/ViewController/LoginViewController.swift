@@ -46,5 +46,17 @@ class LoginViewController: UIViewController {
         let signupVC = self.storyboard?.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpViewController
                 self.navigationController?.pushViewController(signupVC, animated: true)
     }
+    
+    @IBAction func nguyenTestButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
+        let vc  = storyboard.instantiateViewController(withIdentifier: "stationInfoViewController")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func nguyenTestFlow2(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Flow2", bundle: nil)
+        let vc  = storyboard.instantiateViewController(withIdentifier: "stationManageViewController")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
