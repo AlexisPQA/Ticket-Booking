@@ -7,6 +7,8 @@
 
 import UIKit
 import Firebase
+var USER = User(permission: 0)
+
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var usernameTextField: UITextField!
