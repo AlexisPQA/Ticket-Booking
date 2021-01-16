@@ -635,14 +635,6 @@
             <point key="canvasLocation" x="2762" y="953"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="8Ap-os-Ldz">
-            <size key="intrinsicContentSize" width="120" height="20"/>
-        </designable>
-        <designable name="ahg-Iz-0dJ">
-            <size key="intrinsicContentSize" width="120" height="20"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Background" width="375" height="811"/>
         <image name="GoldStarEmpty" width="16" height="16"/>
