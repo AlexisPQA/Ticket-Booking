@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
         signInBtn.setTitle("Sign in   \u{2794}", for: .normal)
         Utilities.styleTextField(usernameTextField)
         Utilities.styleTextField(passwordTextField)
-        Utilities.styleFilledButton(signInBtn)
+        Utilities.styleFilledButton(signInBtn,1)
         
     }
 
@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
                         
                     }
                     else{
-                        let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeViewController
+                        let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
                         self.view.window?.rootViewController = HomeVC
                         self.view.window?.makeKeyAndVisible()
                     }
@@ -45,6 +45,18 @@ class LoginViewController: UIViewController {
     @IBAction func signUpTapped(_ sender: Any) {
         let signupVC = self.storyboard?.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpViewController
                 self.navigationController?.pushViewController(signupVC, animated: true)
+    }
+    
+    @IBAction func nguyenTestButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
+        let vc  = storyboard.instantiateViewController(withIdentifier: "stationInfoViewController")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func nguyenTestFlow2(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Flow2", bundle: nil)
+        let vc  = storyboard.instantiateViewController(withIdentifier: "stationManageViewController")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

@@ -6,8 +6,12 @@ target 'TicketBooking' do
   use_frameworks!
 
   # Pods for TicketBooking
-    pod 'Firebase/Analytics'
+  pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
+  pod 'Cosmos'
+  pod 'FloatingTabBarController'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
 end
