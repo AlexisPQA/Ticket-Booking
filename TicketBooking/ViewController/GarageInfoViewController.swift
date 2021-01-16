@@ -32,6 +32,9 @@ class GarageInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         
         title = "Garage"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 20)!]
+        self.navigationController?.navigationBar.backgroundColor = Utilities.mainColor
+        self.navigationItem.setRightBarButton(UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(homeTapped)), animated: true)
+        self.navigationController?.navigationBar.tintColor = .black
         
         formatter.dateFormat = "dd/MM/yyyy"
         
@@ -51,6 +54,10 @@ class GarageInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         self.dateButton.setTitle("  \(today)", for: .normal)
         
         getListOfRoute()
+    }
+    
+    @objc func homeTapped(_ sender: Any) {
+        navigationController?.popToRootViewController(animated: true)
     }
     
     func getListOfRoute() {

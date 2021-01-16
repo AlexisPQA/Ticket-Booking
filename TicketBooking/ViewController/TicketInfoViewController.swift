@@ -42,15 +42,32 @@ class TicketInfoViewController: UIViewController {
     var garage = Garage()
     var route = Route()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.hidesBackButton = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.hidesBackButton = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Ticket"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 20)!]
-
+        self.navigationController?.navigationBar.backgroundColor = Utilities.mainColor
+        self.navigationItem.setRightBarButton(UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(homeTapped)), animated: true)
+        self.navigationController?.navigationBar.tintColor = .black
+        
         Utilities.styleFloatButton(cancelButton)
         
         setupTicketInfo()
+    }
+    
+    @objc func homeTapped(_ sender: Any) {
+        navigationController?.popToRootViewController(animated: true)
     }
     
     func setupTicketInfo() {

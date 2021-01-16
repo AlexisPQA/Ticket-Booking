@@ -89,5 +89,5 @@ class Utilities {
     
     static func styleImageFrame(_ imageView : UIImageView) {
         imageView.layer.cornerRadius = 15
-    }    
+    }
 }

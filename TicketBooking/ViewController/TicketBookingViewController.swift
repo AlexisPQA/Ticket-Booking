@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class TicketBookingViewController: UIViewController , UITextFieldDelegate{
+class TicketBookingViewController: UIViewController , UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
 
     @IBOutlet weak var bookButton: UIButton!
     @IBOutlet weak var passengerNameTextField: UITextField!
@@ -30,6 +30,11 @@ class TicketBookingViewController: UIViewController , UITextFieldDelegate{
     
     var garage = Garage()
     var route = Route()
+    var listOfCoupon: [Coupon] = []
+    var currentCoupon: Coupon? = nil
+    var picker = UIPickerView()
+    var toolBar = UIToolbar()
+    var db : Firestore!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +42,8 @@ class TicketBookingViewController: UIViewController , UITextFieldDelegate{
         title = "Ticket booking"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 20)!]
         self.navigationController?.navigationBar.backgroundColor = Utilities.mainColor
+        self.navigationItem.setRightBarButton(UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(homeTapped)), animated: true)
+        self.navigationController?.navigationBar.tintColor = .black
         
         UINavigationBar.appearance().barTintColor = Utilities.mainColor
         UINavigationBar.appearance().tintColor = .black
@@ -48,6 +55,11 @@ class TicketBookingViewController: UIViewController , UITextFieldDelegate{
         view.addGestureRecognizer(tap)
         
         loadInfoOfRoute()
+        loadListOfCoupon()
+    }
+    
+    @objc func homeTapped(_ sender: Any) {
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func dissmissKeyboard() {
@@ -90,22 +102,27 @@ class TicketBookingViewController: UIViewController , UITextFieldDelegate{
         }
     }
     
-    //state = 0 : add a ticket; state = 1 : remove a ticket
+    //state = 0 : add a ticket; state = 1 : remove a ticket; 2: change coupon
     func updatePrice(_ state: Int) {
         // Update priceLabel
         var strPrice = priceLabel.text!
         strPrice.remove(at: strPrice.index(before: strPrice.endIndex)) // remove 'đ' character
         if state == 0 {
             strPrice = "\((Int(strPrice) ?? 0) + route.aSeatPrice)"
-        } else {
+        } else if state == 1 {
             strPrice = "\((Int(strPrice) ?? 0) - route.aSeatPrice)"
         }
         priceLabel.text = strPrice + "đ"
             
         // Update totalPriceLabel
         var strDiscount = discountLabel.text!
-        strDiscount.remove(at: strDiscount.index(before: strDiscount.endIndex)) // remove 'đ' charecter
-        totalPriceLabel.text = "\((Int(strPrice) ?? 0) - (Int(strDiscount) ?? 0))đ"
+//        if let coupon = currentCoupon {
+//            strDiscount = "\((coupon.discount/100) * Double(strPrice))"
+//        }
+        
+        strDiscount.remove(at: strDiscount.index(before: strDiscount.endIndex)) // remove 'đ' charccter
+        print("Discount: \(strDiscount)")
+        totalPriceLabel.text = "\((Int(strPrice) ?? 0) + (Int(strDiscount) ?? 0))đ"
     }
     
     @IBAction func paymentMethodTouched(_ sender: UIButton) {
@@ -120,6 +137,71 @@ class TicketBookingViewController: UIViewController , UITextFieldDelegate{
             castButton.isEnabled = true
             castButton.setImage(UIImage(named: "Radio_Unchecked"), for: .normal)
         }
+    }
+    
+    func loadListOfCoupon() {
+        Firestore.firestore().settings = FirestoreSettings()
+        db = Firestore.firestore()
+        
+        db.collection("Coupon").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let coupon = Coupon(document: document)
+                    self.listOfCoupon.append(coupon)
+                }
+                self.picker.reloadAllComponents()
+            }
+        }
+
+        
+    }
+    
+    @IBAction func couponTouched(_ sender: Any) {
+        picker = UIPickerView(frame: CGRect(x: 0, y: Int(UIScreen.main.bounds.height) - 300, width: Int(UIScreen.main.bounds.width), height: 300))
+        picker.delegate = self
+        picker.dataSource = self
+        picker.backgroundColor = .white
+        picker.setValue(UIColor.black, forKey: "textColor")
+        picker.autoresizingMask = .flexibleWidth
+        picker.contentMode = .center
+        self.view.addSubview(picker)
+        
+        toolBar = UIToolbar(frame: CGRect(x: 0, y: Int(UIScreen.main.bounds.height) - 300, width: Int(UIScreen.main.bounds.width), height: 50))
+        toolBar.barStyle = .black
+        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(couponPicked))]
+        self.view.addSubview(toolBar)
+    }
+    
+    @objc func couponPicked(_ sender: Any) {
+        toolBar.removeFromSuperview()
+        picker.removeFromSuperview()
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return listOfCoupon.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(listOfCoupon[row].code) (-\(listOfCoupon[row].discount)%"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.couponTextField.text = listOfCoupon[row].code
+        updateCoupon(row)
+        currentCoupon = listOfCoupon[row]
+    }
+    
+    func updateCoupon(_ index: Int) { // index is the position of Coupon in listOfCoupon
+        var strPrice = priceLabel.text ?? "0"
+        strPrice.remove(at: strPrice.index(before: strPrice.endIndex)) // remove 'đ' charecter
+        self.discountLabel.text = "-\((listOfCoupon[index].discount/100) * (Double(strPrice) ?? 0.0))đ"
+        updatePrice(2)
     }
     
     @IBAction func bookTouched(_ sender: Any) {
@@ -182,11 +264,10 @@ class TicketBookingViewController: UIViewController , UITextFieldDelegate{
             //Show TicketInfoViewController
             let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
             let vc  = storyboard.instantiateViewController(withIdentifier: "ticketInfoViewController") as! TicketInfoViewController
-            vc.modalPresentationStyle = .fullScreen
             vc.ticket = ticket
             vc.garage = garage
             vc.route = route
-            self.present(vc, animated: true, completion: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
