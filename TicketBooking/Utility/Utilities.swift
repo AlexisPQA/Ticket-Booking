@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 let viewColor = UIColor.init(red: 219/255, green: 229/255, blue: 243/255, alpha: 1)
 let btnColor = UIColor.init(red: 254/255, green: 135/255, blue: 129/255, alpha: 1)
+
 class Utilities {
-    
-<<<<<<< HEAD
-    
+    static let mainColor = UIColor.init(red: 254/255, green: 135/255, blue: 129/255, alpha: 1)
+    static let subColor = UIColor.init(red: 219/255, green: 229/255, blue: 243/255, alpha: 1)
     static func styleView(_ view:UIView){
         view.layer.cornerRadius = 10
         view.backgroundColor = viewColor
@@ -28,9 +28,6 @@ class Utilities {
         textfield.layer.cornerRadius = textfield.frame.height/2.0
         textfield.clipsToBounds = true
     }
-=======
-
->>>>>>> c19284e98ecc6932e3e8ad9e3338ed90e10f3f77
     static func styleTextField(_ textfield:UITextField) {
         
         // Create the bottom line
