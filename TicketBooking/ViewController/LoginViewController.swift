@@ -25,6 +25,7 @@ class LoginViewController: UIViewController {
         Utilities.styleFilledButton(signInBtn,1)
         
     }
+    
 
     @IBAction func signInTapped(_ sender: Any) {
         let email = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -37,12 +38,38 @@ class LoginViewController: UIViewController {
                         
                     }
                     else{
-                        let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
-                        self.view.window?.rootViewController = HomeVC
-                        self.view.window?.makeKeyAndVisible()
+                        let user = Auth.auth().currentUser
+                        user?.reload(completion: { (error) in
+                            if ((user?.isEmailVerified) != true){
+                                user?.sendEmailVerification(completion: { (error) in
+                                    if (error != nil){
+                                        print(error)
+                                    }
+                                })
+                                 let alert = UIAlertController(title: "", message: "Activation link sent to email ID. Please activate to log in.", preferredStyle: .alert)
+                                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                                 self.present(alert, animated: true, completion: nil)
+                                let firebaseAuth = Auth.auth()
+                              do {
+                                try firebaseAuth.signOut()
+                              } catch let signOutError as NSError {
+                                print ("Error signing out: %@", signOutError)
+                              }
+                                
+                            }
+                            else{
+                            let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
+                            self.view.window?.rootViewController = HomeVC
+                            self.view.window?.makeKeyAndVisible()
+                            
+                            }
+                        })
+                        
                     }
                 }
     }
+    
+    
     
     @IBAction func signUpTapped(_ sender: Any) {
         let signupVC = self.storyboard?.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpViewController

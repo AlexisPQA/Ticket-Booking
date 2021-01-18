@@ -15,6 +15,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var idcardTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         signUpBtn.setTitle("Sign up   \u{2794}", for: .normal)
@@ -39,6 +40,8 @@ class SignUpViewController: UIViewController {
             
             return nil
         }
+
+    
     @IBAction func signUpTapped(_ sender: Any) {
         let error = checkValidateField()
                 
@@ -59,23 +62,36 @@ class SignUpViewController: UIViewController {
                     let fullName = fullNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                     let phone = phoneNumberTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                     let Address = addressTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                    let idcard = idcardTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                     Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
                         if error != nil{
-                            let alert = UIAlertController(title: "Creating User", message: "Can't create user", preferredStyle: .alert)
+                            let alert = UIAlertController(title: "Creating User Error", message: "Can't create user", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(alert, animated: true, completion: nil)
                         }
                         else{
                             let db = Firestore.firestore()
-                            db.collection("users").addDocument(data: ["UID":result!.user.uid,"FullName":fullName,"Phone":phone,"Address": Address], completion: { (error) in
-                                let alert = UIAlertController(title: "Error while creating user inffo", message: "Something went wrong", preferredStyle: .alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                                self.present(alert, animated: true, completion: nil)
-                                
+                            let  user = User(email: email, name: fullName, phone: phone, idCard: idcard, address: Address, permission: 1)
+                            do {
+                                // Endcode
+                                let jsonEncoder = JSONEncoder()
+                                let jsonData = try jsonEncoder.encode(user)
+                                let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]
+                                print(json)
+                                db.collection("users").document(user.email).setData(json)
+                            } catch let error {
+                                print(error)
+                            }
+                            Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
+                                print(error)
                             })
-                            let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
-                            self.view.window?.rootViewController = HomeVC
-                            self.view.window?.makeKeyAndVisible()
+                            let alert = UIAlertController(title: "", message: "Activation link sent to email ID. Please activate to log in", preferredStyle: .alert)
+                            let okActionBtn = UIAlertAction(title: "Ok", style: .default, handler: {_ in
+                                  self.navigationController?.popViewController(animated: true)
+                            })
+                            alert.addAction(okActionBtn)
+                            self.present(alert, animated: true, completion: nil)
+                            
                         }
                     }
                 }
