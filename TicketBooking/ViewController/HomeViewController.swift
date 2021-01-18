@@ -22,18 +22,49 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         Utilities.styleTextField1(toTextField)
         Utilities.styleFilledButton(datePicker, 2)
         Utilities.styleFilledButton(couponsPicker, 2)
+        isLoggedIn()
         let db = Firestore.firestore()
         db.collection("BusStation").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
+                    //print("\(document.documentID) => \(document.data())")
                 }
             }
         }
+        getUserInfo()
     }
-    
+    func isLoggedIn(){
+        let user = Auth.auth().currentUser
+        if user != nil {
+            print("Đã đăng nhập")
+            switch user?.isEmailVerified {
+            case true:
+                print("True")
+            case false:
+                print("Email need verify")
+            case .none:
+                print("abc")
+            case .some(_):
+                print("abc")
+            }
+        } else {
+          // No user is signed in.
+            print("Chưa đăng nhập")
+        }
+    }
+    func getUserInfo(){
+        let user = Auth.auth().currentUser
+        if let user = user {
+          // The user's ID, unique to the Firebase project.
+          // Do NOT use this value to authenticate with your backend server,
+          // if you have one. Use getTokenWithCompletion:completion: instead.
+          let uid = user.uid
+          let email = user.email
+         print(user)
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10

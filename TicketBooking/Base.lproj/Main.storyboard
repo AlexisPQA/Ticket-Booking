@@ -32,12 +32,12 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="   Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DCr-ly-M8x" userLabel="username">
                                         <rect key="frame" x="0.0" y="0.0" width="348" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" smartInsertDeleteType="yes" smartQuotesType="yes" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="   Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YQz-2h-vyX" userLabel="password">
                                         <rect key="frame" x="0.0" y="64.000000000000057" width="348" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -172,30 +172,35 @@
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="RNT-mW-wKQ">
-                                <rect key="frame" x="40" y="460.66666666666674" width="348" height="330"/>
+                                <rect key="frame" x="40" y="386.66666666666674" width="348" height="404"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="   Full Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tp0-NX-Jaa" userLabel="FullName">
                                         <rect key="frame" x="0.0" y="0.0" width="348" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="   Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="syH-AD-8Rg" userLabel="Email">
-                                        <rect key="frame" x="0.0" y="73.999999999999943" width="348" height="34"/>
+                                        <rect key="frame" x="0.0" y="74" width="348" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="   Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ki-2D-6UD" userLabel="Password">
                                         <rect key="frame" x="0.0" y="147.99999999999994" width="348" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="   Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fxm-Sg-vMp" userLabel="Phone">
                                         <rect key="frame" x="0.0" y="221.99999999999994" width="348" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="   Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c4U-dr-K39" userLabel="Address">
                                         <rect key="frame" x="0.0" y="295.99999999999994" width="348" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="   ID Card" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DPJ-jr-86O" userLabel="ID Card">
+                                        <rect key="frame" x="0.0" y="369.99999999999994" width="348" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -215,7 +220,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1FG-Vx-WPb">
-                                <rect key="frame" x="26" y="191" width="149.66666666666666" height="48"/>
+                                <rect key="frame" x="26" y="117" width="149.66666666666666" height="48"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -243,6 +248,7 @@
                         <outlet property="addressTextField" destination="c4U-dr-K39" id="qk4-0f-5Kh"/>
                         <outlet property="emailTextField" destination="syH-AD-8Rg" id="tYv-fa-TgV"/>
                         <outlet property="fullNameTextField" destination="tp0-NX-Jaa" id="bu5-Wh-Eb4"/>
+                        <outlet property="idcardTextField" destination="DPJ-jr-86O" id="jzO-Qj-VcJ"/>
                         <outlet property="passwordTextField" destination="1ki-2D-6UD" id="12i-fo-Yfz"/>
                         <outlet property="phoneNumberTextField" destination="Fxm-Sg-vMp" id="Ldo-He-lVR"/>
                         <outlet property="signUpBtn" destination="dME-Nf-gYK" id="lMl-z6-d4a"/>
@@ -609,8 +615,22 @@
                     <view key="view" contentMode="scaleToFill" id="lUI-pn-DiP">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Header3" translatesAutoresizingMaskIntoConstraints="NO" id="quH-dV-HFL">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="193"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="quH-dV-HFL" secondAttribute="height" multiplier="375:169" id="CqW-KF-hXG"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="e0k-sj-bzI"/>
-                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="quH-dV-HFL" firstAttribute="width" secondItem="lUI-pn-DiP" secondAttribute="width" id="6Ko-mv-Zwz"/>
+                            <constraint firstItem="quH-dV-HFL" firstAttribute="leading" secondItem="lUI-pn-DiP" secondAttribute="leading" id="Aih-CL-bkM"/>
+                            <constraint firstItem="quH-dV-HFL" firstAttribute="top" secondItem="lUI-pn-DiP" secondAttribute="top" id="JZ8-gs-uuM"/>
+                            <constraint firstAttribute="trailing" secondItem="quH-dV-HFL" secondAttribute="trailing" id="atc-R4-kj9"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="gV8-lh-gm5"/>
                 </viewController>
@@ -625,8 +645,21 @@
                     <view key="view" contentMode="scaleToFill" id="mcG-am-1cy">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Header3" translatesAutoresizingMaskIntoConstraints="NO" id="9Mh-gD-ZYe">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="193"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="9Mh-gD-ZYe" secondAttribute="height" multiplier="375:169" id="m5f-CT-ImO"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="QUh-oA-4Ph"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="9Mh-gD-ZYe" secondAttribute="trailing" id="OlE-NJ-4fe"/>
+                            <constraint firstItem="9Mh-gD-ZYe" firstAttribute="leading" secondItem="mcG-am-1cy" secondAttribute="leading" id="r0k-Zl-waw"/>
+                            <constraint firstItem="9Mh-gD-ZYe" firstAttribute="top" secondItem="mcG-am-1cy" secondAttribute="top" id="smd-An-1tH"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="person" catalog="system" id="PBL-R1-Cwd"/>
                 </viewController>
@@ -635,10 +668,19 @@
             <point key="canvasLocation" x="2762" y="953"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="8Ap-os-Ldz">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+        <designable name="ahg-Iz-0dJ">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Background" width="375" height="811"/>
         <image name="GoldStarEmpty" width="16" height="16"/>
         <image name="GoldStarFilled" width="16" height="16"/>
+        <image name="Header3" width="375" height="169"/>
         <image name="Image 1" width="21" height="21"/>
         <image name="Image 2" width="21" height="21"/>
         <image name="Location icon" width="25" height="31"/>
@@ -654,12 +696,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
