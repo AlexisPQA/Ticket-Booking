@@ -34,7 +34,7 @@ class BusStation : Codable {
         self.name = document.get("name") as! String
         self.address = document.get("address") as! String
         self.openTime = document.get("openTime") as! String
-        self.openTime = document.get("utilitiesIncluded") as! String
+        self.utilitiesIncluded = document.get("utilitiesIncluded") as! String
         self.rating = document.get("rating") as! Double
         self.manager = document.get("manager") as! String
     }

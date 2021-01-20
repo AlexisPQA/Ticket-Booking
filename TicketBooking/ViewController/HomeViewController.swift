@@ -13,82 +13,153 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     @IBOutlet weak var rectangle: UIView!
     @IBOutlet weak var fromTextField: UITextField!
     @IBOutlet weak var toTextField: UITextField!
-    @IBOutlet weak var datePicker: UIButton!
+    @IBOutlet weak var datePickerBtn: UIButton!
     @IBOutlet weak var couponsPicker: UIButton!
+    @IBOutlet weak var garagesCollectionView: UICollectionView!
+    @IBOutlet weak var busStationCollectionView: UICollectionView!
+    let formatter = DateFormatter()
+    var listOfGarages: [Garage] = []
+    var listOfStation: [BusStation] = []
+    var db: Firestore!
+    let storage = Storage.storage()
     override func viewDidLoad() {
         super.viewDidLoad()
-        Utilities.styleView(rectangle)
+        
+        formatter.dateFormat = "dd/MM/yyyy"
+        Utilities.styleView(rectangle,Utilities.subColor)
         Utilities.styleTextField1(fromTextField)
         Utilities.styleTextField1(toTextField)
-        Utilities.styleFilledButton(datePicker, 2)
+        Utilities.styleFilledButton(datePickerBtn, 2)
         Utilities.styleFilledButton(couponsPicker, 2)
-        isLoggedIn()
-        let db = Firestore.firestore()
-        db.collection("BusStation").getDocuments() { (querySnapshot, err) in
+        getListOfGarage()
+        getListOfStation()
+
+    }
+    
+    
+    func getListOfGarage() {
+        Firestore.firestore().settings = FirestoreSettings()
+        db = Firestore.firestore()
+
+        let docRef = self.db.collection("Garage")
+        docRef.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    //print("\(document.documentID) => \(document.data())")
+                    let loadedGarage = Garage(document: document)
+                    
+                    // Load thmbnail image for Garage
+                    let pathReference = self.storage.reference(withPath: "Garage/\(loadedGarage.id)")
+                    pathReference.getData(maxSize: 1 * 6000 * 6000) { data, error in
+                        if let error = error {
+                            print(error)
+                        } else {
+                            loadedGarage.avatar = UIImage(data: data!)!
+                        }
+                        self.listOfGarages.append(loadedGarage)
+                        self.garagesCollectionView.reloadData()
+                    }
                 }
             }
         }
-        getUserInfo()
     }
-    func isLoggedIn(){
-        let user = Auth.auth().currentUser
-        if user != nil {
-            print("Đã đăng nhập")
-            switch user?.isEmailVerified {
-            case true:
-                print("True")
-            case false:
-                print("Email need verify")
-            case .none:
-                print("abc")
-            case .some(_):
-                print("abc")
+    
+    func getListOfStation() {
+        Firestore.firestore().settings = FirestoreSettings()
+        db = Firestore.firestore()
+
+        let docRef = self.db.collection("BusStation")
+        docRef.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let loadedStation = BusStation(document: document)
+                    
+                    self.listOfStation.append(loadedStation)
+                    self.busStationCollectionView.reloadData()
+                }
             }
-        } else {
-          // No user is signed in.
-            print("Chưa đăng nhập")
-        }
-    }
-    func getUserInfo(){
-        let user = Auth.auth().currentUser
-        if let user = user {
-          // The user's ID, unique to the Firebase project.
-          // Do NOT use this value to authenticate with your backend server,
-          // if you have one. Use getTokenWithCompletion:completion: instead.
-          let uid = user.uid
-          let email = user.email
-         print(user)
         }
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if (collectionView == garagesCollectionView){
+            return listOfGarages.count
+        }
+        return listOfStation.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Bus", for: indexPath) as! BusStationCollectionViewCell
-
-        cell.backgroundColor = UIColor.white
-        cell.layer.backgroundColor = UIColor.white.cgColor
-        cell.layer.shadowColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.16).cgColor
-        cell.layer.shadowOffset = CGSize(width: 3, height: 2.0)//CGSizeMake(0, 2.0);
-        cell.layer.shadowRadius = 5.0
-        cell.layer.shadowOpacity = 1.0
-        cell.layer.masksToBounds = false
-        cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
-        cell.layer.cornerRadius = 6
-        cell.avatar.image = UIImage(named: "google")
-        cell.name.text = "BX Miền Tây"
-        cell.address.text = "395 Kinh Dương Vương, An Lạc, Bình Tân, Thành Phố Hồ Chí Minh"
-        //cell.address.text = "ABXYZ"
-        cell.RatingStar.settings.filledColor = UIColor(red: 255/255, green: 210/255, blue: 108/255, alpha: 1)
-        cell.RatingStar.rating = 3.7
-        
-        
+        if( collectionView == garagesCollectionView){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "garage", for: indexPath) as!BusStationCollectionViewCell
+            if(listOfGarages.count != 0){
+                cell.avatar.image = listOfGarages[indexPath.row].avatar
+                cell.name.text = listOfGarages[indexPath.row].name
+                cell.address.text = listOfGarages[indexPath.row].address
+                cell.RatingStar.settings.filledColor = UIColor(red: 255/255, green: 210/255, blue: 108/255, alpha: 1)
+                cell.RatingStar.rating = listOfGarages[indexPath.row].rating
+            }
+            return cell
+        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Bus", for: indexPath) as!BusStationCollectionViewCell
+        if(listOfStation.count != 0){
+            cell.name.text = listOfStation[indexPath.row].name
+            cell.address.text = listOfStation[indexPath.row].address
+            cell.RatingStar.settings.filledColor = UIColor(red: 255/255, green: 210/255, blue: 108/255, alpha: 1)
+            cell.RatingStar.rating = listOfStation[indexPath.row].rating
+        }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if (collectionView == garagesCollectionView){
+            let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
+            let vc  = storyboard.instantiateViewController(withIdentifier: "garageInfoViewController") as! GarageInfoViewController
+            vc.garage = listOfGarages[indexPath.row]
+            //self.navigationController?.pushViewController(vc, animated: true)
+            self.present(vc, animated: true, completion: nil)
+        }
+        else{
+            let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
+            let vc  = storyboard.instantiateViewController(withIdentifier: "stationInfoViewController") as! StationInfoViewController
+            vc.station = listOfStation[indexPath.row]
+            //self.navigationController?.pushViewController(vc, animated: true)
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    var datePicker = UIDatePicker()
+    var toolBar = UIToolbar()
+        @IBAction func datePickerTapped(_ sender: Any) {
+        datePicker.backgroundColor = UIColor.white
+        datePicker.preferredDatePickerStyle = .compact
+
+        datePicker.autoresizingMask = .flexibleWidth
+        datePicker.datePickerMode = .date
+
+        datePicker.addTarget(self, action: #selector(self.dateChanged(_:)), for: .valueChanged)
+        datePicker.frame = CGRect(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+        self.view.addSubview(datePicker)
+
+        toolBar = UIToolbar(frame: CGRect(x: 0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+        toolBar.items = [UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.hideDatePicker))]
+        toolBar.sizeToFit()
+        self.view.addSubview(toolBar)
+    }
+    @objc func hideDatePicker() {
+        toolBar.removeFromSuperview()
+        datePicker.removeFromSuperview()
+    }
+    
+    @objc func dateChanged(_ sender: UIDatePicker?) {
+        if let date = sender?.date {
+            let pickedDate = formatter.string(from: date)
+            self.datePickerBtn.setTitle("  \(pickedDate)", for: .normal)
+        }
+    }
+    @IBAction func couponsTapped(_ sender: Any) {
     }
 }

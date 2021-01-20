@@ -8,15 +8,14 @@
 
 import Foundation
 import UIKit
-let viewColor = UIColor.init(red: 219/255, green: 229/255, blue: 243/255, alpha: 1)
-let btnColor = UIColor.init(red: 254/255, green: 135/255, blue: 129/255, alpha: 1)
+
 
 class Utilities {
-    static let mainColor = UIColor.init(red: 254/255, green: 135/255, blue: 129/255, alpha: 1)
-    static let subColor = UIColor.init(red: 219/255, green: 229/255, blue: 243/255, alpha: 1)
-    static func styleView(_ view:UIView){
+    static let mainColor = UIColor.init(red: 254/255, green: 135/255, blue: 129/255, alpha: 1) // view
+    static let subColor = UIColor.init(red: 219/255, green: 229/255, blue: 243/255, alpha: 1) // button
+    static func styleView(_ view:UIView, _ color:UIColor){
         view.layer.cornerRadius = 10
-        view.backgroundColor = viewColor
+        view.backgroundColor = color
         view.layer.shadowColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.16).cgColor
         view.layer.shadowRadius = 5.0
         view.layer.shadowOpacity = 1.0
@@ -44,15 +43,24 @@ class Utilities {
         
     }
     
+    static func styleFilledButtonFilter(_ button:UIButton) {
+        // Filled rounded corner style
+        button.backgroundColor = .none
+        button.layer.borderWidth = 1
+        button.layer.borderColor = mainColor.cgColor
+        button.layer.cornerRadius = button.frame.size.height/2.0
+        button.tintColor = UIColor.white
+    }
+    
     static func styleFilledButton(_ button:UIButton,_ type:Int) {
         if type == 1{
         // Filled rounded corner style
-        button.backgroundColor = btnColor
+        button.backgroundColor = mainColor
         button.layer.cornerRadius = button.frame.size.height/2.0
         button.tintColor = UIColor.white
         }
-        else{
-            button.backgroundColor = viewColor
+        else{ // for button like datepicker ,coupon
+            button.backgroundColor = subColor
             button.layer.cornerRadius = button.frame.size.height/2.0
             button.tintColor = UIColor.white
             button.layer.shadowColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.16).cgColor

@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D017EE425B6F67E00768A38 /* GarageSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D017EE325B6F67E00768A38 /* GarageSearchCollectionViewCell.swift */; };
+		1D017EE725B6FF2300768A38 /* StationSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D017EE625B6FF2300768A38 /* StationSearchCollectionViewCell.swift */; };
 		1D07A3D0259094A8005CB9D5 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D07A3CF259094A8005CB9D5 /* Utilities.swift */; };
 		1D07A3E925909FF5005CB9D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D07A3E825909FF5005CB9D5 /* GoogleService-Info.plist */; };
 		1D07A3EF2590A333005CB9D5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D07A3EE2590A333005CB9D5 /* SignUpViewController.swift */; };
+		1D37280F25B7358600C3005B /* ButtonFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D37280E25B7358600C3005B /* ButtonFilterCollectionViewCell.swift */; };
 		1D7D680F2594FF1700D04DD5 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D680E2594FF1700D04DD5 /* TabbarViewController.swift */; };
 		1D7D68122595059C00D04DD5 /* Tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7D68112595059C00D04DD5 /* Tabbar.swift */; };
+		1D80059A25B60DB900E83AD6 /* YourTicketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D80059925B60DB900E83AD6 /* YourTicketCollectionViewCell.swift */; };
 		1D8D87BC2593256B0004E858 /* BusStationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8D87BB2593256B0004E858 /* BusStationCollectionViewCell.swift */; };
 		1DA7B01D258E67F5001DB8F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA7B01C258E67F5001DB8F0 /* AppDelegate.swift */; };
 		1DA7B01F258E67F5001DB8F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA7B01E258E67F5001DB8F0 /* SceneDelegate.swift */; };
@@ -41,11 +45,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D017EE325B6F67E00768A38 /* GarageSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageSearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		1D017EE625B6FF2300768A38 /* StationSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D07A3CF259094A8005CB9D5 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		1D07A3E825909FF5005CB9D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D07A3EE2590A333005CB9D5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		1D37280E25B7358600C3005B /* ButtonFilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D7D680E2594FF1700D04DD5 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		1D7D68112595059C00D04DD5 /* Tabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbar.swift; sourceTree = "<group>"; };
+		1D80059925B60DB900E83AD6 /* YourTicketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourTicketCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D8D87BB2593256B0004E858 /* BusStationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStationCollectionViewCell.swift; sourceTree = "<group>"; };
 		1DA7B019258E67F5001DB8F0 /* TicketBooking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicketBooking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DA7B01C258E67F5001DB8F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,12 +127,16 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		1D8D87B5259324F30004E858 /* BusStation&Garages */ = {
+		1D8D87B5259324F30004E858 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				1D8D87BB2593256B0004E858 /* BusStationCollectionViewCell.swift */,
+				1D017EE625B6FF2300768A38 /* StationSearchCollectionViewCell.swift */,
+				1D80059925B60DB900E83AD6 /* YourTicketCollectionViewCell.swift */,
+				1D017EE325B6F67E00768A38 /* GarageSearchCollectionViewCell.swift */,
+				1D37280E25B7358600C3005B /* ButtonFilterCollectionViewCell.swift */,
 			);
-			path = "BusStation&Garages";
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		1DA7B010258E67F5001DB8F0 = {
@@ -148,7 +160,7 @@
 		1DA7B01B258E67F5001DB8F0 /* TicketBooking */ = {
 			isa = PBXGroup;
 			children = (
-				1D8D87B5259324F30004E858 /* BusStation&Garages */,
+				1D8D87B5259324F30004E858 /* Cell */,
 				84795B532595F22A00D53E6D /* Models */,
 				1D07A3CE25909490005CB9D5 /* Utility */,
 				1D07A3C825909273005CB9D5 /* ViewController */,
@@ -331,11 +343,15 @@
 				849210142590FD270059A491 /* TicketBookingViewController.swift in Sources */,
 				84931405259389C100B8F7EA /* TicketInfoViewController.swift in Sources */,
 				1D07A3D0259094A8005CB9D5 /* Utilities.swift in Sources */,
+				1D017EE725B6FF2300768A38 /* StationSearchCollectionViewCell.swift in Sources */,
 				1DA7B01F258E67F5001DB8F0 /* SceneDelegate.swift in Sources */,
+				1D80059A25B60DB900E83AD6 /* YourTicketCollectionViewCell.swift in Sources */,
 				1D7D680F2594FF1700D04DD5 /* TabbarViewController.swift in Sources */,
+				1D017EE425B6F67E00768A38 /* GarageSearchCollectionViewCell.swift in Sources */,
 				1DF35FD82590D87F00321EF8 /* HomeViewController.swift in Sources */,
 				84B0A6FF25AC4A6800F71BE5 /* CreateGarageViewController.swift in Sources */,
 				8492100E2590EF0D0059A491 /* StationInfoViewController.swift in Sources */,
+				1D37280F25B7358600C3005B /* ButtonFilterCollectionViewCell.swift in Sources */,
 				84B0A70225AC4A7800F71BE5 /* CreateCouponViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

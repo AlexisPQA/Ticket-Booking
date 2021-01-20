@@ -7,8 +7,8 @@
 
 import UIKit
 import Firebase
-var USER = User(permission: 0)
 
+var USER = User(permission: 0)
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var usernameTextField: UITextField!
@@ -43,13 +43,13 @@ class LoginViewController: UIViewController {
                             if ((user?.isEmailVerified) != true){
                                 user?.sendEmailVerification(completion: { (error) in
                                     if (error != nil){
-                                        print(error)
+                                        print(error!)
                                     }
                                 })
                                  let alert = UIAlertController(title: "", message: "Activation link sent to email ID. Please activate to log in.", preferredStyle: .alert)
                                  alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                                  self.present(alert, animated: true, completion: nil)
-                                let firebaseAuth = Auth.auth()
+                            let firebaseAuth = Auth.auth()
                               do {
                                 try firebaseAuth.signOut()
                               } catch let signOutError as NSError {
@@ -58,15 +58,49 @@ class LoginViewController: UIViewController {
                                 
                             }
                             else{
-                            let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
-                            self.view.window?.rootViewController = HomeVC
-                            self.view.window?.makeKeyAndVisible()
-                            
+                                let email = user?.email!
+                                self.getUserFromFireBasse(email!)
+                                let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
+                                self.view.window?.rootViewController = HomeVC
+                                self.view.window?.makeKeyAndVisible()
+                                if(USER.permission == 0 || USER.permission == 1){
+                                    let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
+                                    self.view.window?.rootViewController = HomeVC
+                                    self.view.window?.makeKeyAndVisible()
+                                }
+                                else if(USER.permission == 2){
+                                    let storyboard = UIStoryboard(name: "Flow2", bundle: nil)
+                                    let vc  = storyboard.instantiateViewController(withIdentifier: "stationManageViewController")
+                                    self.navigationController?.pushViewController(vc, animated: true)
+                                }
+                                else{
+                                    let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
+                                    let vc  = storyboard.instantiateViewController(withIdentifier: "stationInfoViewController")
+                                    self.navigationController?.pushViewController(vc, animated: true)
+                                }
+                                
                             }
                         })
                         
                     }
                 }
+    }
+    
+    func getUserFromFireBasse(_ email: String) {
+        Firestore.firestore().settings = FirestoreSettings()
+        let db = Firestore.firestore()
+
+        let docRef = db.collection("users").document(email)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let user = document.data()!
+                USER = User(email: user["email"] as! String, name: user["name"] as! String, phone: user["phone"] as! String, idCard: user["idCard"] as! String, address: user["address"] as! String, permission: user["permission"] as! Int)
+            } else {
+                print("Document does not exist")
+            }
+        }
+        print(USER.permission)
     }
     
     

@@ -78,6 +78,7 @@ class GarageInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         }
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return listOfRoute.count
     }
@@ -86,7 +87,6 @@ class GarageInfoViewController: UIViewController, UICollectionViewDelegate, UICo
         let cell = routesCollectionView.dequeueReusableCell(withReuseIdentifier: "routeCollectionViewCell", for: indexPath) as! RouteCollectionViewCell
         
         cell.setupRouteCell(listOfRoute[indexPath.row], garage.address)
-        
         return cell
     }
     
