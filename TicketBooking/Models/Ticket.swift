@@ -48,8 +48,8 @@ class Ticket : Codable {
     }
     
     init(document: DocumentSnapshot) {
-        self.id = document.get("id") as! String
-        self.account = document.get("acount") as! String
+        self.id = "1"
+        self.account = document.get("account") as! String
         self.idCard = document.get("idCard") as! String
         self.passengerName = document.get("passengerName") as! String
         self.paymentMethod = document.get("paymentMethod") as! Int
