@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 class Ticket : Codable {
     
@@ -44,5 +45,20 @@ class Ticket : Codable {
         self.price = price
         self.totalPrice = totalPrice
         self.paymentMethod = paymentMethod
+    }
+    
+    init(document: DocumentSnapshot) {
+        self.id = "1"
+        self.account = document.get("account") as! String
+        self.idCard = document.get("idCard") as! String
+        self.passengerName = document.get("passengerName") as! String
+        self.paymentMethod = document.get("paymentMethod") as! Int
+        self.phone = document.get("phone") as! String
+        self.pickUpAddress = document.get("pickUpAddress") as! String
+        self.price = document.get("price") as! Int
+        self.route = document.get("route") as! String
+        self.seats = document.get("seats") as! [Int]
+        self.coupon = document.get("coupon") as! String
+        self.totalPrice = document.get("totalPrice") as! Int
     }
 }

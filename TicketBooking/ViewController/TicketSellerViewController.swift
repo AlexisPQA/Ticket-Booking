@@ -1,66 +1,53 @@
 //
-//  AccountViewController.swift
+//  TicketSellerViewController.swift
 //  TicketBooking
 //
-//  Created by AlexisPQA on 12/21/20.
+//  Created by AlexisPQA on 1/20/21.
 //
 
 import UIKit
 import Firebase
 
-class AccountViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
-    override func viewDidAppear(_ animated: Bool) {
-        print(USER.permission)
-    }
-    @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var logOutBtn: UIButton!
-    @IBOutlet weak var signInBtn: UIButton!
-    @IBOutlet weak var PersonalInfo: UIView!
-    @IBOutlet weak var yourTicket: UICollectionView!
-    @IBOutlet weak var email: UILabel!
-    @IBOutlet weak var phone: UILabel!
-    @IBOutlet weak var idcard: UILabel!
-    @IBOutlet weak var address: UILabel!
-    @IBOutlet weak var yourTicketLabel: UILabel!
-    @IBOutlet weak var personalInfoLabel: UILabel!
+class TicketSellerViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var nameGarage: UILabel!
+    @IBOutlet weak var createRouteBtn: UIButton!
+    @IBOutlet weak var logoutBtn: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var requestCollection: UICollectionView!
     
     var listTicket: [Ticket] = []
     var listOfRoute: [Route] = []
     var db: Firestore!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(USER.permission)
-        Utilities.styleFilledButton(logOutBtn, 1)
-        Utilities.styleFilledButton(signInBtn, 2)
-        Utilities.styleView(PersonalInfo,UIColor.white)
-        Utilities.styleView(yourTicket,UIColor.white)
-        if (USER.permission) == 0{
-            logOutBtn.isHidden = true
-            userName.isHidden = true
-            PersonalInfo.isHidden = true
-            yourTicket.isHidden = true
-            yourTicketLabel.isHidden = true
-            personalInfoLabel.isHidden = true
-            signInBtn.isHidden = false
-        }
-        else{
-            signInBtn.isHidden = true
-            PersonalInfo.isHidden = false
-            yourTicket.isHidden = false
-            yourTicketLabel.isHidden = false
-            personalInfoLabel.isHidden = false
-            userName.text = USER.name
-            email.text = "Email   : " + USER.email
-            phone.text = "Phone  : " + USER.phone
-            idcard.text = "ID Card : " + USER.idCard
-            address.text = "Address: " + USER.address
-        }
-        getTicket()
-        //getRoute()
-        
+        scrollView.alwaysBounceVertical = true
+        scrollView.contentInsetAdjustmentBehavior = .never
+        Utilities.styleFilledButton(createRouteBtn, 2)
+        Utilities.styleFilledButton(logoutBtn, 1)
+
     }
-    
+    @IBAction func showAllTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Flow3", bundle: nil)
+        let vc  = storyboard.instantiateViewController(withIdentifier: "showallrequest")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    @IBAction func createRouteTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Flow3", bundle: nil)
+        let vc  = storyboard.instantiateViewController(withIdentifier: "createroute")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    @IBAction func logoutTapped(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+          do {
+            try firebaseAuth.signOut()
+            USER = User(permission: 0)
+            self.navigationController?.popViewController(animated: true)
+          } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+          }
+    }
     func getTicket() {
         Firestore.firestore().settings = FirestoreSettings()
         db = Firestore.firestore()
@@ -81,34 +68,16 @@ class AccountViewController: UIViewController,UICollectionViewDelegate,UICollect
                                 let loadedRoute = Route(document: document)
                                 self.listOfRoute.append(loadedRoute)
                                 print(self.listOfRoute)
-                                self.yourTicket.reloadData()
+                                self.requestCollection.reloadData()
                             }
                         }
                     }
                     self.listTicket.append(loadedTicket)
                     print(self.listTicket)
-                    self.yourTicket.reloadData()
+                    self.requestCollection.reloadData()
                 }
             }
         }
-    }
-    
-    
-    @IBAction func signInTapped(_ sender: Any) {
-        let LoginVC = storyboard?.instantiateViewController(identifier: "Login") as! LoginViewController
-        self.navigationController?.pushViewController(LoginVC, animated: true)
-    }
-    
-    
-    @IBAction func logOutTapped(_ sender: Any) {
-        let firebaseAuth = Auth.auth()
-          do {
-            try firebaseAuth.signOut()
-            USER = User(permission: 0)
-          } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-          }
-        self.viewDidLoad()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -144,5 +113,4 @@ class AccountViewController: UIViewController,UICollectionViewDelegate,UICollect
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ticket", for: indexPath) as! YourTicketCollectionViewCell
         return cell
     }
-    
 }
