@@ -10,6 +10,12 @@ import Cosmos
 import Firebase
 
 class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource{
+    override func viewDidAppear(_ animated: Bool) {
+        if Auth.auth().currentUser != nil{
+            let u = Auth.auth().currentUser
+            getUserFromFireBasse((u?.email!)!)
+        }
+    }
     @IBOutlet weak var rectangle: UIView!
     @IBOutlet weak var fromTextField: UITextField!
     @IBOutlet weak var toTextField: UITextField!
@@ -36,6 +42,23 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
 
     }
     
+    func getUserFromFireBasse(_ email: String) {
+        Firestore.firestore().settings = FirestoreSettings()
+        let db = Firestore.firestore()
+
+        let docRef = db.collection("users").document(email)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let user = document.data()!
+                USER = User(email: user["email"] as! String, name: user["name"] as! String, phone: user["phone"] as! String, idCard: user["idCard"] as! String, address: user["address"] as! String, permission: user["permission"] as! Int)
+            } else {
+                print("Document does not exist")
+            }
+        }
+        print(USER.permission)
+    }
+    
     
     func getListOfGarage() {
         Firestore.firestore().settings = FirestoreSettings()
@@ -49,17 +72,19 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
                 for document in querySnapshot!.documents {
                     let loadedGarage = Garage(document: document)
                     
-                    // Load thmbnail image for Garage
-                    let pathReference = self.storage.reference(withPath: "Garage/\(loadedGarage.id)")
-                    pathReference.getData(maxSize: 1 * 6000 * 6000) { data, error in
-                        if let error = error {
-                            print(error)
-                        } else {
-                            loadedGarage.avatar = UIImage(data: data!)!
-                        }
-                        self.listOfGarages.append(loadedGarage)
-                        self.garagesCollectionView.reloadData()
-                    }
+//                    // Load thmbnail image for Garage
+//                    let pathReference = self.storage.reference(withPath: "Garage/\(loadedGarage.id)")
+//                    pathReference.getData(maxSize: 1 * 6000 * 6000) { data, error in
+//                        if let error = error {
+//                            print(error)
+//                        } else {
+//                            loadedGarage.avatar = UIImage(data: data!)!
+//                        }
+//                        self.listOfGarages.append(loadedGarage)
+//                        self.garagesCollectionView.reloadData()
+//                    }
+                    self.listOfGarages.append(loadedGarage)
+                    self.garagesCollectionView.reloadData()
                 }
             }
         }
@@ -161,5 +186,8 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         }
     }
     @IBAction func couponsTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Flow3", bundle: nil)
+        let vc  = storyboard.instantiateViewController(withIdentifier: "showallrequest")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
