@@ -511,13 +511,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkx-Zn-gM6">
-                                                <rect key="frame" x="17" y="575.5" width="46" height="21"/>
+                                                <rect key="frame" x="17" y="575" width="46" height="21"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="md4-no-6gf">
-                                                <rect key="frame" x="0.0" y="606.5" width="414" height="333.5"/>
+                                                <rect key="frame" x="0.0" y="606" width="414" height="334"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sellerTableViewCell" rowHeight="30" id="isf-YC-Bc1" customClass="SellerTableViewCell" customModule="TicketBooking" customModuleProvider="target">
@@ -550,6 +550,7 @@
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
+                                                            <outlet property="deleteCellButton" destination="thC-J3-nbJ" id="3x3-uE-p3j"/>
                                                             <outlet property="sellerNameLabel" destination="N3S-Ub-ecV" id="2vq-qi-H0W"/>
                                                         </connections>
                                                     </tableViewCell>
@@ -595,7 +596,7 @@
                                                 </constraints>
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlankImage" translatesAutoresizingMaskIntoConstraints="NO" id="ITo-a5-54w">
-                                                <rect key="frame" x="17" y="323.5" width="380" height="222"/>
+                                                <rect key="frame" x="17" y="323" width="380" height="222"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ITo-a5-54w" secondAttribute="height" multiplier="344:201" id="FMs-e6-eDs"/>
                                                 </constraints>
@@ -617,8 +618,20 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mvr-N9-NUV">
+                                                <rect key="frame" x="17" y="323" width="380" height="222"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="17"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Add Image">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="addImageTouched:" destination="QmY-tk-kWQ" eventType="touchUpInside" id="twP-oP-xN2"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Garage's image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tC-rE-68D">
-                                                <rect key="frame" x="17" y="292.5" width="128" height="21"/>
+                                                <rect key="frame" x="17" y="292.5" width="128" height="20.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -631,16 +644,20 @@
                                             <constraint firstAttribute="width" secondItem="5Og-oF-kKh" secondAttribute="height" multiplier="207:500" id="9eW-RM-N75"/>
                                             <constraint firstItem="ITo-a5-54w" firstAttribute="leading" secondItem="5Og-oF-kKh" secondAttribute="leading" constant="17" id="DmF-cP-qrL"/>
                                             <constraint firstAttribute="trailing" secondItem="ITo-a5-54w" secondAttribute="trailing" constant="17" id="FnF-fC-j5f"/>
+                                            <constraint firstItem="Mvr-N9-NUV" firstAttribute="centerX" secondItem="5Og-oF-kKh" secondAttribute="centerX" id="GHi-xo-4FF"/>
                                             <constraint firstAttribute="trailing" secondItem="83a-XV-CdZ" secondAttribute="trailing" constant="17" id="KDZ-3G-jdx"/>
                                             <constraint firstItem="md4-no-6gf" firstAttribute="leading" secondItem="5Og-oF-kKh" secondAttribute="leading" id="KyD-3M-vEs"/>
                                             <constraint firstAttribute="trailing" secondItem="md4-no-6gf" secondAttribute="trailing" id="RHO-gq-uj3"/>
                                             <constraint firstAttribute="trailing" secondItem="x9A-L5-ycg" secondAttribute="trailing" id="RQb-dc-fn7"/>
                                             <constraint firstAttribute="trailing" secondItem="64l-Z1-SFG" secondAttribute="trailing" id="RfP-wn-zdQ"/>
+                                            <constraint firstItem="Mvr-N9-NUV" firstAttribute="height" secondItem="ITo-a5-54w" secondAttribute="height" id="SzL-UR-QAa"/>
                                             <constraint firstItem="x9A-L5-ycg" firstAttribute="leading" secondItem="5Og-oF-kKh" secondAttribute="leading" id="TXZ-Vj-5re"/>
+                                            <constraint firstItem="Mvr-N9-NUV" firstAttribute="width" secondItem="ITo-a5-54w" secondAttribute="width" id="UxU-YE-YxU"/>
                                             <constraint firstItem="ITo-a5-54w" firstAttribute="top" secondItem="0tC-rE-68D" secondAttribute="bottom" constant="10" id="WAA-VA-UPl"/>
                                             <constraint firstItem="64l-Z1-SFG" firstAttribute="leading" secondItem="5Og-oF-kKh" secondAttribute="leading" id="aPR-PF-sxr"/>
                                             <constraint firstItem="64l-Z1-SFG" firstAttribute="top" secondItem="md4-no-6gf" secondAttribute="bottom" id="dK1-DJ-Zuk"/>
                                             <constraint firstItem="x9A-L5-ycg" firstAttribute="top" secondItem="5Og-oF-kKh" secondAttribute="top" constant="-1" id="geb-cc-aga"/>
+                                            <constraint firstItem="Mvr-N9-NUV" firstAttribute="top" secondItem="ITo-a5-54w" secondAttribute="top" id="m3T-Gm-qLy"/>
                                             <constraint firstItem="83a-XV-CdZ" firstAttribute="leading" secondItem="5Og-oF-kKh" secondAttribute="leading" constant="17" id="m6l-nW-tGZ"/>
                                             <constraint firstItem="xkx-Zn-gM6" firstAttribute="leading" secondItem="5Og-oF-kKh" secondAttribute="leading" constant="17" id="pzL-gz-ZfQ"/>
                                             <constraint firstItem="83a-XV-CdZ" firstAttribute="top" secondItem="5Og-oF-kKh" secondAttribute="top" constant="17" id="r3V-qe-p6z"/>
@@ -670,6 +687,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addImageButton" destination="Mvr-N9-NUV" id="EkU-Kc-Web"/>
                         <outlet property="addSellerButton" destination="IrK-DN-kjp" id="iaD-yo-WcJ"/>
                         <outlet property="addressTextField" destination="mPP-yw-iXf" id="wDb-1M-i46"/>
                         <outlet property="garageNameTextField" destination="KTQ-eI-UbH" id="her-0W-B2S"/>
