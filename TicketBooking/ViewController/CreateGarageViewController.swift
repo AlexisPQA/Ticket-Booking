@@ -28,6 +28,8 @@ class CreateGarageViewController: UIViewController, UITableViewDelegate, UITable
     var db : Firestore!
     let storage = Storage.storage()
     
+    var delegate : updateCollection?
+    
     override func viewWillAppear(_ animated: Bool) {
         sellersTableView.contentSize.height = 0
     }
@@ -104,47 +106,50 @@ class CreateGarageViewController: UIViewController, UITableViewDelegate, UITable
         
         if ((garageNameTextField.text != nil) && (addressTextField.text != nil) && (openTimeTextField.text != nil) && listOfManager.count > 0) {
             
-            let newGarage = Garage(id: "", address: addressTextField.text ?? "", busStation: station.id, name: garageNameTextField.text ?? "", openTime: openTimeTextField.text ?? "", ticketPrice: ticketPriceTextField.text ?? "", rating: 4.0, manager: listOfEmail)
-            
+            let newGarage = Garage(id: "", address: addressTextField.text ?? "", busStation: station.name, name: garageNameTextField.text ?? "", openTime: openTimeTextField.text ?? "", ticketPrice: ticketPriceTextField.text ?? "", rating: 4.0, manager: listOfEmail)
             // Upload newGarage to Firebase
-            do {
-                // Endcode
-                let jsonEncoder = JSONEncoder()
-                let jsonData = try jsonEncoder.encode(newGarage)
-                let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]
-//                db.collection("Garage").document(newGarage.id).setData(json)
-                var ref: DocumentReference? = nil
-                ref = db.collection("Garage").addDocument(data: json) { err in
-                    if let err = err {
-                        let alert = UIAlertController(title: "Upload garage unsuccessfully", message: err.localizedDescription, preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                    } else {
-                        print("Document added with ID: \(ref!.documentID)")
-                        self.db.collection("Garage").document(ref!.documentID).updateData([ "id": "\(ref!.documentID)" ])
+            DispatchQueue.main.async {
+                do {
+                    // Endcode
+                    let jsonEncoder = JSONEncoder()
+                    let jsonData = try jsonEncoder.encode(newGarage)
+                    let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]
+                    var ref: DocumentReference? = nil
+                    ref = self.db.collection("Garage").addDocument(data: json) { err in
+                        if let err = err {
+                            let alert = UIAlertController(title: "Upload garage unsuccessfully", message: err.localizedDescription, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                        } else {
+                            print("Document added with ID: \(ref!.documentID)")
+                            self.db.collection("Garage").document(ref!.documentID).updateData([ "id": "\(ref!.documentID)" ])
+                            
+                            
+                            // Upload garageImage to Firebse Storage
+                            let storageRef = self.storage.reference().child("Garage/\(ref!.documentID)")
+                            let garageImage = self.thumbnail.image?.jpegData(compressionQuality: 5.0)
+                            let metaData = StorageMetadata()
+                            metaData.contentType = "image/jpg"
+                            storageRef.putData(garageImage!, metadata: metaData) { (metaData, error) in
+                                if let err = error {
+                                    let alert = UIAlertController(title: "Upload image unsuccessfully", message: err.localizedDescription, preferredStyle: .alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                                    self.present(alert, animated: true, completion: nil)
+                                } else {
+                                    print("Upload garageImage successfully!")
+                                    self.delegate!.updateGarageCollection(garage: newGarage)
+                                    self.navigationController?.popViewController(animated: true)
+                                }
+                            }
+                        }
                     }
-                }
-            } catch let error {
-                let alert = UIAlertController(title: "Upload garage unsuccessfully", message: error.localizedDescription, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
-            
-            // Upload garageImage to Firebse Storage
-            let garageImage = thumbnail.image?.jpegData(compressionQuality: 10.0)
-            let storageRef = storage.reference().child("Garage/\(newGarage.id)")
-            let metaData = StorageMetadata()
-            metaData.contentType = "image/jpg"
-            storageRef.putData(garageImage!, metadata: metaData) { (metaData, error) in
-                if let err = error {
-                    let alert = UIAlertController(title: "Upload image unsuccessfully", message: err.localizedDescription, preferredStyle: .alert)
+                } catch let error {
+                    let alert = UIAlertController(title: "Upload garage unsuccessfully", message: error.localizedDescription, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                     self.present(alert, animated: true, completion: nil)
-                } else {
-                    print("Upload garageImage successfully!")
-                    self.navigationController?.popViewController(animated: true)
                 }
             }
+            
         } else {
             let alert = UIAlertController(title: "Create garage unsuccessfully", message: "Please fill in fields which have (*) signal.\n The Garage have at least a manager.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -152,44 +157,6 @@ class CreateGarageViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-//    // Create id from name
-//    func createGarageId(name: String) -> String {
-//
-//        var str : String = name
-//        str = str.trimmingCharacters(in: .whitespacesAndNewlines)
-//        var sID = String(str[str.index(str.startIndex, offsetBy: 0)])
-//        for i in 1...(str.count - 1) {
-//            if str[str.index(str.startIndex, offsetBy: (i - 1))] == " " {
-//                sID = "\(sID)\(String(str[str.index(str.startIndex, offsetBy: (i - 1))]))"
-//            }
-//        }
-//
-//        var s = sID
-//        var count = 0
-//        for id in getAllIdGarage() {
-//            if id == s {
-//                count += 1
-//                s = "\(sID)\(count)"
-//            }
-//        }
-//        print("Your ID: \(sID)")
-//        return sID
-//    }
-//
-//    func getAllIdGarage() -> [String] {
-//        var result : [String] = []
-//        db.collection("Garage").getDocuments() { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                for document in querySnapshot!.documents {
-//                    result.append(document.documentID)
-//                }
-//            }
-//        }
-//        return result
-//    }
-
     @IBAction func addImageTouched(_ sender: Any) {
         ImagePickerManager().pickImage(self){ image in
             self.dismiss(animated: true, completion: nil)

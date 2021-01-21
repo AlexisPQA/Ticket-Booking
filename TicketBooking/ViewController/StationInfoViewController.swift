@@ -40,8 +40,6 @@ class StationInfoViewController: UIViewController, UICollectionViewDelegate, UIC
         garagesCollectionView.delegate = self
         garagesCollectionView.dataSource = self
         
-        // Tạo ví dụ
-        station = BusStation(id: "BXMD", name: "Bến xe Miền Đông", address: "75/22 Tân Lập, Bình Dương", openTime: "24/7", utilities: "WC, parking area, waitting room, canteen", rating: 4.3, manager: "bxmd_admi@gmail.com")
         stationNameLabel.text = station.name
         addressLabel.text = station.address
         openTimeLabel.text = station.openTime

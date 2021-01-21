@@ -15,6 +15,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
             let u = Auth.auth().currentUser
             getUserFromFireBasse((u?.email!)!)
         }
+        
     }
     @IBOutlet weak var rectangle: UIView!
     @IBOutlet weak var fromTextField: UITextField!
@@ -30,6 +31,11 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     let storage = Storage.storage()
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkPermission()
+        
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController!.navigationBar.isTranslucent = true
         
         formatter.dateFormat = "dd/MM/yyyy"
         Utilities.styleView(rectangle,Utilities.subColor)
@@ -37,9 +43,22 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         Utilities.styleTextField1(toTextField)
         Utilities.styleFilledButton(datePickerBtn, 2)
         Utilities.styleFilledButton(couponsPicker, 2)
+        
         getListOfGarage()
         getListOfStation()
 
+    }
+    
+    func checkPermission() {
+        if USER.permission > 1 {
+            let firebaseAuth = Auth.auth()
+            do {
+              try firebaseAuth.signOut()
+              USER = User(permission: 0)
+            } catch let signOutError as NSError {
+              print ("Error signing out: %@", signOutError)
+            }
+        }
     }
     
     func getUserFromFireBasse(_ email: String) {
@@ -144,15 +163,13 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
             let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
             let vc  = storyboard.instantiateViewController(withIdentifier: "garageInfoViewController") as! GarageInfoViewController
             vc.garage = listOfGarages[indexPath.row]
-            //self.navigationController?.pushViewController(vc, animated: true)
-            self.present(vc, animated: true, completion: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         else{
             let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
             let vc  = storyboard.instantiateViewController(withIdentifier: "stationInfoViewController") as! StationInfoViewController
             vc.station = listOfStation[indexPath.row]
-            //self.navigationController?.pushViewController(vc, animated: true)
-            self.present(vc, animated: true, completion: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

@@ -41,6 +41,8 @@ class TicketInfoViewController: UIViewController {
     var ticket = Ticket()
     var garage = Garage()
     var route = Route()
+    var coupon = Coupon()
+    var db : Firestore!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -64,6 +66,9 @@ class TicketInfoViewController: UIViewController {
         Utilities.styleFloatButton(cancelButton)
         
         setupTicketInfo()
+        
+        Firestore.firestore().settings = FirestoreSettings()
+        db = Firestore.firestore()
     }
     
     @objc func homeTapped(_ sender: Any) {
@@ -101,7 +106,7 @@ class TicketInfoViewController: UIViewController {
         passengerPhoneLabel.text = ticket.phone
     
         priceLabel.text = "\(ticket.price)đ"
-//        discountLabel.text
+        discountLabel.text = "-\(ticket.price - ticket.totalPrice)đ"
         couponCodeLabel.text = ticket.coupon
         if ticket.paymentMethod == 0 {
             paymentMethodLabel.text = "Cast"

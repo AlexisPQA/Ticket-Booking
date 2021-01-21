@@ -91,11 +91,17 @@ class GarageInfoViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
-        let vc  = storyboard.instantiateViewController(withIdentifier: "ticketBookingViewController") as! TicketBookingViewController
-        vc.route = listOfRoute[indexPath.row]
-        vc.garage = garage
-        self.navigationController?.pushViewController(vc, animated: true)
+        if (USER.permission == 0) {
+            let alert = UIAlertController(title: "", message: "Plese sign in to book a ticket.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
+            let vc  = storyboard.instantiateViewController(withIdentifier: "ticketBookingViewController") as! TicketBookingViewController
+            vc.route = listOfRoute[indexPath.row]
+            vc.garage = garage
+            self.navigationController?.pushViewController(vc, animated: true)
+            }
     }
     
     var datePicker = UIDatePicker()

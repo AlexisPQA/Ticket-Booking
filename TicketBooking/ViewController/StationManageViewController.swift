@@ -10,8 +10,14 @@ import Firebase
 import FirebaseCore
 import FirebaseFirestore
 
-class StationManageViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+protocol updateCollection {
+    func updateGarageCollection(garage: Garage)
+    func updateCouponCollection(coupon: Coupon)
     
+}
+
+class StationManageViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, updateCollection {
+   
     @IBOutlet weak var managerNameLabel: UILabel!
     @IBOutlet weak var stationNameLabel: UILabel!
     @IBOutlet weak var thumbnail: UIImageView!
@@ -24,7 +30,6 @@ class StationManageViewController: UIViewController, UICollectionViewDelegate, U
     var station = BusStation()
     var listOfGarages : [Garage] = []
     var listOfCoupon : [Coupon] = []
-    
     var db : Firestore!
     let storage = Storage.storage()
     
@@ -55,6 +60,18 @@ class StationManageViewController: UIViewController, UICollectionViewDelegate, U
         
         loadStation()
         loadCoupons()
+        
+        managerNameLabel.text = USER.name
+    }
+    
+    func updateGarageCollection(garage: Garage) {
+        listOfGarages.append(garage)
+        garagesCollectionView.reloadData()
+    }
+    
+    func updateCouponCollection(coupon: Coupon) {
+        listOfCoupon.append(coupon)
+        couponsCollectionView.reloadData()
     }
     
     //Load station info from Firebase base on email of user
@@ -66,6 +83,7 @@ class StationManageViewController: UIViewController, UICollectionViewDelegate, U
             } else {
                 for document in querySnapshot!.documents {
                     self.station = BusStation(document: document)
+                    self.stationNameLabel.text = self.station.name
                     self.loadGarages()
                 }
             }
@@ -153,12 +171,14 @@ class StationManageViewController: UIViewController, UICollectionViewDelegate, U
         let storyboard = UIStoryboard(name: "Flow2", bundle: nil)
         let vc  = storyboard.instantiateViewController(withIdentifier: "createGarageViewController") as! CreateGarageViewController
         vc.station = self.station
+        vc.delegate = self
         self.navigationController!.pushViewController(vc, animated: true)
     }
     
     @IBAction func createCouponTouched(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Flow2", bundle: nil)
         let vc  = storyboard.instantiateViewController(withIdentifier: "createCouponViewController") as! CreateCouponViewController
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -177,20 +197,20 @@ class CouponCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        DispatchQueue.main.async {
-            self.contentView.frame = self.contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0))
-            self.contentView.layer.cornerRadius = 6.0
-            self.contentView.layer.masksToBounds = true
-            self.contentView.layer.backgroundColor = .init(red: 1, green: 1, blue: 1, alpha: 1)
-
-            self.layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
-            self.layer.shadowOffset = CGSize(width: 0, height: 3.0)
-            self.layer.shadowRadius = 6.0
-            self.layer.shadowOpacity = 0.16
-            self.layer.masksToBounds = false
-            self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
-            self.layer.backgroundColor = UIColor.clear.cgColor
-        }
+//        DispatchQueue.main.async {
+//            self.contentView.frame = self.contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0))
+//            self.contentView.layer.cornerRadius = 6.0
+//            self.contentView.layer.masksToBounds = true
+//            self.contentView.layer.backgroundColor = .init(red: 1, green: 1, blue: 1, alpha: 1)
+//
+//            self.layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
+//            self.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+//            self.layer.shadowRadius = 6.0
+//            self.layer.shadowOpacity = 0.16
+//            self.layer.masksToBounds = false
+//            self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
+//            self.layer.backgroundColor = UIColor.clear.cgColor
+//        }
       
     }
     

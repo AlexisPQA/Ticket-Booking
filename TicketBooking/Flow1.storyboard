@@ -25,20 +25,20 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vMf-2I-74m">
-                                <rect key="frame" x="16" y="60" width="382" height="221.5"/>
+                                <rect key="frame" x="16" y="104" width="382" height="221.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vMf-2I-74m" secondAttribute="height" multiplier="383:222" id="HB4-v3-QM0"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bến xe Miền Đông" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wt-Nb-gI7">
-                                <rect key="frame" x="16" y="311.5" width="174" height="24"/>
+                                <rect key="frame" x="16" y="355.5" width="174" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PYA-6x-E1S">
-                                <rect key="frame" x="0.0" y="355.5" width="414" height="116"/>
+                                <rect key="frame" x="0.0" y="399.5" width="414" height="116"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LB-9l-uNx">
                                         <rect key="frame" x="16" y="24" width="43" height="12"/>
@@ -114,7 +114,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Garages included:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3p-zS-Gma">
-                                <rect key="frame" x="16" y="501.5" width="147" height="21"/>
+                                <rect key="frame" x="16" y="545.5" width="147" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -225,6 +225,7 @@
                             <constraint firstItem="vMf-2I-74m" firstAttribute="leading" secondItem="X3Q-yW-0Gi" secondAttribute="leading" constant="16" id="xBl-FX-uwL"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Ncg-qQ-bXT"/>
                     <connections>
                         <outlet property="addressLabel" destination="VdE-1l-r3f" id="9Qi-Xf-hKd"/>
                         <outlet property="garagesCollectionView" destination="wpV-WE-mKa" id="lHH-gQ-wqv"/>
@@ -236,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S2N-Yq-u5b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204.34782608695653" y="2.6785714285714284"/>
+            <point key="canvasLocation" x="705.79710144927537" y="2.6785714285714284"/>
         </scene>
         <!--Garage Info View Controller-->
         <scene sceneID="shu-Gf-8qa">
@@ -253,26 +254,26 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qcn-PZ-8we">
-                                <rect key="frame" x="16" y="60" width="382" height="221.5"/>
+                                <rect key="frame" x="16" y="104" width="382" height="221.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Qcn-PZ-8we" secondAttribute="height" multiplier="383:222" id="VXV-2E-Lt4"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xe khách Hoa Hồng" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzF-HU-vac">
-                                <rect key="frame" x="16" y="311.5" width="190" height="24"/>
+                                <rect key="frame" x="16" y="355.5" width="190" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Routes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoY-Jc-SQi">
-                                <rect key="frame" x="16" y="529.5" width="63" height="21"/>
+                                <rect key="frame" x="16" y="573.5" width="63" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VaD-Fx-VgL">
-                                <rect key="frame" x="0.0" y="355.5" width="414" height="144"/>
+                                <rect key="frame" x="0.0" y="399.5" width="414" height="144"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o55-vr-atI">
                                         <rect key="frame" x="16" y="24" width="43" height="12"/>
@@ -369,7 +370,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paa-QE-xCl">
-                                <rect key="frame" x="142.5" y="686.5" width="129" height="27"/>
+                                <rect key="frame" x="142.5" y="730.5" width="129" height="27"/>
                                 <color key="backgroundColor" red="0.85882352941176465" green="0.89803921568627454" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="Vka-qh-jV4"/>
@@ -386,7 +387,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IEB-MB-xGf" userLabel="Routes Collection View">
-                                <rect key="frame" x="0.0" y="560.5" width="414" height="110"/>
+                                <rect key="frame" x="0.0" y="604.5" width="414" height="110"/>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="Jxt-fq-fDe"/>
@@ -528,6 +529,7 @@
                             <constraint firstItem="VaD-Fx-VgL" firstAttribute="leading" secondItem="BKM-Tq-GUk" secondAttribute="leading" id="x5y-lT-ed1"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="HJa-rg-bdE"/>
                     <connections>
                         <outlet property="addressLabel" destination="4RJ-cl-esq" id="jqe-Hb-EQD"/>
                         <outlet property="dateButton" destination="paa-QE-xCl" id="DNQ-cf-J6L"/>
@@ -541,7 +543,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hte-U5-No9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="518.84057971014499" y="2.6785714285714284"/>
+            <point key="canvasLocation" x="2339.130434782609" y="2.6785714285714284"/>
         </scene>
         <!--Ticket Booking View Controller-->
         <scene sceneID="vRU-1Q-7Cv">
@@ -1851,7 +1853,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="lkz-VL-Lq7">
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="lkz-VL-Lq7">
                                                 <rect key="frame" x="100" y="797.5" width="298" height="30"/>
                                                 <color key="backgroundColor" red="0.85882352939999995" green="0.8980392157" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -2142,7 +2144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2So-6U-K4e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1234.7826086956522" y="2.6785714285714284"/>
+            <point key="canvasLocation" x="3053.6231884057975" y="2.6785714285714284"/>
         </scene>
         <!--Ticket Info View Controller-->
         <scene sceneID="vUf-38-u00">
@@ -2534,7 +2536,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uZm-6B-z0r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1957.9710144927537" y="2.6785714285714284"/>
+            <point key="canvasLocation" x="3778.2608695652175" y="2.6785714285714284"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bIK-a3-Bag">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kwq-8F-NJm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="e9p-WG-Gpi">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rA5-Zb-v1F" kind="relationship" relationship="rootViewController" id="moR-yx-W8f"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mcN-jC-v1f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-204.34782608695653" y="2.6785714285714284"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mNN-gm-lRk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jog-DL-xJ8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z4a-J1-5NL">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="712-Bg-4ah" kind="relationship" relationship="rootViewController" id="Gca-BB-Wdk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xim-d9-TdE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1428.985507246377" y="2.6785714285714284"/>
         </scene>
     </scenes>
     <resources>

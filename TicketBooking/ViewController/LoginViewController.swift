@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 
 var USER = User(permission: 0)
+
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var usernameTextField: UITextField!
@@ -19,9 +20,18 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dissmissKeyboard))
+        view.addGestureRecognizer(tap)
+
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
         self.navigationController!.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.tintColor = Utilities.mainColor
+        
         signInBtn.setTitle("Sign in   \u{2794}", for: .normal)
         Utilities.styleTextField(usernameTextField)
         Utilities.styleTextField(passwordTextField)
@@ -31,7 +41,24 @@ class LoginViewController: UIViewController {
         db = Firestore.firestore()
     }
     
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
 
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    @objc func dissmissKeyboard() {
+        self.view.endEditing(true)
+    }
+    
     @IBAction func signInTapped(_ sender: Any) {
         let email = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -85,10 +112,6 @@ class LoginViewController: UIViewController {
     }
     
     func showView() {
-        
-//        let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
-//        self.view.window?.rootViewController = HomeVC
-//        self.view.window?.makeKeyAndVisible()
         switch USER.permission {
         case 2:
             let storyboard = UIStoryboard(name: "Flow3", bundle: nil)
@@ -98,8 +121,8 @@ class LoginViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Flow2", bundle: nil)
             let managerVC = storyboard.instantiateViewController(withIdentifier: "stationManageViewController")
             self.navigationController?.pushViewController(managerVC, animated: true)
-            break
         default:
+            
             let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
             self.view.window?.rootViewController = HomeVC
             self.view.window?.makeKeyAndVisible()

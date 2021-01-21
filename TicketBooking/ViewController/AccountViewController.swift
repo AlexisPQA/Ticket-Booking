@@ -30,9 +30,15 @@ class AccountViewController: UIViewController,UICollectionViewDelegate,UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController!.navigationBar.isTranslucent = true
+        
         print(USER.permission)
-        Utilities.styleFilledButton(logOutBtn, 1)
-        Utilities.styleFilledButton(signInBtn, 2)
+        Utilities.styleFloatButton(logOutBtn)
+        logOutBtn.backgroundColor = Utilities.mainColor
+        Utilities.styleFloatButton(signInBtn)
+        signInBtn.backgroundColor = .white
         Utilities.styleView(PersonalInfo,UIColor.white)
         Utilities.styleView(yourTicket,UIColor.white)
         if (USER.permission) == 0{
@@ -95,8 +101,13 @@ class AccountViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     
     @IBAction func signInTapped(_ sender: Any) {
-        let LoginVC = storyboard?.instantiateViewController(identifier: "Login") as! LoginViewController
-        self.navigationController?.pushViewController(LoginVC, animated: true)
+//        let LoginVC = storyboard?.instantiateViewController(identifier: "Login") as! LoginViewController
+//        self.navigationController?.pushViewController(LoginVC, animated: true)
+//        
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "Login")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
@@ -118,6 +129,7 @@ class AccountViewController: UIViewController,UICollectionViewDelegate,UICollect
         
         return 0
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if( listTicket.count != 0 && listOfRoute.count != 0){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ticket", for: indexPath) as! YourTicketCollectionViewCell

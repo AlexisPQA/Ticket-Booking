@@ -33,9 +33,16 @@ class SearchViewController: UIViewController,UICollectionViewDelegate,UICollecti
     var listOfStation: [BusStation] = []
     var db: Firestore!
     let storage = Storage.storage()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController!.navigationBar.isTranslucent = true
+        
         Utilities.styleTextField1(searchTextField)
+        
         getListOfGarage()
         getListOfStation()
         ButtonCollection.allowsMultipleSelection = false
@@ -115,15 +122,13 @@ class SearchViewController: UIViewController,UICollectionViewDelegate,UICollecti
             let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
             let vc  = storyboard.instantiateViewController(withIdentifier: "garageInfoViewController") as! GarageInfoViewController
             vc.garage = listOfGarages[indexPath.row]
-            //self.navigationController?.pushViewController(vc, animated: true)
-            self.present(vc, animated: true, completion: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         else{
             let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
             let vc  = storyboard.instantiateViewController(withIdentifier: "stationInfoViewController") as! StationInfoViewController
             vc.station = listOfStation[indexPath.row]
-            //self.navigationController?.pushViewController(vc, animated: true)
-            self.present(vc, animated: true, completion: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

@@ -16,9 +16,10 @@ class TicketSellerViewController: UIViewController,UICollectionViewDelegate,UICo
     @IBOutlet weak var logoutBtn: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var requestCollection: UICollectionView!
-    
-    var listTicket: [Ticket] = []
+    @IBOutlet weak var routeCollection: UICollectionView!
+    var listOfRequest: [Ticket] = []
     var listOfRoute: [Route] = []
+    var garage : Garage = Garage()
     var db: Firestore!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,18 +40,64 @@ class TicketSellerViewController: UIViewController,UICollectionViewDelegate,UICo
         createRouteBtn.backgroundColor = Utilities.subColor
         Utilities.styleFloatButton(logoutBtn)
         logoutBtn.backgroundColor = Utilities.mainColor
+        
+        Firestore.firestore().settings = FirestoreSettings()
+        db = Firestore.firestore()
+        
+        loadListOfRequest()
+        loadGarage()
+        
+        self.name.text = USER.name
+        
 
     }
+    
+    func loadGarage() {
+        db.collection("Garage").whereField("manager", arrayContains: USER.email).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print(err)
+            } else {
+                for document in querySnapshot!.documents {
+                    self.garage = Garage(document: document)
+                    self.loadListOfRoute()
+                    self.nameGarage.text = self.garage.name
+                    break
+                }
+            }
+        }
+    }
+    
+    func loadListOfRoute() {
+        db.collection("Route").whereField("garage", isEqualTo: "\(self.garage.id)").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    self.listOfRoute.append(Route(document: document))
+                }
+                self.routeCollection.reloadData()
+            }
+        }
+    }
+    
+    func loadListOfRequest() {
+//        db.collection("CancelTicketRequest").whereField("id", isGreaterThanOrEqualTo: garage.id).getDocuments() { (que)}
+    }
+    
     @IBAction func showAllTapped(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Flow3", bundle: nil)
-        let vc  = storyboard.instantiateViewController(withIdentifier: "showallrequest")
+        let vc  = storyboard.instantiateViewController(withIdentifier: "showallrequest") as! ShowAllRequestViewController
+        vc.listTicket = self.listOfRequest
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     @IBAction func createRouteTapped(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Flow3", bundle: nil)
-        let vc  = storyboard.instantiateViewController(withIdentifier: "createroute")
+        let vc  = storyboard.instantiateViewController(withIdentifier: "createroute") as! CreateRouteViewController
+        vc.garage = self.garage
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     @IBAction func logoutTapped(_ sender: Any) {
         let firebaseAuth = Auth.auth()
           do {
@@ -85,8 +132,8 @@ class TicketSellerViewController: UIViewController,UICollectionViewDelegate,UICo
                             }
                         }
                     }
-                    self.listTicket.append(loadedTicket)
-                    print(self.listTicket)
+                    self.listOfRequest.append(loadedTicket)
+                    print(self.listOfRequest)
                     self.requestCollection.reloadData()
                 }
             }
@@ -94,21 +141,21 @@ class TicketSellerViewController: UIViewController,UICollectionViewDelegate,UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if( listTicket.count != 0 && listOfRoute.count != 0){
-            return listTicket.count
+        if( listOfRequest.count != 0 && listOfRoute.count != 0){
+            return listOfRequest.count
         }
         
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if( listTicket.count != 0 && listOfRoute.count != 0){
+        if( listOfRequest.count != 0 && listOfRoute.count != 0){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ticket", for: indexPath) as! YourTicketCollectionViewCell
-            cell.from.text = listTicket[indexPath.item].pickUpAddress
+            cell.from.text = listOfRequest[indexPath.item].pickUpAddress
             cell.destination.text = listOfRoute[indexPath.item].destination
             cell.garage.text = "Garage :" + listOfRoute[indexPath.item].garage
             cell.licenseplate.text = "License Plate :" + listOfRoute[indexPath.item].licensePlate
             cell.seat.text = "Seat :"
-            listTicket[indexPath.item].seats.forEach { (seat) in
+            listOfRequest[indexPath.item].seats.forEach { (seat) in
                 cell.seat.text! += "\(seat)"
             }
             
@@ -117,12 +164,13 @@ class TicketSellerViewController: UIViewController,UICollectionViewDelegate,UICo
             formatter.dateFormat = "dd/MM/yyyy"
             cell.time.text = "Departure Time: " + formatter.string(from: listOfRoute[indexPath.item].departureTime)
             cell.Transshipment.text = "Transshipment: Yes"
-            cell.price.text = "\(listTicket[indexPath.item].price)"
-            cell.total.text = "\(listTicket[indexPath.item].totalPrice)"
+            cell.price.text = "\(listOfRequest[indexPath.item].price)"
+            cell.total.text = "\(listOfRequest[indexPath.item].totalPrice)"
             cell.discount.text = "No"
-            cell.coupon.text = listTicket[indexPath.item].coupon
+            cell.coupon.text = listOfRequest[indexPath.item].coupon
             return cell
         }
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ticket", for: indexPath) as! YourTicketCollectionViewCell
         return cell
     }

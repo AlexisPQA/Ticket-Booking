@@ -54,8 +54,17 @@ class TicketBookingViewController: UIViewController , UITextFieldDelegate, UIPic
         let tap = UITapGestureRecognizer(target: self, action: #selector(dissmissKeyboard))
         view.addGestureRecognizer(tap)
         
+        if (USER.permission == 0 ) {
+            self.navigationController?.popViewController(animated: true)
+        }
+        
         loadInfoOfRoute()
         loadListOfCoupon()
+        
+        passengerNameTextField.text = USER.name
+        idCardTextField.text = USER.idCard
+        phoneTextField.text = USER.phone
+        pickupAddressTextField.text = USER.address
     }
     
     @objc func homeTapped(_ sender: Any) {
@@ -116,13 +125,17 @@ class TicketBookingViewController: UIViewController , UITextFieldDelegate, UIPic
             
         // Update totalPriceLabel
         var strDiscount = discountLabel.text!
-//        if let coupon = currentCoupon {
-//            strDiscount = "\((coupon.discount/100) * Double(strPrice))"
-//        }
         
         strDiscount.remove(at: strDiscount.index(before: strDiscount.endIndex)) // remove 'đ' charccter
         print("Discount: \(strDiscount)")
         totalPriceLabel.text = "\((Int(strPrice) ?? 0) + (Int(strDiscount) ?? 0))đ"
+    }
+    
+    func updateCoupon(_ index: Int) { // index is the position of Coupon in listOfCoupon
+        var strPrice = priceLabel.text ?? "0"
+        strPrice.remove(at: strPrice.index(before: strPrice.endIndex)) // remove 'đ' charecter
+        self.discountLabel.text = "-\(Int((listOfCoupon[index].discount/100) * (Double(strPrice) ?? 0.0)))đ"
+        updatePrice(2)
     }
     
     @IBAction func paymentMethodTouched(_ sender: UIButton) {
@@ -197,13 +210,6 @@ class TicketBookingViewController: UIViewController , UITextFieldDelegate, UIPic
         currentCoupon = listOfCoupon[row]
     }
     
-    func updateCoupon(_ index: Int) { // index is the position of Coupon in listOfCoupon
-        var strPrice = priceLabel.text ?? "0"
-        strPrice.remove(at: strPrice.index(before: strPrice.endIndex)) // remove 'đ' charecter
-        self.discountLabel.text = "-\((listOfCoupon[index].discount/100) * (Double(strPrice) ?? 0.0))đ"
-        updatePrice(2)
-    }
-    
     @IBAction func bookTouched(_ sender: Any) {
         var strPrice = priceLabel.text ?? "0"
         strPrice.remove(at: strPrice.index(before: strPrice.endIndex)) // remove 'đ' charecter
@@ -212,6 +218,7 @@ class TicketBookingViewController: UIViewController , UITextFieldDelegate, UIPic
         
         //Create a ticket
         let ticket = Ticket(id: "\(route.id)#email of user#\(Date().timeIntervalSinceReferenceDate)",account: "email of user", passengerName: passengerNameTextField.text ?? "", idCard: idCardTextField.text ?? "", phone: phoneTextField.text ?? "", pickUpAddress: pickupAddressTextField.text ?? "", route: route.id, seats: [], coupon: couponTextField.text ?? "", price: Int(strPrice) ?? 0, totalPrice: Int(strTotalPrice) ?? 0, paymentMethod: 0)
+        
         for i in 0...45 {
             if listOfSeat[i].isSelected {
                 ticket.seats.append(i)

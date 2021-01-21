@@ -18,6 +18,17 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var idcardTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dissmissKeyboard))
+        view.addGestureRecognizer(tap)
+        
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.tintColor = Utilities.mainColor
+        
         signUpBtn.setTitle("Sign up   \u{2794}", for: .normal)
         Utilities.styleTextField(fullNameTextField)
         Utilities.styleTextField(emailTextField)
@@ -25,7 +36,28 @@ class SignUpViewController: UIViewController {
         Utilities.styleTextField(passwordTextField)
         Utilities.styleTextField(addressTextField)
         Utilities.styleFilledButton(signUpBtn,1)
+        Utilities.styleTextField(idcardTextField)
     }
+    
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    @objc func dissmissKeyboard() {
+        self.view.endEditing(true)
+    }
+    
     func checkValidateField()->Int?{
             if fullNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||

@@ -16,6 +16,7 @@ class CreateCouponViewController: UIViewController {
     @IBOutlet weak var discountTextField: UITextField!
     
     var db : Firestore!
+    var delegate : updateCollection?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +57,7 @@ class CreateCouponViewController: UIViewController {
                     let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]
                     db.collection("Coupon").document(coupon.code).setData(json)
                     print("Create coupon successfully.")
+                    delegate!.updateCouponCollection(coupon: coupon)
                     navigationController?.popViewController(animated: true)
                 } catch let error {
                     print("Error writing city to Firestore: \(error)")
