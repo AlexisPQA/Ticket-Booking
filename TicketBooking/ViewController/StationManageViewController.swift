@@ -141,6 +141,14 @@ class StationManageViewController: UIViewController, UICollectionViewDelegate, U
             return cell
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if (collectionView == couponsCollectionView) {
+            return CGSize(width: 121, height: 141)
+        }
+        return CGSize(width: 134, height: 147)
+    }
+    
     @IBAction func createGarageTouched(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Flow2", bundle: nil)
         let vc  = storyboard.instantiateViewController(withIdentifier: "createGarageViewController") as! CreateGarageViewController
@@ -169,24 +177,27 @@ class CouponCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        contentView.layer.cornerRadius = 6.0
-        contentView.layer.masksToBounds = true
-        contentView.layer.backgroundColor = .init(red: 1, green: 1, blue: 1, alpha: 1)
+        DispatchQueue.main.async {
+            self.contentView.frame = self.contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0))
+            self.contentView.layer.cornerRadius = 6.0
+            self.contentView.layer.masksToBounds = true
+            self.contentView.layer.backgroundColor = .init(red: 1, green: 1, blue: 1, alpha: 1)
 
-        layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
-        layer.shadowOffset = CGSize(width: 0, height: 3.0)
-        layer.shadowRadius = 6.0
-        layer.shadowOpacity = 0.16
-        layer.masksToBounds = false
-        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: contentView.layer.cornerRadius).cgPath
-        layer.backgroundColor = UIColor.clear.cgColor
+            self.layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
+            self.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+            self.layer.shadowRadius = 6.0
+            self.layer.shadowOpacity = 0.16
+            self.layer.masksToBounds = false
+            self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
+            self.layer.backgroundColor = UIColor.clear.cgColor
+        }
+      
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0))
-    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//    }
     
     func setupCouponCell(_ coupon: Coupon) {
         self.codeLabel.text = coupon.code

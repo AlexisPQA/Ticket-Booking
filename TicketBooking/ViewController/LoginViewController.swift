@@ -14,6 +14,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInBtn: UIButton!
+    
+    var db :Firestore!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -24,21 +27,24 @@ class LoginViewController: UIViewController {
         Utilities.styleTextField(passwordTextField)
         Utilities.styleFilledButton(signInBtn,1)
         
+        Firestore.firestore().settings = FirestoreSettings()
+        db = Firestore.firestore()
     }
     
 
     @IBAction func signInTapped(_ sender: Any) {
         let email = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        DispatchQueue.main.async {
                 Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                     if error != nil{
                        let alert = UIAlertController(title: "", message: error!.localizedDescription, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
-                        
-                    }
-                    else{
+                    } else {
                         let user = Auth.auth().currentUser
+                        DispatchQueue.main.async {
                         user?.reload(completion: { (error) in
                             if ((user?.isEmailVerified) != true){
                                 user?.sendEmailVerification(completion: { (error) in
@@ -58,53 +64,47 @@ class LoginViewController: UIViewController {
                                 
                             }
                             else{
-                                print("Choose permission \(USER.permission)")
-                                let email = user?.email!
-                                self.getUserFromFireBasse(email!)
-                                let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
-                                self.view.window?.rootViewController = HomeVC
-                                self.view.window?.makeKeyAndVisible()
-                                if(USER.permission == 0 || USER.permission == 1){
-                                    let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
-                                    self.view.window?.rootViewController = HomeVC
-                                    self.view.window?.makeKeyAndVisible()
+                                DispatchQueue.main.async {
+                                    self.db.collection("users").document((user?.email)!).getDocument { (document, error) in
+                                        if let document = document, document.exists {
+                                            USER = User(document: document)
+                                            print("Choose permission \(USER.permission)")
+                                            self.showView()
+                                        } else {
+                                            print("Document does not exist")
+                                        }
+                                    }
                                 }
-                                else if(USER.permission == 3){
-                                    let storyboard = UIStoryboard(name: "Flow2", bundle: nil)
-                                    let vc  = storyboard.instantiateViewController(withIdentifier: "stationManageViewController")
-                                    self.navigationController?.pushViewController(vc, animated: true)
-                                }
-                                else{
-                                    let storyboard = UIStoryboard(name: "Flow1", bundle: nil)
-                                    let vc  = storyboard.instantiateViewController(withIdentifier: "stationInfoViewController")
-                                    self.navigationController?.pushViewController(vc, animated: true)
-                                }
-                                
                             }
                         })
+                    }
                         
                     }
                 }
-    }
-    
-    func getUserFromFireBasse(_ email: String) {
-        Firestore.firestore().settings = FirestoreSettings()
-        let db = Firestore.firestore()
-
-        let docRef = db.collection("users").document(email)
-
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-//                let user = document.data()!
-                USER = User(document: document)
-            } else {
-                print("Document does not exist")
-            }
         }
-        print(USER.permission)
     }
     
-    
+    func showView() {
+        
+//        let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
+//        self.view.window?.rootViewController = HomeVC
+//        self.view.window?.makeKeyAndVisible()
+        switch USER.permission {
+        case 2:
+            let storyboard = UIStoryboard(name: "Flow3", bundle: nil)
+            let vc  = storyboard.instantiateViewController(withIdentifier: "ticketsellervc")
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 3:
+            let storyboard = UIStoryboard(name: "Flow2", bundle: nil)
+            let managerVC = storyboard.instantiateViewController(withIdentifier: "stationManageViewController")
+            self.navigationController?.pushViewController(managerVC, animated: true)
+            break
+        default:
+            let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
+            self.view.window?.rootViewController = HomeVC
+            self.view.window?.makeKeyAndVisible()
+        }
+    }
     
     @IBAction func signUpTapped(_ sender: Any) {
         let signupVC = self.storyboard?.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpViewController

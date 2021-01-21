@@ -114,15 +114,18 @@ class TicketInfoViewController: UIViewController {
     @IBAction func cancelTicketTouched(_ sender: Any) {
         var db: Firestore!
         db = Firestore.firestore()
-
-        let cancelRequest: [String: Any] = ["ticket": ticket.id]
-        db.collection("Cancel_ticket_request").document(ticket.id).setData(cancelRequest) { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
-                self.cancelButton.isEnabled = false
-            }
+        
+        do {
+            // Endcode
+            let jsonEncoder = JSONEncoder()
+            let jsonData = try jsonEncoder.encode(ticket)
+            let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]
+            db.collection("CancelTicketRequest").document(ticket.id).setData(json)
+            let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+            self.navigationController?.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+        } catch let error {
+            let alert = UIAlertController(title: "Unsuccessfully", message: "Cannot send cancel ticket request because:\n\(error.localizedDescription)", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         }
     }
     
