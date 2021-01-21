@@ -21,7 +21,6 @@ class StationManageViewController: UIViewController, UICollectionViewDelegate, U
     @IBOutlet weak var createCouponButton: UIButton!
     @IBOutlet weak var logOutButton: UIButton!
     
-    var user = User()
     var station = BusStation()
     var listOfGarages : [Garage] = []
     var listOfCoupon : [Coupon] = []
@@ -60,7 +59,7 @@ class StationManageViewController: UIViewController, UICollectionViewDelegate, U
     
     //Load station info from Firebase base on email of user
     func loadStation() {
-        let docRef = self.db.collection("BusStation").whereField("manager", isEqualTo: "\(self.user.email)")
+        let docRef = self.db.collection("BusStation").whereField("manager", isEqualTo: "\(USER.email)")
         docRef.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")

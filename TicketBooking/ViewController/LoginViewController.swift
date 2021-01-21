@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
 
     @IBAction func signInTapped(_ sender: Any) {
         let email = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                     if error != nil{
                        let alert = UIAlertController(title: "", message: error!.localizedDescription, preferredStyle: .alert)
@@ -58,6 +58,7 @@ class LoginViewController: UIViewController {
                                 
                             }
                             else{
+                                print("Choose permission \(USER.permission)")
                                 let email = user?.email!
                                 self.getUserFromFireBasse(email!)
                                 let HomeVC = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
@@ -68,7 +69,7 @@ class LoginViewController: UIViewController {
                                     self.view.window?.rootViewController = HomeVC
                                     self.view.window?.makeKeyAndVisible()
                                 }
-                                else if(USER.permission == 2){
+                                else if(USER.permission == 3){
                                     let storyboard = UIStoryboard(name: "Flow2", bundle: nil)
                                     let vc  = storyboard.instantiateViewController(withIdentifier: "stationManageViewController")
                                     self.navigationController?.pushViewController(vc, animated: true)
@@ -94,8 +95,8 @@ class LoginViewController: UIViewController {
 
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                let user = document.data()!
-                USER = User(email: user["email"] as! String, name: user["name"] as! String, phone: user["phone"] as! String, idCard: user["idCard"] as! String, address: user["address"] as! String, permission: user["permission"] as! Int)
+//                let user = document.data()!
+                USER = User(document: document)
             } else {
                 print("Document does not exist")
             }

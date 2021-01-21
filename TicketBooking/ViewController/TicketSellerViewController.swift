@@ -20,12 +20,25 @@ class TicketSellerViewController: UIViewController,UICollectionViewDelegate,UICo
     var listTicket: [Ticket] = []
     var listOfRoute: [Route] = []
     var db: Firestore!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.alwaysBounceVertical = true
-        scrollView.contentInsetAdjustmentBehavior = .never
-        Utilities.styleFilledButton(createRouteBtn, 2)
-        Utilities.styleFilledButton(logoutBtn, 1)
+        //scrollView.alwaysBounceVertical = true
+        //scrollView.contentInsetAdjustmentBehavior = .never
+        Utilities.styleFloatButton(createRouteBtn)
+        createRouteBtn.backgroundColor = Utilities.subColor
+        Utilities.styleFloatButton(logoutBtn)
+        logoutBtn.backgroundColor = Utilities.mainColor
 
     }
     @IBAction func showAllTapped(_ sender: Any) {
