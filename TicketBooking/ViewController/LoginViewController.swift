@@ -121,5 +121,10 @@ class LoginViewController: UIViewController {
         let vc  = storyboard.instantiateViewController(withIdentifier: "stationManageViewController")
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    @IBAction func flow3(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Flow3", bundle: nil)
+        let vc  = storyboard.instantiateViewController(withIdentifier: "ticketsellervc")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
