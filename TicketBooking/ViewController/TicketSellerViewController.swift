@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class TicketSellerViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class TicketSellerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var nameGarage: UILabel!
@@ -17,6 +17,7 @@ class TicketSellerViewController: UIViewController,UICollectionViewDelegate,UICo
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var requestCollection: UICollectionView!
     @IBOutlet weak var routeCollection: UICollectionView!
+    
     var listOfRequest: [Ticket] = []
     var listOfRoute: [Route] = []
     var garage : Garage = Garage()
@@ -34,17 +35,20 @@ class TicketSellerViewController: UIViewController,UICollectionViewDelegate,UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //scrollView.alwaysBounceVertical = true
-        //scrollView.contentInsetAdjustmentBehavior = .never
+        
         Utilities.styleFloatButton(createRouteBtn)
         createRouteBtn.backgroundColor = Utilities.subColor
         Utilities.styleFloatButton(logoutBtn)
         logoutBtn.backgroundColor = Utilities.mainColor
         
+        requestCollection.delegate = self
+        requestCollection.dataSource = self
+        routeCollection.delegate = self
+        routeCollection.dataSource = self
+        
         Firestore.firestore().settings = FirestoreSettings()
         db = Firestore.firestore()
         
-        loadListOfRequest()
         loadGarage()
         
         self.name.text = USER.name
@@ -75,20 +79,27 @@ class TicketSellerViewController: UIViewController,UICollectionViewDelegate,UICo
                 for document in querySnapshot!.documents {
                     self.listOfRoute.append(Route(document: document))
                 }
+                self.loadListOfRequest()
                 self.routeCollection.reloadData()
             }
         }
     }
     
     func loadListOfRequest() {
-//        db.collection("CancelTicketRequest").whereField("id", isGreaterThanOrEqualTo: garage.id).getDocuments() { (que)}
-    }
-    
-    @IBAction func showAllTapped(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Flow3", bundle: nil)
-        let vc  = storyboard.instantiateViewController(withIdentifier: "showallrequest") as! ShowAllRequestViewController
-        vc.listTicket = self.listOfRequest
-        self.navigationController?.pushViewController(vc, animated: true)
+        for route in listOfRoute {
+            DispatchQueue.main.async {
+                self.db.collection("CancelTicketRequest").whereField("route", isEqualTo: route.id).getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting CancelRequest documents: \(err)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            self.listOfRequest.append(Ticket(document: document))
+                        }
+                        self.requestCollection.reloadData()
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func createRouteTapped(_ sender: Any) {
@@ -141,37 +152,85 @@ class TicketSellerViewController: UIViewController,UICollectionViewDelegate,UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if( listOfRequest.count != 0 && listOfRoute.count != 0){
+        if collectionView == routeCollection {
+            return listOfRoute.count
+        } else {
             return listOfRequest.count
         }
-        
-        return 0
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if( listOfRequest.count != 0 && listOfRoute.count != 0){
+        if ((listOfRequest.count != 0) && (collectionView == requestCollection)) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ticket", for: indexPath) as! YourTicketCollectionViewCell
-            cell.from.text = listOfRequest[indexPath.item].pickUpAddress
-            cell.destination.text = listOfRoute[indexPath.item].destination
-            cell.garage.text = "Garage :" + listOfRoute[indexPath.item].garage
-            cell.licenseplate.text = "License Plate :" + listOfRoute[indexPath.item].licensePlate
+            var route = Route()
+            for r in listOfRoute {
+                if r.id == listOfRequest[indexPath.row].route {
+                    route = r
+                    break
+                }
+            }
+            cell.from.text = garage.address
+            cell.destination.text = route.destination
+            cell.garage.text = "Garage: " + garage.name
+            cell.licenseplate.text = "License Plate: " + route.licensePlate
             cell.seat.text = "Seat :"
             listOfRequest[indexPath.item].seats.forEach { (seat) in
-                cell.seat.text! += "\(seat)"
+                if (seat < 23) {
+                    cell.seat.text! += " A\(seat + 1)"
+                } else {
+                    cell.seat.text! += " B\(seat - 22)"
+                }
             }
             
             
             let formatter = DateFormatter()
             formatter.dateFormat = "dd/MM/yyyy"
-            cell.time.text = "Departure Time: " + formatter.string(from: listOfRoute[indexPath.item].departureTime)
-            cell.Transshipment.text = "Transshipment: Yes"
-            cell.price.text = "\(listOfRequest[indexPath.item].price)"
-            cell.total.text = "\(listOfRequest[indexPath.item].totalPrice)"
-            cell.discount.text = "No"
+            cell.time.text = "Departure Time: " + formatter.string(from: route.departureTime)
+            cell.Transshipment.text = "Transshipment: \(listOfRequest[indexPath.row].pickUpAddress)"
+            cell.price.text = "\(listOfRequest[indexPath.item].price)đ"
+            cell.total.text = "\(listOfRequest[indexPath.item].totalPrice)đ"
+            cell.discount.text = "\(listOfRequest[indexPath.item].price - listOfRequest[indexPath.item].totalPrice)đ"
             cell.coupon.text = listOfRequest[indexPath.item].coupon
+            
+            cell.acceptButton.tag = indexPath.row
+            cell.acceptButton.addTarget(self, action: #selector(deleteRowAt(sender:)), for: .touchUpInside)
+            
+            return cell
+            
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "routeCollectionViewCell1", for: indexPath) as! RouteCollectionViewCell
+            cell.setupRouteCell(listOfRoute[indexPath.row], garage.address)
             return cell
         }
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ticket", for: indexPath) as! YourTicketCollectionViewCell
-        return cell
     }
+    
+    //This function delete cell at index on RequestCancelPending
+    @objc func deleteRowAt(sender: UIButton) {
+        let index = sender.tag
+        db.collection("CancelTicketRequest").document(listOfRequest[index].id).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+                self.updateRoute(id: self.listOfRequest[index].route, seats: self.listOfRequest[index].seats)
+                self.listOfRequest.remove(at: index)
+                self.requestCollection.reloadData()
+            }
+        }
+    }
+    
+    //id: id of route need to update
+    func updateRoute(id: String, seats: [Int]) {
+        print("route: \(id)")
+//        db.collection("Route").document(id).updateData([
+//            "seats": FieldValue.arrayContains
+//        ]) { err in
+//            if let err = err {
+//                print("Error updating document: \(err)")
+//            } else {
+//                print("Document successfully updated")
+//            }
+//        }
+    }
+    
 }

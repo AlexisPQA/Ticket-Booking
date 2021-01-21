@@ -20,6 +20,8 @@ class YourTicketCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var discount: UILabel!
     @IBOutlet weak var total: UILabel!
     @IBOutlet weak var coupon: UILabel!
+    @IBOutlet weak var acceptButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.backgroundColor = UIColor.white.cgColor

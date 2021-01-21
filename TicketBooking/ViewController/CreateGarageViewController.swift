@@ -124,7 +124,6 @@ class CreateGarageViewController: UIViewController, UITableViewDelegate, UITable
                             print("Document added with ID: \(ref!.documentID)")
                             self.db.collection("Garage").document(ref!.documentID).updateData([ "id": "\(ref!.documentID)" ])
                             
-                            
                             // Upload garageImage to Firebse Storage
                             let storageRef = self.storage.reference().child("Garage/\(ref!.documentID)")
                             let garageImage = self.thumbnail.image?.jpegData(compressionQuality: 5.0)

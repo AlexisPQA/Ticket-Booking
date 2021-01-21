@@ -28,7 +28,6 @@
 		1DF35FDE2590E17C00321EF8 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF35FDD2590E17C00321EF8 /* AccountViewController.swift */; };
 		1DFA751325B87ACB00CF4587 /* Flow3.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DFA751225B87ACB00CF4587 /* Flow3.storyboard */; };
 		1DFA751625B88DEA00CF4587 /* TicketSellerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFA751525B88DEA00CF4587 /* TicketSellerViewController.swift */; };
-		1DFA751925B89F5800CF4587 /* ShowAllRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFA751825B89F5800CF4587 /* ShowAllRequestViewController.swift */; };
 		1DFA751C25B8B34C00CF4587 /* CreateRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFA751B25B8B34C00CF4587 /* CreateRouteViewController.swift */; };
 		3631164E9FC48FB09FBCAA4B /* Pods_TicketBooking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218A01EEE91FEBAECBB10638 /* Pods_TicketBooking.framework */; };
 		84388C3025AB32C400561EF6 /* Flow2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84388C2F25AB32C400561EF6 /* Flow2.storyboard */; };
@@ -72,7 +71,6 @@
 		1DF35FDD2590E17C00321EF8 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		1DFA751225B87ACB00CF4587 /* Flow3.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Flow3.storyboard; sourceTree = "<group>"; };
 		1DFA751525B88DEA00CF4587 /* TicketSellerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketSellerViewController.swift; sourceTree = "<group>"; };
-		1DFA751825B89F5800CF4587 /* ShowAllRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllRequestViewController.swift; sourceTree = "<group>"; };
 		1DFA751B25B8B34C00CF4587 /* CreateRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRouteViewController.swift; sourceTree = "<group>"; };
 		218A01EEE91FEBAECBB10638 /* Pods_TicketBooking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TicketBooking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		816B8BF6DBCA91A954EE42B3 /* Pods-TicketBooking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicketBooking.debug.xcconfig"; path = "Target Support Files/Pods-TicketBooking/Pods-TicketBooking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -123,7 +121,6 @@
 				84B0A6FE25AC4A6800F71BE5 /* CreateGarageViewController.swift */,
 				84B0A70125AC4A7800F71BE5 /* CreateCouponViewController.swift */,
 				1DFA751525B88DEA00CF4587 /* TicketSellerViewController.swift */,
-				1DFA751825B89F5800CF4587 /* ShowAllRequestViewController.swift */,
 				1DFA751B25B8B34C00CF4587 /* CreateRouteViewController.swift */,
 			);
 			path = ViewController;
@@ -345,7 +342,6 @@
 				1D7D68122595059C00D04DD5 /* Tabbar.swift in Sources */,
 				1D8D87BC2593256B0004E858 /* BusStationCollectionViewCell.swift in Sources */,
 				84795B5B2595F91D00D53E6D /* Coupon.swift in Sources */,
-				1DFA751925B89F5800CF4587 /* ShowAllRequestViewController.swift in Sources */,
 				84795B582595F81800D53E6D /* Garage.swift in Sources */,
 				84B0A6FC25AC4A4400F71BE5 /* StationManageViewController.swift in Sources */,
 				1DFA751625B88DEA00CF4587 /* TicketSellerViewController.swift in Sources */,

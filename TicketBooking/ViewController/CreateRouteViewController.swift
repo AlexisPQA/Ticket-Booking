@@ -30,13 +30,14 @@ class CreateRouteViewController: UIViewController {
         
         Firestore.firestore().settings = FirestoreSettings()
         db = Firestore.firestore()
-        
-        
     }
     
     func getListOfSeats() -> [Bool] {
-        //get from UI
-        return [true]
+        var result : [Bool] = []
+        for _ in 0...45 {
+            result.append(true)
+        }
+        return result
     }
 
     @objc func doneTapped(){
@@ -46,9 +47,9 @@ class CreateRouteViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "HH:mm dd/MM/yyyy"
         
-        let newRoute = Route(id: "\(garage.id)_R\(Int(randomID))", garage: self.garage.name, destination: toTextField.text ?? "", license: licenseplateTextField.text ?? "", seats: lof, aSeatPrice: Int(self.ticketpriceTextField.text!) ?? 0, departureTime: dateFormatter.date(from: departureTimeTextField.text!) ?? date)
+        let newRoute = Route(id: "\(garage.id)_R\(Int(randomID))", garage: self.garage.id, destination: toTextField.text ?? "", license: licenseplateTextField.text ?? "", seats: lof, aSeatPrice: Int(self.ticketpriceTextField.text!) ?? 0, departureTime: dateFormatter.date(from: departureTimeTextField.text!) ?? date)
         
         db.collection("Route").document()
         do {

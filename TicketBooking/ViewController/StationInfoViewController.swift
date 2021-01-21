@@ -100,52 +100,52 @@ class StationInfoViewController: UIViewController, UICollectionViewDelegate, UIC
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func dataButton(_ sender: Any) {
-        // Ghi dữ liệu lên
-        // [START set_document_codable]
-        let aGarage = Garage(id: "Test1", address: "A22, Block A", busStation: "Bến xe Miền Tây", name: "Nhà xe Hùng Cường", openTime: "24/7", ticketPrice: "130.000đ - 250.000đ", rating: 4.0, manager: ["abc@gmail.com", "xyz@outlook.com"])
-       
-        do {
-            // Endcode
-            let jsonEncoder = JSONEncoder()
-            let jsonData = try jsonEncoder.encode(aGarage)
-            let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]
-            print(json)
-            db.collection("Garage").document(aGarage.id).setData(json)
-        } catch let error {
-            print("Error writing city to Firestore: \(error)")
-        }
-        
-        
-        // Get data from Cloud FireStore into Garage object
-        let docRef = db.collection("Garage").document("Test1")
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
-                
-                let aa = Garage(document: document)
-                print("New data: \(aa.name)")
-            } else {
-                print("Document does not exist")
-            }
-        }
-         
-        // Upload an image to storage
-        // Create a root reference
-        let storageRef = storage.reference().child("Garage/Test3")
-        let mockImage = UIImage(named: "mock-image3")?.jpegData(compressionQuality: 10.0)
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpg"
-        storageRef.putData(mockImage!, metadata: metaData) { (metaData, error) in
-            if let err = error {
-                print(err)
-            } else {
-                print("Upload successfully!")
-            }
-        }
-        
-    }
+//    @IBAction func dataButton(_ sender: Any) {
+//        // Ghi dữ liệu lên
+//        // [START set_document_codable]
+//        let aGarage = Garage(id: "Test1", address: "A22, Block A", busStation: "Bến xe Miền Tây", name: "Nhà xe Hùng Cường", openTime: "24/7", ticketPrice: "130.000đ - 250.000đ", rating: 4.0, manager: ["abc@gmail.com", "xyz@outlook.com"])
+//
+//        do {
+//            // Endcode
+//            let jsonEncoder = JSONEncoder()
+//            let jsonData = try jsonEncoder.encode(aGarage)
+//            let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]
+//            print(json)
+//            db.collection("Garage").document(aGarage.id).setData(json)
+//        } catch let error {
+//            print("Error writing city to Firestore: \(error)")
+//        }
+//
+//
+//        // Get data from Cloud FireStore into Garage object
+//        let docRef = db.collection("Garage").document("Test1")
+//        docRef.getDocument { (document, error) in
+//            if let document = document, document.exists {
+//                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+//                print("Document data: \(dataDescription)")
+//                
+//                let aa = Garage(document: document)
+//                print("New data: \(aa.name)")
+//            } else {
+//                print("Document does not exist")
+//            }
+//        }
+//
+//        // Upload an image to storage
+//        // Create a root reference
+//        let storageRef = storage.reference().child("Garage/Test3")
+//        let mockImage = UIImage(named: "mock-image3")?.jpegData(compressionQuality: 10.0)
+//        let metaData = StorageMetadata()
+//        metaData.contentType = "image/jpg"
+//        storageRef.putData(mockImage!, metadata: metaData) { (metaData, error) in
+//            if let err = error {
+//                print(err)
+//            } else {
+//                print("Upload successfully!")
+//            }
+//        }
+//
+//    }
     
 }
 

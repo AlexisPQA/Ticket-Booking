@@ -217,7 +217,7 @@ class TicketBookingViewController: UIViewController , UITextFieldDelegate, UIPic
         strTotalPrice.remove(at: strTotalPrice.index(before: strTotalPrice.endIndex))// remove 'đ' charecter
         
         //Create a ticket
-        let ticket = Ticket(id: "\(route.id)#email of user#\(Date().timeIntervalSinceReferenceDate)",account: "email of user", passengerName: passengerNameTextField.text ?? "", idCard: idCardTextField.text ?? "", phone: phoneTextField.text ?? "", pickUpAddress: pickupAddressTextField.text ?? "", route: route.id, seats: [], coupon: couponTextField.text ?? "", price: Int(strPrice) ?? 0, totalPrice: Int(strTotalPrice) ?? 0, paymentMethod: 0)
+        let ticket = Ticket(id: "\(route.id)#\(USER.email)#\(Date().timeIntervalSinceReferenceDate)",account: USER.email, passengerName: passengerNameTextField.text ?? "", idCard: idCardTextField.text ?? "", phone: phoneTextField.text ?? "", pickUpAddress: pickupAddressTextField.text ?? "", route: route.id, seats: [], coupon: couponTextField.text ?? "", price: Int(strPrice) ?? 0, totalPrice: Int(strTotalPrice) ?? 0, paymentMethod: 0)
         
         for i in 0...45 {
             if listOfSeat[i].isSelected {
