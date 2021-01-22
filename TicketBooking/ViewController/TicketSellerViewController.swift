@@ -52,8 +52,6 @@ class TicketSellerViewController: UIViewController, UICollectionViewDelegate, UI
         loadGarage()
         
         self.name.text = USER.name
-        
-
     }
     
     func loadGarage() {

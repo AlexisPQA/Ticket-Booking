@@ -51,12 +51,14 @@ class CreateRouteViewController: UIViewController {
         
         let newRoute = Route(id: "\(garage.id)_R\(Int(randomID))", garage: self.garage.id, destination: toTextField.text ?? "", license: licenseplateTextField.text ?? "", seats: lof, aSeatPrice: Int(self.ticketpriceTextField.text!) ?? 0, departureTime: dateFormatter.date(from: departureTimeTextField.text!) ?? date)
         
+        print("Date: \(dateFormatter.string(from: newRoute.departureTime))")
         db.collection("Route").document()
         do {
             // Endcode
             let jsonEncoder = JSONEncoder()
             let jsonData = try jsonEncoder.encode(newRoute)
-            let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]
+            var json = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]
+            json["departureTime"] = dateFormatter.date(from: departureTimeTextField.text!)!.timeIntervalSince1970
             db.collection("Route").document(newRoute.id).setData(json)
         } catch let error {
             print("Error writing ticket to Firestore: \(error)")
