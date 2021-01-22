@@ -9,33 +9,46 @@ import UIKit
 import Cosmos
 import Firebase
 
-class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource{
+class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource{
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         if Auth.auth().currentUser != nil{
             let u = Auth.auth().currentUser
-            getUserFromFireBasse((u?.email!)!)
+            self.getUserFromFireBasse((u?.email!)!)
         }
-        
     }
+    
+    
+
     @IBOutlet weak var rectangle: UIView!
     @IBOutlet weak var fromTextField: UITextField!
     @IBOutlet weak var toTextField: UITextField!
     @IBOutlet weak var datePickerBtn: UIButton!
     @IBOutlet weak var couponsPicker: UIButton!
     @IBOutlet weak var garagesCollectionView: UICollectionView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var busStationCollectionView: UICollectionView!
     let formatter = DateFormatter()
     var listOfGarages: [Garage] = []
     var listOfStation: [BusStation] = []
+    var listOfRoute : [Route] = []
     var db: Firestore!
     let storage = Storage.storage()
+    var listOfGaragesBackup: [Garage] = []
+    var listOfStationBackup: [BusStation] = []
+    var fromData: [String] = []
+    var toData : [String] = []
+    var fromPickerView = UIPickerView()
+    var toPickerView = UIPickerView()
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkPermission()
         
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
         self.navigationController!.navigationBar.isTranslucent = true
+        scrollView.alwaysBounceVertical = true
+        scrollView.contentInsetAdjustmentBehavior = .never
         
         formatter.dateFormat = "dd/MM/yyyy"
         Utilities.styleView(rectangle,Utilities.subColor)
@@ -46,21 +59,33 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         
         getListOfGarage()
         getListOfStation()
+        
+        fromTextField.inputView = fromPickerView
+        fromPickerView.delegate = self
+        fromPickerView.dataSource = self
+        toTextField.inputView = toPickerView
+        toPickerView.delegate = self
+        toPickerView.dataSource = self
 
     }
     
     func checkPermission() {
-        if USER.permission > 1 {
-            let firebaseAuth = Auth.auth()
-            do {
-              try firebaseAuth.signOut()
-              USER = User(permission: 0)
-            } catch let signOutError as NSError {
-              print ("Error signing out: %@", signOutError)
-            }
+        print(USER.permission)
+        switch USER.permission {
+        case 2:
+            let storyboard = UIStoryboard(name: "Flow3", bundle: nil)
+            let TicketSellerVC = storyboard.instantiateViewController(withIdentifier: "ticketsellervc") as! TicketSellerViewController
+            self.view.window?.rootViewController = TicketSellerVC
+            self.view.window?.makeKeyAndVisible()
+        case 3:
+            let storyboard = UIStoryboard(name: "Flow2", bundle: nil)
+            let TicketSellerVC = storyboard.instantiateViewController(withIdentifier: "stationManageViewController") as! StationManageViewController
+            self.view.window?.rootViewController = TicketSellerVC
+            self.view.window?.makeKeyAndVisible()
+        default:
+            break
         }
     }
-    
     func getUserFromFireBasse(_ email: String) {
         Firestore.firestore().settings = FirestoreSettings()
         let db = Firestore.firestore()
@@ -69,8 +94,8 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
 
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                let user = document.data()!
-                USER = User(email: user["email"] as! String, name: user["name"] as! String, phone: user["phone"] as! String, idCard: user["idCard"] as! String, address: user["address"] as! String, permission: user["permission"] as! Int)
+                USER = User(document: document)
+                self.checkPermission()
             } else {
                 print("Document does not exist")
             }
@@ -91,19 +116,32 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
                 for document in querySnapshot!.documents {
                     let loadedGarage = Garage(document: document)
                     
-//                    // Load thmbnail image for Garage
-//                    let pathReference = self.storage.reference(withPath: "Garage/\(loadedGarage.id)")
-//                    pathReference.getData(maxSize: 1 * 6000 * 6000) { data, error in
-//                        if let error = error {
-//                            print(error)
-//                        } else {
-//                            loadedGarage.avatar = UIImage(data: data!)!
-//                        }
-//                        self.listOfGarages.append(loadedGarage)
-//                        self.garagesCollectionView.reloadData()
-//                    }
-                    self.listOfGarages.append(loadedGarage)
-                    self.garagesCollectionView.reloadData()
+                    // Load thmbnail image for Garage
+                    let pathReference = self.storage.reference(withPath: "Garage/\(loadedGarage.id)")
+                    pathReference.getData(maxSize: 1 * 6000 * 6000) { data, error in
+                        if let error = error {
+                            print(error)
+                        } else {
+                            loadedGarage.avatar = UIImage(data: data!)!
+                        }
+                        self.listOfGarages.append(loadedGarage)
+                        self.listOfGaragesBackup.append(loadedGarage)
+                        self.garagesCollectionView.reloadData()
+                    }
+                    let RouteRef = self.db.collection("Route").whereField("garage", isEqualTo: "\(loadedGarage.name)")
+                    RouteRef.getDocuments() { (querySnapshot, err) in
+                        if let err = err {
+                            print("Error getting documents: \(err)")
+                        } else {
+                            for document in querySnapshot!.documents {
+                                let loadedRoute = Route(document: document)
+                                self.listOfRoute.append(loadedRoute)
+                                self.toData.append(loadedRoute.destination)
+                            }
+                        }
+                    }
+//                    self.listOfGarages.append(loadedGarage)
+//                    self.garagesCollectionView.reloadData()
                 }
             }
         }
@@ -120,8 +158,9 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
             } else {
                 for document in querySnapshot!.documents {
                     let loadedStation = BusStation(document: document)
-                    
+                    self.fromData.append(loadedStation.address)
                     self.listOfStation.append(loadedStation)
+                    self.listOfStationBackup.append(loadedStation)
                     self.busStationCollectionView.reloadData()
                 }
             }
@@ -206,5 +245,57 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         let storyboard = UIStoryboard(name: "Flow3", bundle: nil)
         let vc  = storyboard.instantiateViewController(withIdentifier: "showallrequest")
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == fromPickerView{
+            return fromData.count
+        }
+        return toData.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == fromPickerView{
+            return fromData[row]
+        }
+        return toData[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == fromPickerView{
+            fromTextField.text = fromData[row]
+            fromTextField.resignFirstResponder()
+        }
+        else{
+            toTextField.text = toData[row]
+            toTextField.resignFirstResponder()
+        }
+        filter()
+        garagesCollectionView.reloadData()
+        busStationCollectionView.reloadData()
+    }
+    
+    func filter(){
+        listOfStation.removeAll()
+        listOfGarages.removeAll()
+        listOfStationBackup.forEach { (busStation) in
+            if (busStation.address == fromTextField.text){
+                listOfStation.append(busStation)
+                
+                listOfGaragesBackup.forEach { (garage) in
+                    listOfRoute.forEach { (route) in
+                        if (garage.busStation == busStation.name &&
+                            garage.name == route.garage &&
+                            route.destination == toTextField.text){
+                            listOfGarages.append(garage)
+                        }
+                    }
+                }
+            }
+            
+        }
+        
     }
 }

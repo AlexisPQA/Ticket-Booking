@@ -9,9 +9,6 @@ import UIKit
 import Firebase
 
 class AccountViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
-    override func viewDidAppear(_ animated: Bool) {
-        print(USER.permission)
-    }
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var logOutBtn: UIButton!
     @IBOutlet weak var signInBtn: UIButton!
@@ -23,6 +20,7 @@ class AccountViewController: UIViewController,UICollectionViewDelegate,UICollect
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var yourTicketLabel: UILabel!
     @IBOutlet weak var personalInfoLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var listTicket: [Ticket] = []
     var listOfRoute: [Route] = []
@@ -33,6 +31,8 @@ class AccountViewController: UIViewController,UICollectionViewDelegate,UICollect
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
         self.navigationController!.navigationBar.isTranslucent = true
+        scrollView.alwaysBounceVertical = true
+        scrollView.contentInsetAdjustmentBehavior = .never
         
         print(USER.permission)
         Utilities.styleFloatButton(logOutBtn)
