@@ -1,12 +1,12 @@
 
 /* Class = "UILabel"; text = "Sign Up"; ObjectID = "1FG-Vx-WPb"; */
-"1FG-Vx-WPb.text" = "Sign Up";
+"1FG-Vx-WPb.text" = "Đăng Kí";
 
 /* Class = "UITextField"; placeholder = "   Password"; ObjectID = "1ki-2D-6UD"; */
-"1ki-2D-6UD.placeholder" = "   Password";
+"1ki-2D-6UD.placeholder" = "   Mật Khẩu";
 
 /* Class = "UILabel"; text = "Price"; ObjectID = "4rz-bT-LOp"; */
-"4rz-bT-LOp.text" = "Price";
+"4rz-bT-LOp.text" = "Giá";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "7TH-4P-bBB"; */
 "7TH-4P-bBB.text" = "Label";
@@ -15,37 +15,37 @@
 "9vu-1G-Sty.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "Ci6-pp-UPG"; */
-"Ci6-pp-UPG.normalTitle" = "Sign in";
+"Ci6-pp-UPG.normalTitle" = "Đăng Nhập";
 
 /* Class = "UITextField"; placeholder = "   Username"; ObjectID = "DCr-ly-M8x"; */
-"DCr-ly-M8x.placeholder" = "   Username";
+"DCr-ly-M8x.placeholder" = "   Tài Khoản";
 
 /* Class = "UITextField"; placeholder = "   ID Card"; ObjectID = "DPJ-jr-86O"; */
-"DPJ-jr-86O.placeholder" = "   ID Card";
+"DPJ-jr-86O.placeholder" = "   CMND";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "Dvq-ao-BVD"; */
 "Dvq-ao-BVD.text" = "Label";
 
 /* Class = "UILabel"; text = "ID Card"; ObjectID = "EK6-Ac-7SS"; */
-"EK6-Ac-7SS.text" = "ID Card";
+"EK6-Ac-7SS.text" = "CMND";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "F4s-FH-r0Q"; */
 "F4s-FH-r0Q.text" = "Label";
 
 /* Class = "UITextField"; placeholder = "   Phone Number"; ObjectID = "Fxm-Sg-vMp"; */
-"Fxm-Sg-vMp.placeholder" = "   Phone Number";
+"Fxm-Sg-vMp.placeholder" = "   Điện thoại";
 
 /* Class = "UILabel"; text = "Email"; ObjectID = "GT5-sM-F3L"; */
 "GT5-sM-F3L.text" = "Email";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "GsO-R8-GLd"; */
-"GsO-R8-GLd.text" = "Name";
+"GsO-R8-GLd.text" = "Tên";
 
 /* Class = "UILabel"; text = "Bus Stations"; ObjectID = "Gxh-H5-lzA"; */
-"Gxh-H5-lzA.text" = "Bus Stations";
+"Gxh-H5-lzA.text" = "Bến xe";
 
 /* Class = "UILabel"; text = "Discount"; ObjectID = "HnW-Gd-6ar"; */
-"HnW-Gd-6ar.text" = "Discount";
+"HnW-Gd-6ar.text" = "Giảm giá";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "K6A-42-w6p"; */
 "K6A-42-w6p.text" = "Label";
@@ -63,55 +63,55 @@
 "RBY-mb-vig.title" = "Home";
 
 /* Class = "UILabel"; text = "Personal informations"; ObjectID = "SOR-qM-nIS"; */
-"SOR-qM-nIS.text" = "Personal informations";
+"SOR-qM-nIS.text" = "Thông tin cá nhân";
 
 /* Class = "UITabBarItem"; title = "Account"; ObjectID = "VZv-b9-smI"; */
-"VZv-b9-smI.title" = "Account";
+"VZv-b9-smI.title" = "Tài Khoản";
 
 /* Class = "UITextField"; placeholder = "   Password"; ObjectID = "YQz-2h-vyX"; */
-"YQz-2h-vyX.placeholder" = "   Password";
+"YQz-2h-vyX.placeholder" = "   Mật khẩu";
 
 /* Class = "UILabel"; text = "Bến xe Miền Tây"; ObjectID = "ZHC-JN-h46"; */
 "ZHC-JN-h46.text" = "Bến xe Miền Tây";
 
 /* Class = "UILabel"; text = "Sign in"; ObjectID = "Zsb-ku-4b3"; */
-"Zsb-ku-4b3.text" = "Sign in";
+"Zsb-ku-4b3.text" = "Đăng nhập";
 
 /* Class = "UILabel"; text = "Coupon"; ObjectID = "bhm-9V-M2F"; */
-"bhm-9V-M2F.text" = "Coupon";
+"bhm-9V-M2F.text" = "Phiếu";
 
 /* Class = "UITextField"; placeholder = "   Address"; ObjectID = "c4U-dr-K39"; */
-"c4U-dr-K39.placeholder" = "   Address";
+"c4U-dr-K39.placeholder" = "   Địa chỉ";
 
 /* Class = "UIButton"; normalTitle = "Sign up"; ObjectID = "dME-Nf-gYK"; */
-"dME-Nf-gYK.normalTitle" = "Sign up";
+"dME-Nf-gYK.normalTitle" = "Đăng kí";
 
 /* Class = "UILabel"; text = "Bến Xe Châu Đốc"; ObjectID = "eGc-Ch-y92"; */
 "eGc-Ch-y92.text" = "Bến Xe Châu Đốc";
 
 /* Class = "UILabel"; text = "Adress"; ObjectID = "fE7-o6-akZ"; */
-"fE7-o6-akZ.text" = "Adress";
+"fE7-o6-akZ.text" = "Địa chỉ";
 
 /* Class = "UIButton"; normalTitle = "Coupons"; ObjectID = "g9A-C6-mhw"; */
-"g9A-C6-mhw.normalTitle" = "Coupons";
+"g9A-C6-mhw.normalTitle" = "Phiếu giảm giá";
 
 /* Class = "UILabel"; text = "Garages"; ObjectID = "gSD-We-9Ki"; */
-"gSD-We-9Ki.text" = "Garages";
+"gSD-We-9Ki.text" = "Nhà xe";
 
 /* Class = "UITextField"; placeholder = "To"; ObjectID = "gpA-YR-FJo"; */
-"gpA-YR-FJo.placeholder" = "To";
+"gpA-YR-FJo.placeholder" = "Đích";
 
 /* Class = "UILabel"; text = "Your Tickets"; ObjectID = "hUV-90-G8f"; */
-"hUV-90-G8f.text" = "Your Tickets";
+"hUV-90-G8f.text" = "Vé của bạn";
 
 /* Class = "UILabel"; text = "     Stations"; ObjectID = "hjr-bs-y9U"; */
-"hjr-bs-y9U.text" = "     Stations";
+"hjr-bs-y9U.text" = "     Bến xe";
 
 /* Class = "UILabel"; text = "     Garages"; ObjectID = "iwC-03-Jrc"; */
-"iwC-03-Jrc.text" = "     Garages";
+"iwC-03-Jrc.text" = "     Nhà xe";
 
 /* Class = "UITextField"; placeholder = "  Search"; ObjectID = "jX6-vb-1UG"; */
-"jX6-vb-1UG.placeholder" = "  Search";
+"jX6-vb-1UG.placeholder" = "  Tìm Kiếm";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "lVQ-hn-HxW"; */
 "lVQ-hn-HxW.text" = "Label";
@@ -120,34 +120,34 @@
 "mcI-bX-Njo.text" = "Label";
 
 /* Class = "UITextField"; placeholder = "From"; ObjectID = "nC7-oc-Rcx"; */
-"nC7-oc-Rcx.placeholder" = "From";
+"nC7-oc-Rcx.placeholder" = "Bắt đầu";
 
 /* Class = "UILabel"; text = "Price"; ObjectID = "nrT-cn-b5l"; */
-"nrT-cn-b5l.text" = "Price";
+"nrT-cn-b5l.text" = "Giá";
 
 /* Class = "UITabBarItem"; title = "Search"; ObjectID = "sjD-2H-BRV"; */
-"sjD-2H-BRV.title" = "Search";
+"sjD-2H-BRV.title" = "Tìm Kiếm";
 
 /* Class = "UITextField"; placeholder = "   Email"; ObjectID = "syH-AD-8Rg"; */
 "syH-AD-8Rg.placeholder" = "   Email";
 
 /* Class = "UITextField"; placeholder = "   Full Name"; ObjectID = "tp0-NX-Jaa"; */
-"tp0-NX-Jaa.placeholder" = "   Full Name";
+"tp0-NX-Jaa.placeholder" = "   Họ và tên";
 
 /* Class = "UIButton"; normalTitle = "DatePicker"; ObjectID = "u9z-Jf-3oz"; */
-"u9z-Jf-3oz.normalTitle" = "DatePicker";
+"u9z-Jf-3oz.normalTitle" = "Chọn ngày";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "uF3-sd-Fsf"; */
 "uF3-sd-Fsf.text" = "Label";
 
 /* Class = "UILabel"; text = "Phone"; ObjectID = "uFo-5j-7Pg"; */
-"uFo-5j-7Pg.text" = "Phone";
+"uFo-5j-7Pg.text" = "Điện thoại";
 
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "yXE-af-9AH"; */
-"yXE-af-9AH.normalTitle" = "Sign in";
+"yXE-af-9AH.normalTitle" = "Đăng nhập";
 
 /* Class = "UIButton"; normalTitle = "Log Out"; ObjectID = "zJE-4Z-uCn"; */
-"zJE-4Z-uCn.normalTitle" = "Log Out";
+"zJE-4Z-uCn.normalTitle" = "Đăng xuất";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "zal-LD-k4E"; */
 "zal-LD-k4E.text" = "Label";

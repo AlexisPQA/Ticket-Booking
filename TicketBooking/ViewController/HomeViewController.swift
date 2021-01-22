@@ -37,8 +37,8 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     let storage = Storage.storage()
     var listOfGaragesBackup: [Garage] = []
     var listOfStationBackup: [BusStation] = []
-    var fromData: [String] = []
-    var toData : [String] = []
+    var fromData: [String] = [""]
+    var toData : [String] = [""]
     var fromPickerView = UIPickerView()
     var toPickerView = UIPickerView()
     override func viewDidLoad() {
@@ -296,6 +296,9 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
             }
             
         }
-        
+        if (fromTextField.text == "" && toTextField.text == ""){
+            listOfGarages = listOfGaragesBackup
+            listOfStation = listOfStationBackup
+        }
     }
 }

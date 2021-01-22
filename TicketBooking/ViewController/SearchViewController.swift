@@ -64,19 +64,20 @@ class SearchViewController: UIViewController,UICollectionViewDelegate,UICollecti
                     let loadedGarage = Garage(document: document)
                     
                     // Load thmbnail image for Garage
-//                    let pathReference = self.storage.reference(withPath: "Garage/\(loadedGarage.id)")
-//                    pathReference.getData(maxSize: 1 * 6000 * 6000) { data, error in
-//                        if let error = error {
-//                            print(error)
-//                        } else {
-//                            loadedGarage.avatar = UIImage(data: data!)!
-//                        }
-//                        self.listOfGarages.append(loadedGarage)
-//                        self.GaragesCollection.reloadData()
-//                    }
-                    self.listOfGarages.append(loadedGarage)
-                    self.listOfGaragesFixed.append(loadedGarage)
-                    self.GaragesCollection.reloadData()
+                    let pathReference = self.storage.reference(withPath: "Garage/\(loadedGarage.id)")
+                    pathReference.getData(maxSize: 1 * 6000 * 6000) { data, error in
+                        if let error = error {
+                            print(error)
+                        } else {
+                            loadedGarage.avatar = UIImage(data: data!)!
+                        }
+                        self.listOfGarages.append(loadedGarage)
+                        self.listOfGaragesFixed.append(loadedGarage)
+                        self.GaragesCollection.reloadData()
+                    }
+//                    self.listOfGarages.append(loadedGarage)
+//                    self.listOfGaragesFixed.append(loadedGarage)
+//                    self.GaragesCollection.reloadData()
                 }
             }
         }
@@ -114,9 +115,11 @@ class SearchViewController: UIViewController,UICollectionViewDelegate,UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if (collectionView == ButtonCollection){
             let cell = collectionView.cellForItem(at: indexPath) as! ButtonFilterCollectionViewCell
-            let cellSelected = collectionView.cellForItem(at: btnSelected[0]) as! ButtonFilterCollectionViewCell
-            cellSelected.fakeBtn.layer.backgroundColor = .none
-            btnSelected.removeAll()
+            if (btnSelected.count != 0){
+                let cellSelected = collectionView.cellForItem(at: btnSelected[0]) as! ButtonFilterCollectionViewCell
+                cellSelected.fakeBtn.layer.backgroundColor = .none
+                btnSelected.removeAll()
+            }
             cell.fakeBtn.layer.backgroundColor = Utilities.mainColor.cgColor
             btnSelected.append(indexPath)
         }else
@@ -138,10 +141,10 @@ class SearchViewController: UIViewController,UICollectionViewDelegate,UICollecti
         if (collectionView == ButtonCollection){
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "btnfilter", for: indexPath) as! ButtonFilterCollectionViewCell
-            if (indexPath.row == 0){
-                cell.fakeBtn.layer.backgroundColor = Utilities.mainColor.cgColor
-                btnSelected.append(indexPath)
-            }
+//            if (indexPath.row == 0){
+//                cell.fakeBtn.layer.backgroundColor = Utilities.mainColor.cgColor
+//                btnSelected.append(indexPath)
+//            }
             cell.fakeBtn.text = Btn[indexPath.item]
             return cell
         }
