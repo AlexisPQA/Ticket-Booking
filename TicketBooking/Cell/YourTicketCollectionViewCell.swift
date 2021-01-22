@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol YourTicketCollectionViewCellProtocol {
+    func deleteACell(id: String, index: Int)
+}
+
 class YourTicketCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var from: UILabel!
@@ -22,6 +26,11 @@ class YourTicketCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var coupon: UILabel!
     @IBOutlet weak var acceptButton: UIButton!
     
+    var ticket : Ticket? = nil
+    var index : Int = 0
+    
+    var delegate : YourTicketCollectionViewCellProtocol!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.backgroundColor = UIColor.white.cgColor
@@ -32,5 +41,10 @@ class YourTicketCollectionViewCell: UICollectionViewCell {
         layer.masksToBounds = false
         layer.shadowPath = UIBezierPath(roundedRect:bounds, cornerRadius:contentView.layer.cornerRadius).cgPath
         layer.cornerRadius = 6
+    }
+    
+    
+    @IBAction func deleteButtonTouched(_ sender: Any) {
+        self.delegate.deleteACell(id: self.ticket!.id!, index: self.index)
     }
 }

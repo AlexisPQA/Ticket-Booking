@@ -125,7 +125,7 @@ class TicketInfoViewController: UIViewController {
             let jsonEncoder = JSONEncoder()
             let jsonData = try jsonEncoder.encode(ticket)
             let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]
-            db.collection("CancelTicketRequest").document(ticket.id).setData(json)
+            db.collection("CancelTicketRequest").document(ticket.id!).setData(json)
             let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
             self.navigationController?.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
         } catch let error {

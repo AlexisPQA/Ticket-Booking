@@ -263,7 +263,7 @@ class TicketBookingViewController: UIViewController , UITextFieldDelegate, UIPic
                 let jsonEncoder = JSONEncoder()
                 let jsonData = try jsonEncoder.encode(ticket)
                 let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as! [String : Any]
-                db.collection("Ticket").document(ticket.id).setData(json)
+                db.collection("Ticket").document(ticket.id!).setData(json)
             } catch let error {
                 print("Error writing ticket to Firestore: \(error)")
             }

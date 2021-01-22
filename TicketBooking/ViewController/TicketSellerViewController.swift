@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class TicketSellerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class TicketSellerViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, YourTicketCollectionViewCellProtocol {
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var nameGarage: UILabel!
@@ -87,16 +87,14 @@ class TicketSellerViewController: UIViewController, UICollectionViewDelegate, UI
     
     func loadListOfRequest() {
         for route in listOfRoute {
-            DispatchQueue.main.async {
-                self.db.collection("CancelTicketRequest").whereField("route", isEqualTo: route.id).getDocuments() { (querySnapshot, err) in
-                    if let err = err {
-                        print("Error getting CancelRequest documents: \(err)")
-                    } else {
-                        for document in querySnapshot!.documents {
-                            self.listOfRequest.append(Ticket(document: document))
-                        }
-                        self.requestCollection.reloadData()
+            self.db.collection("CancelTicketRequest").whereField("route", isEqualTo: route.id).getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting CancelRequest documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        self.listOfRequest.append(Ticket(document: document))
                     }
+                    self.requestCollection.reloadData()
                 }
             }
         }
@@ -162,6 +160,7 @@ class TicketSellerViewController: UIViewController, UICollectionViewDelegate, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if ((listOfRequest.count != 0) && (collectionView == requestCollection)) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ticket", for: indexPath) as! YourTicketCollectionViewCell
+            
             var route = Route()
             for r in listOfRoute {
                 if r.id == listOfRequest[indexPath.row].route {
@@ -169,6 +168,10 @@ class TicketSellerViewController: UIViewController, UICollectionViewDelegate, UI
                     break
                 }
             }
+            cell.ticket = listOfRequest[indexPath.row]
+            cell.index = indexPath.row
+            cell.delegate = self
+            
             cell.from.text = garage.address
             cell.destination.text = route.destination
             cell.garage.text = "Garage: " + garage.name
@@ -192,8 +195,8 @@ class TicketSellerViewController: UIViewController, UICollectionViewDelegate, UI
             cell.discount.text = "\(listOfRequest[indexPath.item].price - listOfRequest[indexPath.item].totalPrice)đ"
             cell.coupon.text = listOfRequest[indexPath.item].coupon
             
-            cell.acceptButton.tag = indexPath.row
-            cell.acceptButton.addTarget(self, action: #selector(deleteRowAt(sender:)), for: .touchUpInside)
+//            cell.acceptButton.tag = indexPath.row
+//            cell.acceptButton.addTarget(self, action: #selector(deleteRowAt(sender:)), for: .touchUpInside)
             
             return cell
             
@@ -204,10 +207,10 @@ class TicketSellerViewController: UIViewController, UICollectionViewDelegate, UI
         }
     }
     
-    //This function delete cell at index on RequestCancelPending
-    @objc func deleteRowAt(sender: UIButton) {
-        let index = sender.tag
-        db.collection("CancelTicketRequest").document(listOfRequest[index].id).delete() { err in
+    func deleteACell(id: String, index: Int) {
+//        let index = sender.tag
+        print("id: \(listOfRequest[index].id!)")
+        db.collection("CancelTicketRequest").document(listOfRequest[index].id!).delete() { err in
             if let err = err {
                 print("Error removing document: \(err)")
             } else {
@@ -217,20 +220,31 @@ class TicketSellerViewController: UIViewController, UICollectionViewDelegate, UI
                 self.requestCollection.reloadData()
             }
         }
+        db.collection("Ticket").document(id).delete() { err in
+            if let err = err {
+                print(err)
+            } else {
+                print("Delete ticket successfully.")
+            }
+        }
     }
     
     //id: id of route need to update
     func updateRoute(id: String, seats: [Int]) {
         print("route: \(id)")
-//        db.collection("Route").document(id).updateData([
-//            "seats": FieldValue.arrayContains
-//        ]) { err in
-//            if let err = err {
-//                print("Error updating document: \(err)")
-//            } else {
-//                print("Document successfully updated")
-//            }
-//        }
+        let ref = db.collection("Route").document(id)
+        
+        ref.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let myRoute = Route(document: document)
+                for i in seats {
+                    myRoute.seats[i] = true
+                }
+                ref.updateData(["seats" : myRoute.seats])
+            } else {
+                print("Document does not exist: \(String(describing: error))")
+            }
+        }
     }
     
 }

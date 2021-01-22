@@ -10,7 +10,7 @@ import Firebase
 
 class Ticket : Codable {
     
-    var id: String = "" // ID của Ticket = route#account#Date().timeIntervalSinceReferenceDate
+    var id: String? = "" // ID của Ticket = route#account#Date().timeIntervalSinceReferenceDate
     
     var account: String = "" // Lưu e-mail của account đặt vé
     
@@ -48,7 +48,7 @@ class Ticket : Codable {
     }
     
     init(document: DocumentSnapshot) {
-        self.id = "1"
+        self.id = document.data()!["id"] as? String
         self.account = document.get("account") as! String
         self.idCard = document.get("idCard") as! String
         self.passengerName = document.get("passengerName") as! String
