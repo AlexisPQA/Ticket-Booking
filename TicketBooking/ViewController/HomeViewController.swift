@@ -74,7 +74,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         switch USER.permission {
         case 2:
             let storyboard = UIStoryboard(name: "Flow3", bundle: nil)
-            let TicketSellerVC = storyboard.instantiateViewController(withIdentifier: "ticketsellervc") as! TicketSellerViewController
+            let TicketSellerVC = storyboard.instantiateViewController(withIdentifier: "ticketsellerNavigationVC") as! UINavigationController
             self.view.window?.rootViewController = TicketSellerVC
             self.view.window?.makeKeyAndVisible()
         case 3:

@@ -575,7 +575,7 @@
         <!--Navigation Controller-->
         <scene sceneID="dpM-DO-TM6">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="zA8-mo-BNp" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="loginNaviViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="zA8-mo-BNp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bZf-bL-kpR">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>

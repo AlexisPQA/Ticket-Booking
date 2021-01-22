@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55w-kG-BIK">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3u-Pc-mgZ" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="989"/>
@@ -520,6 +520,7 @@
                             <constraint firstItem="55w-kG-BIK" firstAttribute="trailing" secondItem="Iim-f7-0NL" secondAttribute="trailing" id="YOH-hu-Sga"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Nc9-H9-nCS"/>
                     <connections>
                         <outlet property="createRouteBtn" destination="ePy-nW-soz" id="WXY-lg-LLE"/>
                         <outlet property="logoutBtn" destination="D4E-mp-dHb" id="oJx-Ud-nUX"/>
@@ -532,7 +533,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bl4-JN-Xsh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-771.01449275362324" y="99.776785714285708"/>
+            <point key="canvasLocation" x="139.13043478260872" y="99.776785714285708"/>
         </scene>
         <!--Create Route View Controller-->
         <scene sceneID="T61-V7-gsH">
@@ -1853,7 +1854,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TWX-of-bGS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="1Fx-hA-Sqd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-88.405797101449281" y="99.776785714285708"/>
+            <point key="canvasLocation" x="821.73913043478262" y="99.776785714285708"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="J0i-oc-tDv">
+            <objects>
+                <navigationController storyboardIdentifier="ticketsellerNavigationVC" automaticallyAdjustsScrollViewInsets="NO" id="IqO-pL-G1x" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BFu-OT-q8h">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9vJ-9V-66o" kind="relationship" relationship="rootViewController" id="u8K-rd-XF2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jf0-i6-eRx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-771.01449275362324" y="99.776785714285708"/>
         </scene>
     </scenes>
     <resources>
