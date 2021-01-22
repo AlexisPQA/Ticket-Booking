@@ -115,7 +115,7 @@ class LoginViewController: UIViewController {
         switch USER.permission {
         case 2:
             let storyboard = UIStoryboard(name: "Flow3", bundle: nil)
-            let vc  = storyboard.instantiateViewController(withIdentifier: "ticketsellervc")
+            let vc  = storyboard.instantiateViewController(withIdentifier: "ticketsellervc") 
             self.navigationController?.pushViewController(vc, animated: true)
         case 3:
             let storyboard = UIStoryboard(name: "Flow2", bundle: nil)

@@ -63,6 +63,7 @@ class CreateRouteViewController: UIViewController {
         } catch let error {
             print("Error writing ticket to Firestore: \(error)")
         }
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func seatTapped(_ sender: UIButton) {

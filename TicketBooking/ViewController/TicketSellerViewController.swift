@@ -110,7 +110,11 @@ class TicketSellerViewController: UIViewController, UICollectionViewDelegate, UI
           do {
             try firebaseAuth.signOut()
             USER = User(permission: 0)
-            self.navigationController?.popViewController(animated: true)
+            //self.navigationController?.popViewController(animated: true)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let LoginVC = storyboard.instantiateViewController(withIdentifier: "loginNaviViewController") as! UINavigationController
+            self.view.window?.rootViewController = LoginVC
+            self.view.window?.makeKeyAndVisible()
           } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
           }

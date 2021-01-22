@@ -1,0 +1,153 @@
+
+/* Class = "UILabel"; text = "Sign Up"; ObjectID = "1FG-Vx-WPb"; */
+"1FG-Vx-WPb.text" = "Sign Up";
+
+/* Class = "UITextField"; placeholder = "   Password"; ObjectID = "1ki-2D-6UD"; */
+"1ki-2D-6UD.placeholder" = "   Password";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "4rz-bT-LOp"; */
+"4rz-bT-LOp.text" = "Price";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "7TH-4P-bBB"; */
+"7TH-4P-bBB.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "9vu-1G-Sty"; */
+"9vu-1G-Sty.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "Ci6-pp-UPG"; */
+"Ci6-pp-UPG.normalTitle" = "Sign in";
+
+/* Class = "UITextField"; placeholder = "   Username"; ObjectID = "DCr-ly-M8x"; */
+"DCr-ly-M8x.placeholder" = "   Username";
+
+/* Class = "UITextField"; placeholder = "   ID Card"; ObjectID = "DPJ-jr-86O"; */
+"DPJ-jr-86O.placeholder" = "   ID Card";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Dvq-ao-BVD"; */
+"Dvq-ao-BVD.text" = "Label";
+
+/* Class = "UILabel"; text = "ID Card"; ObjectID = "EK6-Ac-7SS"; */
+"EK6-Ac-7SS.text" = "ID Card";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "F4s-FH-r0Q"; */
+"F4s-FH-r0Q.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "   Phone Number"; ObjectID = "Fxm-Sg-vMp"; */
+"Fxm-Sg-vMp.placeholder" = "   Phone Number";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "GT5-sM-F3L"; */
+"GT5-sM-F3L.text" = "Email";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "GsO-R8-GLd"; */
+"GsO-R8-GLd.text" = "Name";
+
+/* Class = "UILabel"; text = "Bus Stations"; ObjectID = "Gxh-H5-lzA"; */
+"Gxh-H5-lzA.text" = "Bus Stations";
+
+/* Class = "UILabel"; text = "Discount"; ObjectID = "HnW-Gd-6ar"; */
+"HnW-Gd-6ar.text" = "Discount";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "K6A-42-w6p"; */
+"K6A-42-w6p.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "M3a-HJ-uJA"; */
+"M3a-HJ-uJA.title" = " ";
+
+/* Class = "UILabel"; text = "160.000"; ObjectID = "Mn6-46-sN0"; */
+"Mn6-46-sN0.text" = "160.000";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PJ4-Fa-fpf"; */
+"PJ4-Fa-fpf.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "RBY-mb-vig"; */
+"RBY-mb-vig.title" = "Home";
+
+/* Class = "UILabel"; text = "Personal informations"; ObjectID = "SOR-qM-nIS"; */
+"SOR-qM-nIS.text" = "Personal informations";
+
+/* Class = "UITabBarItem"; title = "Account"; ObjectID = "VZv-b9-smI"; */
+"VZv-b9-smI.title" = "Account";
+
+/* Class = "UITextField"; placeholder = "   Password"; ObjectID = "YQz-2h-vyX"; */
+"YQz-2h-vyX.placeholder" = "   Password";
+
+/* Class = "UILabel"; text = "Bến xe Miền Tây"; ObjectID = "ZHC-JN-h46"; */
+"ZHC-JN-h46.text" = "Bến xe Miền Tây";
+
+/* Class = "UILabel"; text = "Sign in"; ObjectID = "Zsb-ku-4b3"; */
+"Zsb-ku-4b3.text" = "Sign in";
+
+/* Class = "UILabel"; text = "Coupon"; ObjectID = "bhm-9V-M2F"; */
+"bhm-9V-M2F.text" = "Coupon";
+
+/* Class = "UITextField"; placeholder = "   Address"; ObjectID = "c4U-dr-K39"; */
+"c4U-dr-K39.placeholder" = "   Address";
+
+/* Class = "UIButton"; normalTitle = "Sign up"; ObjectID = "dME-Nf-gYK"; */
+"dME-Nf-gYK.normalTitle" = "Sign up";
+
+/* Class = "UILabel"; text = "Bến Xe Châu Đốc"; ObjectID = "eGc-Ch-y92"; */
+"eGc-Ch-y92.text" = "Bến Xe Châu Đốc";
+
+/* Class = "UILabel"; text = "Adress"; ObjectID = "fE7-o6-akZ"; */
+"fE7-o6-akZ.text" = "Adress";
+
+/* Class = "UIButton"; normalTitle = "Coupons"; ObjectID = "g9A-C6-mhw"; */
+"g9A-C6-mhw.normalTitle" = "Coupons";
+
+/* Class = "UILabel"; text = "Garages"; ObjectID = "gSD-We-9Ki"; */
+"gSD-We-9Ki.text" = "Garages";
+
+/* Class = "UITextField"; placeholder = "To"; ObjectID = "gpA-YR-FJo"; */
+"gpA-YR-FJo.placeholder" = "To";
+
+/* Class = "UILabel"; text = "Your Tickets"; ObjectID = "hUV-90-G8f"; */
+"hUV-90-G8f.text" = "Your Tickets";
+
+/* Class = "UILabel"; text = "     Stations"; ObjectID = "hjr-bs-y9U"; */
+"hjr-bs-y9U.text" = "     Stations";
+
+/* Class = "UILabel"; text = "     Garages"; ObjectID = "iwC-03-Jrc"; */
+"iwC-03-Jrc.text" = "     Garages";
+
+/* Class = "UITextField"; placeholder = "  Search"; ObjectID = "jX6-vb-1UG"; */
+"jX6-vb-1UG.placeholder" = "  Search";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "lVQ-hn-HxW"; */
+"lVQ-hn-HxW.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "mcI-bX-Njo"; */
+"mcI-bX-Njo.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "From"; ObjectID = "nC7-oc-Rcx"; */
+"nC7-oc-Rcx.placeholder" = "From";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "nrT-cn-b5l"; */
+"nrT-cn-b5l.text" = "Price";
+
+/* Class = "UITabBarItem"; title = "Search"; ObjectID = "sjD-2H-BRV"; */
+"sjD-2H-BRV.title" = "Search";
+
+/* Class = "UITextField"; placeholder = "   Email"; ObjectID = "syH-AD-8Rg"; */
+"syH-AD-8Rg.placeholder" = "   Email";
+
+/* Class = "UITextField"; placeholder = "   Full Name"; ObjectID = "tp0-NX-Jaa"; */
+"tp0-NX-Jaa.placeholder" = "   Full Name";
+
+/* Class = "UIButton"; normalTitle = "DatePicker"; ObjectID = "u9z-Jf-3oz"; */
+"u9z-Jf-3oz.normalTitle" = "DatePicker";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "uF3-sd-Fsf"; */
+"uF3-sd-Fsf.text" = "Label";
+
+/* Class = "UILabel"; text = "Phone"; ObjectID = "uFo-5j-7Pg"; */
+"uFo-5j-7Pg.text" = "Phone";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "yXE-af-9AH"; */
+"yXE-af-9AH.normalTitle" = "Sign in";
+
+/* Class = "UIButton"; normalTitle = "Log Out"; ObjectID = "zJE-4Z-uCn"; */
+"zJE-4Z-uCn.normalTitle" = "Log Out";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "zal-LD-k4E"; */
+"zal-LD-k4E.text" = "Label";

@@ -13,7 +13,7 @@ class TabbarViewController: UITabBarController {
         super.viewDidLoad()
         self.tabBar.clipsToBounds = true // remove top line of tabbar
         let layer = CAShapeLayer()
-        layer.path = UIBezierPath(roundedRect: CGRect(x: 30, y: 10, width: self.tabBar.bounds.width - 60, height: 67), cornerRadius:20).cgPath
+        layer.path = UIBezierPath(roundedRect: CGRect(x: 30, y: 0, width: self.tabBar.bounds.width - 60, height: 67), cornerRadius:20).cgPath
         layer.shadowColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.16).cgColor
         layer.shadowOffset = CGSize(width: 1, height: 1)
         layer.shadowRadius = 5

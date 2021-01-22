@@ -22,8 +22,8 @@ class SearchViewController: UIViewController,UICollectionViewDelegate,UICollecti
     @IBOutlet weak var StationCollection: UICollectionView!
     @IBOutlet weak var sationsLabel: UILabel!
     @IBOutlet weak var GarageLabel: UILabel!
-    @IBAction func searchTextField(_ sender: Any) {
-    }
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     let Btn = ["All","Station","Garage","Location"]
     var btnSelected :[IndexPath] = []
     let formatter = DateFormatter()
@@ -40,6 +40,8 @@ class SearchViewController: UIViewController,UICollectionViewDelegate,UICollecti
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
         self.navigationController!.navigationBar.isTranslucent = true
+        scrollView.alwaysBounceVertical = true
+        scrollView.contentInsetAdjustmentBehavior = .never
         
         Utilities.styleTextField1(searchTextField)
         
@@ -137,7 +139,6 @@ class SearchViewController: UIViewController,UICollectionViewDelegate,UICollecti
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "btnfilter", for: indexPath) as! ButtonFilterCollectionViewCell
             if (indexPath.row == 0){
-                print(Btn[indexPath.row])
                 cell.fakeBtn.layer.backgroundColor = Utilities.mainColor.cgColor
                 btnSelected.append(indexPath)
             }
@@ -166,7 +167,6 @@ class SearchViewController: UIViewController,UICollectionViewDelegate,UICollecti
         let textsearch = searchTextField.text!.lowercased()
         
         filter(btnSelected[0].row, textsearch)
-        print(btnSelected)
         StationCollection.reloadData()
         GaragesCollection.reloadData()
         if (textsearch == ""){
@@ -191,6 +191,7 @@ class SearchViewController: UIViewController,UICollectionViewDelegate,UICollecti
         default:
             self.listOfStation = self.listOfStationFixed
             self.listOfGarages = self.listOfGaragesFixed
+            searchByAll(textSearch)
             break
         }
     }
